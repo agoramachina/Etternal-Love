@@ -1,9 +1,9 @@
 -- theme identification file
 
 themeInfo = {
-	Name = "'Til Death",
-	Version = "1.07",
-	Date = "20161121",
+	Name = "Etternal Love",
+	Version = "0.1",
+	Date = "20180323",
 };
 
 function getThemeName()
