@@ -85,6 +85,9 @@ local minanyms = {
 	"ScatPlayKatarina",
 	"Ferric Chloride Matter",
 	"Bananatiger",
+
+	-- bringer of rainbows
+	"agoramachina",
 }
 
 math.random()
