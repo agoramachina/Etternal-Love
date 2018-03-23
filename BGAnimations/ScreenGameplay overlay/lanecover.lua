@@ -257,24 +257,25 @@ end;
 
 local function Update(self)
 	t.InitCommand=cmd(SetUpdateFunction,Update);
+	self:SetUpdateRate(0.5)
 	if enabledP1 then
 		if moveDownP1 then
 			if isReverseP1 then
-				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1+1))
+				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1+0.1))
 			else
-				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1-1))
+				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1-0.1))
 			end;
 		end;
 		if moveUpP1 then
 			if isReverseP1 then
-				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1-1))
+				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1-0.1))
 			else
-				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1+1))
+				heightP1 = math.min(SCREEN_BOTTOM,math.max(0,heightP1+0.1))
 			end;
 		end;
 
 		self:GetChild("CoverP1"):zoomy(heightP1)
-		self:GetChild("CoverTextP1White"):settext(heightP1)
+		self:GetChild("CoverTextP1White"):settext(math.floor(heightP1))
 		if prefsP1 == 1 then -- don't update greennumber for hidden lanecovers
 			self:GetChild("CoverTextP1Green"):settext(math.floor(getScrollSpeed(PLAYER_1,heightP1)))
 		end;
@@ -317,7 +318,7 @@ local function Update(self)
 			end;
 		end;
 		self:GetChild("CoverP2"):zoomy(heightP2)
-		self:GetChild("CoverTextP2White"):settext(heightP2)
+		self:GetChild("CoverTextP2White"):settext(math.floor(heightP2))
 		if prefsP2 == 1 then
 			self:GetChild("CoverTextP2Green"):settext(math.floor(getScrollSpeed(PLAYER_2,heightP2)))
 		end;

@@ -1,45 +1,52 @@
 local t = Def.ActorFrame{}
 
-t[#t+1] = LoadActor("_chatbox")
+t[#t+1] = LoadActor("../_chatbox")
+t[#t+1] = LoadActor("../ScreenSelectMusic decorations/profile")
+t[#t+1] = LoadActor("../ScreenSelectMusic decorations/msd")
+t[#t+1] = LoadActor("../ScreenSelectMusic decorations/songsearch")
+t[#t+1] = LoadActor("tabs")
+t[#t+1] = LoadActor("../ScreenSelectMusic decorations/score")
+t[#t+1] = LoadActor("dumbrate")
+t[#t+1] = LoadActor("../ScreenSelectMusic decorations/filters")
 
-t[#t+1] = Def.Banner{
+local g = Def.ActorFrame{
+	TabChangedMessageCommand=function(self)
+		local top= SCREENMAN:GetTopScreen()
+		if getTabIndex() == 0 then
+			self:visible(true)
+			top:ChatboxVisible(true)
+			top:ChatboxInput(true)
+		else 
+			self:visible(false)
+			top:ChatboxVisible(false)
+			top:ChatboxInput(false)
+		end
+	end,
+}
+
+g[#g+1] = Def.Banner{
 	InitCommand=cmd(x,10;y,60;halign,0;valign,0);
 	SetMessageCommand=function(self)
 		local top = SCREENMAN:GetTopScreen()
-		if top:GetName() == "ScreenSelectMusic" then
+		if top:GetName() == "ScreenSelectMusic" or top:GetName() == "ScreenNetSelectMusic" then
 			local song = GAMESTATE:GetCurrentSong()
-			local course = GAMESTATE:GetCurrentCourse()
 			local group = top:GetMusicWheel():GetSelectedSection()
 			if song then
 				self:LoadFromSong(song)
-			elseif course then
-				self:LoadFromCourse(song)
 			elseif group then
 				self:LoadFromSongGroup(group)
-			end;
-		elseif top:GetName() == "ScreenNetSelectMusic" then
-			local song = GAMESTATE:GetCurrentSong()
-			local course = GAMESTATE:GetCurrentCourse()
-			local group = top:GetChild("MusicWheel"):GetSelectedSection()
-			if song then
-				self:LoadFromSong(song)
-			elseif course then
-				self:LoadFromCourse(song)
-			elseif group then
-				self:LoadFromSongGroup(group)
-			end;
-		end;
+			end
+		end
 		self:scaletoclipped(capWideScale(get43size(384),384),capWideScale(get43size(120),120))
 	end;
-	CurrentSongChangedMessageCommand=cmd(queuecommand,"Set");
+	CurrentSongChangedMessageCommand=cmd(queuecommand,"Set"),
+	CurrentStepsP1ChangedMessageCommand=cmd(queuecommand,"Set");
+	CurrentStepsP2ChangedMessageCommand=cmd(queuecommand,"Set");
 };
-
-
-t[#t+1] = Def.Quad{
+g[#g+1] = Def.Quad{
 	InitCommand=cmd(xy,10,60+capWideScale(get43size(120),120)-capWideScale(get43size(10),10);zoomto,capWideScale(get43size(384),384),capWideScale(get43size(20),20);halign,0;diffuse,color("#000000");diffusealpha,0.7);
 }
-
-t[#t+1] = LoadFont("Common Normal") .. {
+g[#g+1] = LoadFont("Common Normal") .. {
 	Name="songTitle";
 	InitCommand=cmd(xy,15,60+capWideScale(get43size(120),120)-capWideScale(get43size(10),10);visible,true;halign,0;zoom,capWideScale(get43size(0.45),0.45);maxwidth,capWideScale(get43size(340),340)/capWideScale(get43size(0.45),0.45));
 	BeginCommand=cmd(queuecommand,"Set");
@@ -54,26 +61,11 @@ t[#t+1] = LoadFont("Common Normal") .. {
 	CurrentSongChangedMessageCommand=cmd(queuecommand,"Set");
 };
 
-t[#t+1] = LoadFont("Common Normal") .. {
-	Name="songLength";
-	InitCommand=cmd(xy,5+(capWideScale(get43size(384),384)),60+capWideScale(get43size(120),120)-capWideScale(get43size(10),10);visible,true;halign,1;zoom,capWideScale(get43size(0.45),0.45);maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45));
-	BeginCommand=cmd(queuecommand,"Set");
-	SetCommand=function(self)
-		local song = GAMESTATE:GetCurrentSong()
-		local seconds = 0
-		if song ~= nil then
-			seconds = song:GetStepsSeconds() --song:MusicLengthSeconds()
-			self:settext(SecondsToMMSS(seconds))
-			self:diffuse(getSongLengthColor(seconds))
-		else
-			self:settext("")
-		end
-	end;
-	CurrentSongChangedMessageCommand=cmd(queuecommand,"Set");
-};
+g[#g+1] = LoadActor("wifeonline")
+g[#g+1] = LoadActor("onlinebpm")
+g[#g+1] = LoadActor("radaronline")
 
-
-t[#t+1] = Def.ActorFrame {
+g[#g+1] = Def.ActorFrame {
 	InitCommand=cmd(xy,capWideScale(get43size(384),384)+26,70,halign,0;valign,0;zoom,math.min(1,SCREEN_WIDTH/854));
 	OffCommand=cmd(bouncebegin,0.2;xy,capWideScale(get43size(384),384)+26-500,70;); -- visible(false) doesn't seem to work with sleep
 	OnCommand=cmd(bouncebegin,0.2;xy,capWideScale(get43size(384),384)+26,70;);
@@ -88,11 +80,9 @@ t[#t+1] = Def.ActorFrame {
 	CurrentSongChangedMessageCommand=function(self)
 		local song = GAMESTATE:GetCurrentSong(); 
 		if song then
--- 			self:setaux(0);
 			self:finishtweening();
 			self:playcommand("TweenOn");
 		elseif not song and self:GetZoomX() == 1 then
--- 			self:setaux(1);
 			self:finishtweening();
 			self:playcommand("TweenOff");
 		end;
@@ -196,6 +186,6 @@ t[#t+1] = Def.ActorFrame {
 		};
 	};
 };
-
+t[#t+1] = g
 
 return t

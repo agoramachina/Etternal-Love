@@ -1,23 +1,37 @@
+local active = true
+local numericinputactive = false
+local whee
+
 local function input(event)
-	if event.type ~= "InputEventType_Release" then
-		for i=1,6 do
-			if event.DeviceInput.button == "DeviceButton_"..i then
-				setTabIndex(i-1)
-				MESSAGEMAN:Broadcast("TabChanged")
-			end;
-		end;
+	if event.type ~= "InputEventType_Release" and active then
+		if numericinputactive == false then
+			for i=1,8 do
+				if event.DeviceInput.button == "DeviceButton_"..i then
+					setTabIndex(i-1)
+					MESSAGEMAN:Broadcast("TabChanged")
+				end
+			end
+		end
 		if event.DeviceInput.button == "DeviceButton_left mouse button" then
 			MESSAGEMAN:Broadcast("MouseLeftClick")
-		end;
-	end;
-return false;
+		elseif event.DeviceInput.button == "DeviceButton_right mouse button" then
+			MESSAGEMAN:Broadcast("MouseRightClick")
+		end
+	end
+	return false
 end
 
-
 local t = Def.ActorFrame{
-	OnCommand=function(self) SCREENMAN:GetTopScreen():AddInputCallback(input) end;
-	BeginCommand=function(self) resetTabIndex() end;
-	PlayerJoinedMessageCommand=function(self) resetTabIndex() end;
+	OnCommand=function(self) 
+		SCREENMAN:GetTopScreen():AddInputCallback(input)
+		whee = SCREENMAN:GetTopScreen():GetMusicWheel()
+	end,
+	BeginCommand=function(self) resetTabIndex() end,
+	PlayerJoinedMessageCommand=function(self) resetTabIndex() end,
+	BeginningSearchMessageCommand=function(self) active = true end,	-- this is for disabling numeric input in the text search and is unused atm
+	EndingSearchMessageCommand=function(self) active = true end,
+	NumericInputActiveMessageCommand=function(self) numericinputactive = true end,
+	NumericInputEndedMessageCommand=function(self) numericinputactive = false end,
 }
 
 -- Just for debug
@@ -33,7 +47,7 @@ t[#t+1] = LoadFont("Common Normal") .. {
 --]]
 --======================================================================================
 
-local tabNames = {"General","MSD","Score","Search","Profile","Other"} -- this probably should be in tabmanager.
+local tabNames = {"General","MSD","Score","Search","Profile","Filters", "Goals", "Playlists"} -- this probably should be in tabmanager.
 
 local frameWidth = (SCREEN_WIDTH*(403/854))/(#tabNames-1)
 local frameX = frameWidth/2
@@ -72,17 +86,22 @@ function tabs(index)
 	};
 		
 	t[#t+1] = LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,5;valign,0;zoom,0.45;diffuse,getMainColor('positive'));
-		BeginCommand=cmd(queuecommand,"Set");
+		InitCommand=cmd(y,5;valign,0;zoom,0.45;diffuse,getMainColor('positive')),
+		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			self:settext(tabNames[index])
 			if isTabEnabled(index) then
-				self:diffuse(getMainColor('positive'))
+				if index == 6 and FILTERMAN:AnyActiveFilter() then
+					self:diffuse(color("#cc66ff"))
+				else					
+					self:diffuse(getSimpleColor(index))
+				end
 			else
 				self:diffuse(color("#666666"))
-			end;
-		end;
-		PlayerJoinedMessageCommand=cmd(queuecommand,"Set");
+			end
+		end,
+		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
+		UpdateFilterMessageCommand=cmd(queuecommand,"Set"),
 	};
 	return t
 end;

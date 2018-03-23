@@ -99,8 +99,8 @@ local defaultConfig = {
 
 	songLength = {
 		normal = "#FFFFFF", -- normal
-		long = "#ff9a00", --orange
-		marathon = "#da5757" -- red
+		long = "#c1006f", --orange jk its pink bitch
+		marathon = "#412ad0" -- red nah its purp
 	},
 }
 
@@ -116,6 +116,40 @@ end
 
 function setTableKeys(table)
 	curColor = table 
+end
+
+function getSimpleColor(i)
+simpleColor = {
+		"#FF3C23",
+	    "#FF003C",
+	    "#C1006F",
+	    "#8200A1",
+	    "#413AD0",
+	    "#0073FF",
+	    "#00ADC0",
+	    "#5CE087",
+	    "#AEFA44",
+	    "#FFFF00",
+	    "#FFBE00",
+	    "#FF7D00"}
+	return color(simpleColor[i])
+end
+
+function getRandomColor()
+	rainbow = {
+		"#FF3C23",
+	    "#FF003C",
+	    "#C1006F",
+	    "#8200A1",
+	    "#413AD0",
+	    "#0073FF",
+	    "#00ADC0",
+	    "#5CE087",
+	    "#AEFA44",
+	    "#FFFF00",
+	    "#FFBE00",
+	    "#FF7D00"}
+	return color(rainbow[math.random(12)])
 end
 
 function getMainColor(type)
@@ -134,33 +168,11 @@ function getVividDifficultyColor(diff)
 	return color(colorConfig:get_data().difficultyVivid[diff]) or color("#ffffff")
 end
 
-function getSongLengthColor(s)
-	if s < PREFSMAN:GetPreference("LongVerSongSeconds") then
-		return color(colorConfig:get_data().songLength["normal"])
-	elseif s < PREFSMAN:GetPreference("MarathonVerSongSeconds") then
-		return color(colorConfig:get_data().songLength["long"])
-	else
-		return color(colorConfig:get_data().songLength["marathon"])
-	end
-end
-
-function byDifficultyMeter(meter)
-	if meter < 15 then
-		return getVividDifficultyColor('Difficulty_Beginner')
-	elseif meter < 22 then
-		return getVividDifficultyColor('Difficulty_Easy')
-	elseif meter < 28 then
-		return getVividDifficultyColor('Difficulty_Medium')
-	elseif meter < 33 then
-		return getVividDifficultyColor('Difficulty_Hard')
-	else
-		return getVividDifficultyColor('Difficulty_Challenge')
-	end
-end
-
-function offsetToJudgeColor(offset)
+function offsetToJudgeColor(offset,scale)
 	local offset = math.abs(offset)
-	local scale = PREFSMAN:GetPreference("TimingWindowScale")
+	if not scale then
+		scale = PREFSMAN:GetPreference("TimingWindowScale")
+	end
 	if offset <= scale*PREFSMAN:GetPreference("TimingWindowSecondsW1") then
 		return color(colorConfig:get_data().judgment["TapNoteScore_W1"])
 	elseif offset <= scale*PREFSMAN:GetPreference("TimingWindowSecondsW2") then
@@ -178,4 +190,26 @@ end
 
 function byJudgment(judge)
 	return color(colorConfig:get_data().judgment[judge])
+end
+
+function byDifficulty(diff)
+	return color(colorConfig:get_data().difficulty[diff])
+end
+
+-- Colorized stuff
+function ByMSD(x)
+	if x then
+		--return HSV(math.max(330 - (x/40)*250, -30), 0.9, 0.9)
+		return HSV(math.max(95 - (x/40)*150, -50), 0.9, 0.9)
+	end
+	return HSV(0, 0.9, 0.9)
+end
+
+function ByMusicLength(x)
+	if x then
+		x = math.min(x,600)
+		--return HSV(math.max(300 - (x/900)*250, -30), 0.9, 0.9)
+		return HSV(math.max(95 - (x/900)*150, -50), 0.9, 0.9)
+	end
+	return HSV(0, 0.9, 0.9)
 end

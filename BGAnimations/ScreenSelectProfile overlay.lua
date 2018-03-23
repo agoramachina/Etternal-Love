@@ -1,52 +1,46 @@
+--Commenting out the Player 2 stuff so if someone is attempting to use this theme for versus or 2P side, it's not going to work. Go use Prim's original spawnhack theme for that. -Misterkister
+
 function GetLocalProfiles()
 	local t = {};
 
 	for p = 0,PROFILEMAN:GetNumLocalProfiles()-1 do
 		local profileID = PROFILEMAN:GetLocalProfileIDFromIndex(p)
-		local profile=PROFILEMAN:GetLocalProfileFromIndex(p);
+		local profile=PROFILEMAN:GetLocalProfileFromIndex(p)
 		local ProfileCard = Def.ActorFrame {
---[[ 			Def.Quad {
-				InitCommand=cmd(zoomto,200,1;y,40/2);
-				OnCommand=cmd(diffuse,Color('Outline'););
-			}; --]]
 			LoadFont("Common Large") .. {
-				Text=profile:GetDisplayName();
-				InitCommand=cmd(xy,34/2,-10;zoom,0.4;ztest,true,maxwidth,(200-34-4)/0.4);
-			};
+				Text=string.format("%s: %.2f",profile:GetDisplayName(), profile:GetPlayerRating()),
+				InitCommand=cmd(xy,34/2,-10;zoom,0.4;ztest,true,maxwidth,(200-34-4)/0.4)
+			},
+
 			LoadFont("Common Normal") .. {
-				InitCommand=cmd(xy,34/2,8;zoom,0.5;vertspacing,-8;ztest,true;maxwidth,(200-34-4)/0.5);
+				InitCommand=cmd(xy,34/2,8;zoom,0.5;vertspacing,-8;ztest,true;maxwidth,(200-34-4)/0.5),
 				BeginCommand=function(self)
-					local numSongsPlayed = profile:GetNumTotalSongsPlayed();
-					local s = numSongsPlayed == 1 and "Song" or "Songs";
+					local numSongsPlayed = profile:GetNumTotalSongsPlayed()
+					local s = numSongsPlayed == 1 and "Song" or "Songs"
 					-- todo: localize
-					self:settext( numSongsPlayed.." "..s.." Played" );
-				end;
-			};
+					self:settext( numSongsPlayed.." "..s.." Played" )
+				end
+			},
 
 			Def.Sprite {
-				InitCommand=cmd(visible,true;halign,0;xy,-98,-2;ztest,true;);
-				BeginCommand=cmd(queuecommand,"ModifyAvatar");
+				InitCommand=cmd(visible,true;halign,0;xy,-98,-2;ztest,true),
+				BeginCommand=cmd(queuecommand,"ModifyAvatar"),
 				ModifyAvatarCommand=function(self)
-					self:finishtweening();
-					self:LoadBackground(THEME:GetPathG("","../"..getAvatarPathFromProfileID(profileID)));
+					self:finishtweening()
+					self:LoadBackground(THEME:GetPathG("","../"..getAvatarPathFromProfileID(profileID)))
 					self:zoomto(30,30)
-				end;	
-			};
+				end
+			}
 
-		};
-		t[#t+1]=ProfileCard;
-	end;
+		}
+		t[#t+1]=ProfileCard
+	end
 
-	return t;
-end;
+	return t
+end
 
 function LoadCard(cColor)
 	local t = Def.ActorFrame {
-		--LoadActor( THEME:GetPathG("ScreenSelectProfile","CardBackground") ) .. {
-		--	InitCommand=cmd(diffuse,cColor);
-		--};
-		--LoadActor( THEME:GetPathG("ScreenSelectProfile","CardFrame") );
-
 		Def.Quad {
 			InitCommand=cmd(zoomto,200+4,230+4);
 			OnCommand=cmd(diffuse,color("1,1,1,1"));
@@ -61,22 +55,11 @@ end
 function LoadPlayerStuff(Player)
 	local t = {};
 
-	local pn = (Player == PLAYER_1) and 1 or 2;
+	local pn = (Player == PLAYER_1) and 1;
 
---[[ 	local t = LoadActor(THEME:GetPathB('', '_frame 3x3'), 'metal', 200, 230) .. {
-		Name = 'BigFrame';
-	}; --]]
 	t[#t+1] = Def.ActorFrame {
 		Name = 'JoinFrame';
-		LoadCard(Color('Orange'));
---[[ 		Def.Quad {
-			InitCommand=cmd(zoomto,200+4,230+4);
-			OnCommand=cmd(shadowlength,1;diffuse,color("0,0,0,0.5"));
-		};
-		Def.Quad {
-			InitCommand=cmd(zoomto,200,230);
-			OnCommand=cmd(diffuse,Color('Orange');diffusealpha,0.5);
-		}; --]]
+		LoadCard(Color('Purple'));
 		LoadFont("Common Normal") .. {
 			Text="Press &START; to join.";
 			InitCommand=cmd(shadowlength,1);
@@ -100,15 +83,11 @@ function LoadPlayerStuff(Player)
 	t[#t+1] = Def.ActorScroller{
 		Name = 'Scroller';
 		NumItemsToDraw=6;
--- 		InitCommand=cmd(y,-230/2+20;);
 		OnCommand=cmd(y,1;SetFastCatchup,true;SetMask,200,58;SetSecondsPerItem,0.15);
 		TransformFunction=function(self, offset, itemIndex, numItems)
 			local focus = scale(math.abs(offset),0,2,1,0);
 			self:visible(false);
 			self:y(math.floor( offset*40 ));
--- 			self:zoomy( focus );
--- 			self:z(-math.abs(offset));
--- 			self:zoom(focus);
 		end;
 		children = GetLocalProfiles();
 	};
@@ -117,16 +96,15 @@ function LoadPlayerStuff(Player)
 		Name = "EffectFrame";
 	};
 	t[#t+1] = LoadFont("Common Normal") .. {
-		Name = 'SelectedProfileText';
-		--InitCommand=cmd(y,160;shadowlength,1;diffuse,PlayerColor(Player));
-		InitCommand=cmd(y,160;shadowlength,1;);
-	};
+		Name = 'SelectedProfileText',
+		InitCommand=cmd(y,160;maxwidth,SCREEN_WIDTH*0.9)
+	}
 
-	return t;
-end;
+	return t
+end
 
 function UpdateInternal3(self, Player)
-	local pn = (Player == PLAYER_1) and 1 or 2;
+	local pn = (Player == PLAYER_1) and 1;
 	local frame = self:GetChild(string.format('P%uFrame', pn));
 	local scroller = frame:GetChild('Scroller');
 	local seltext = frame:GetChild('SelectedProfileText');
@@ -237,13 +215,12 @@ t[#t+1] = Def.ActorFrame{
 
 	UpdateInternal2Command=function(self)
 		UpdateInternal3(self, PLAYER_1);
-		UpdateInternal3(self, PLAYER_2);
 	end;
 
 	children = {
 		Def.ActorFrame {
 			Name = 'P1Frame';
-			InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y);
+			InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y);
 			OnCommand=cmd(zoom,0;bounceend,0.35;zoom,1);
 			OffCommand=cmd(bouncebegin,0.35;zoom,0);
 			PlayerJoinedMessageCommand=function(self,param)
@@ -252,18 +229,6 @@ t[#t+1] = Def.ActorFrame{
 				end;
 			end;
 			children = LoadPlayerStuff(PLAYER_1);
-		};
-		Def.ActorFrame {
-			Name = 'P2Frame';
-			InitCommand=cmd(x,SCREEN_CENTER_X+160;y,SCREEN_CENTER_Y);
-			OnCommand=cmd(zoom,0;bounceend,0.35;zoom,1);
-			OffCommand=cmd(bouncebegin,0.35;zoom,0);
-			PlayerJoinedMessageCommand=function(self,param)
-				if param.Player == PLAYER_2 then
-					(cmd(zoom,1.15;bounceend,0.175;zoom,1.0;))(self);
-				end;
-			end;
-			children = LoadPlayerStuff(PLAYER_2);
 		};
 		-- sounds
 		LoadActor( THEME:GetPathS("Common","start") )..{
@@ -279,7 +244,7 @@ t[#t+1] = Def.ActorFrame{
 };
 t[#t+1] = LoadActor("_frame");
 t[#t+1] = LoadFont("Common Large")..{
-	InitCommand=cmd(xy,5,32;halign,0;valign,1;zoom,0.55;diffuse,getMainColor('highlight');settext,"Select Profile:";);
+	InitCommand=cmd(xy,5,32;halign,0;valign,1;zoom,0.55;diffuse,getMainColor('positive');settext,"Select Profile:";);
 }
 
 return t;

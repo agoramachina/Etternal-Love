@@ -14,24 +14,11 @@ local sortTable = {
 	SortOrder_TopGrades 			= 'Grade',
 	SortOrder_Artist 				= 'Artist',
 	SortOrder_Genre 				= 'Genre',
-	SortOrder_BeginnerMeter 		= 'Beginner Meter',
-	SortOrder_EasyMeter 			= 'Easy Meter',
-	SortOrder_MediumMeter 			= 'Normal Meter',
-	SortOrder_HardMeter 			= 'Hard Meter',
-	SortOrder_ChallengeMeter 		= 'Insane Meter',
-	SortOrder_DoubleEasyMeter 		= 'Double Easy Meter',
-	SortOrder_DoubleMediumMeter 	= 'Double Normal Meter',
-	SortOrder_DoubleHardMeter 		= 'Double Hard Meter',
-	SortOrder_DoubleChallengeMeter 	= 'Double Insane Meter',
 	SortOrder_ModeMenu 				= 'Mode Menu',
-	SortOrder_AllCourses 			= 'All Courses',
-	SortOrder_Nonstop 				= 'Nonstop',
-	SortOrder_Oni 					= 'Oni',
-	SortOrder_Endless 				= 'Endless',
 	SortOrder_Length 				= 'Song Length',
-	SortOrder_Roulette 				= 'Roulette',
-	SortOrder_Recent 				= 'Recently Played'
-};
+	SortOrder_Recent 				= 'Recently Played',
+	SortOrder_Favorites				= 'Favorites'
+}
 
 t[#t+1] = Def.Quad{
 	Name="CurrentSort";

@@ -19,8 +19,6 @@ end
 function SelectMusicOrCourse()
 	if IsNetSMOnline() then
 		return "ScreenNetSelectMusic"
-	elseif GAMESTATE:IsCourseMode() then
-		return "ScreenSelectCourse"
 	else
 		return "ScreenSelectMusic"
 	end
@@ -115,8 +113,9 @@ Branch = {
 	end,
 	AfterSelectProfile = function()
 		if ( THEME:GetMetric("Common","AutoSetStyle") == true ) then
-			-- use SelectStyle in online...
-			return IsNetConnected() and "ScreenSelectStyle" or "ScreenSelectMusic"--"ScreenSelectPlayMode"
+			-- use SelectStyle in online... 
+			-- OR DONT LOL!!! - mina
+			return IsNetConnected() and "ScreenSMOnlineLogin" or "ScreenSelectMusic"--"ScreenSelectPlayMode"
 		else
 			return "ScreenSelectMusic"--"ScreenSelectStyle"
 		end
@@ -130,12 +129,6 @@ Branch = {
 			return SelectMusicOrCourse()
 		elseif STATSMAN:GetCurStageStats():AllFailed() then
 			return GameOverOrContinue()
-		elseif GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() == 0 then
-			if not GAMESTATE:IsCourseMode() then
-				return "ScreenEvaluationSummary"
-			else
-				return GameOverOrContinue()
-			end
 		else
 			return SelectMusicOrCourse()
 		end
@@ -215,11 +208,6 @@ Branch = {
 		return Branch.EvaluationScreen()
 	end,
 	AfterEvaluation = function()
-		if GAMESTATE:IsCourseMode() then
-			return "ScreenProfileSave"
-		else
-			local maxStages = PREFSMAN:GetPreference("SongsPerPlay")
-			local stagesLeft = GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer()
 			local allFailed = STATSMAN:GetCurStageStats():AllFailed()
 			local song = GAMESTATE:GetCurrentSong()
 
@@ -236,7 +224,6 @@ Branch = {
 			else
 				return "ScreenProfileSave"
 			end
-		end
 	end,
 	AfterSummary = function()
 		return "ScreenProfileSaveSummary"

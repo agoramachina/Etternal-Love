@@ -72,6 +72,25 @@ function isOver(element)
 	return (withinX and withinY)
 end;
 
+-- for when its just wrong and you need to control the scale yourself
+function isOverScaled(element,scale)
+	if not scale then scale = 1 end
+	local x = getTrueX(element)
+	local y = getTrueY(element)
+	local hAlign = element:GetHAlign()
+	local vAlign = element:GetVAlign()
+	local w = element:GetZoomedWidth() * scale
+	local h = element:GetZoomedHeight() * scale
+
+	local mouseX = INPUTFILTER:GetMouseX()
+	local mouseY = INPUTFILTER:GetMouseY()
+
+	local withinX = (mouseX >= (x-(hAlign*w))) and (mouseX <= ((x+w)-(hAlign*w)))
+	local withinY = (mouseY >= (y-(vAlign*h))) and (mouseY <= ((y+h)-(vAlign*h)))
+
+	return (withinX and withinY)
+end;
+
 --returns if the table contains the key.
 function tableContains(table,key)
 	return (table[key] ~= nil)
@@ -165,27 +184,8 @@ function filterFileList(fileList,fileTypes)
 end
 
 -- Just something to get rid of scores where the player quit out early.
+-- dead because chord cohesion removal -mina
 function isScoreValid(pn,steps,score)
-	if score:GetGrade() == "Grade_Failed" then
-		return true
-	end
-	if not (steps:GetRadarValues(pn):GetValue('RadarCategory_TapsAndHolds') == 
-		(score:GetTapNoteScore('TapNoteScore_W1')+
-		score:GetTapNoteScore('TapNoteScore_W2')+
-		score:GetTapNoteScore('TapNoteScore_W3')+
-		score:GetTapNoteScore('TapNoteScore_W4')+
-		score:GetTapNoteScore('TapNoteScore_W5')+
-		score:GetTapNoteScore('TapNoteScore_Miss'))) then
-		return false
-	end
-	if ((score:GetTapNoteScore('TapNoteScore_Miss') == 0) and 
-		((steps:GetRadarValues(pn):GetValue('RadarCategory_Holds')+(steps:GetRadarValues(pn):GetValue('RadarCategory_Rolls')) ~= 
-		(score:GetHoldNoteScore('HoldNoteScore_LetGo')+score:GetHoldNoteScore('HoldNoteScore_Held')+score:GetHoldNoteScore('HoldNoteScore_MissedHold'))
-		))) then 
-		-- miss == 0 as HNS_MissedHold was added rather recently and NG+OK will not add up correctly for older scores.
-		--where the player missed a note with a hold.
-		return false
-	end
 	return true
 end
 

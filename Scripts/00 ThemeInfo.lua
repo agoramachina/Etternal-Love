@@ -2,8 +2,8 @@
 
 themeInfo = {
 	Name = "'Til Death",
-	Version = "alpha 0.58",
-	Date = "20160909",
+	Version = "1.07",
+	Date = "20161121",
 };
 
 function getThemeName()

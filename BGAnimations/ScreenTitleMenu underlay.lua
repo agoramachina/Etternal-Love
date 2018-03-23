@@ -18,14 +18,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 	end,
 }
 
-t[#t+1] = LoadFont("Common normal") .. {
-	InitCommand=cmd(xy,SCREEN_WIDTH-10,frameY-180;zoom,0.5;valign,1;halign,1;diffuse,getMainColor('highlight')),
-	OnCommand=function(self)
-		self:settext("public "..getThemeVersion())
-	end,
-}
-
 t[#t+1] = LoadActor(THEME:GetPathG("","_ring")) .. {
-	InitCommand=cmd(xy,SCREEN_WIDTH-10,frameY-180;diffuse,getDifficultyColor("Difficulty_Couple")diffusealpha,1;baserotationx,420)
+	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH-10),SCREEN_WIDTH-256),frameY-180;diffuse,getDifficultyColor("Difficulty_Couple")diffusealpha,1;baserotationx,420)
 }
 return t
