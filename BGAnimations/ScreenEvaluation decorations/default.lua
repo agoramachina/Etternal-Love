@@ -9,8 +9,8 @@ if GAMESTATE:GetNumPlayersEnabled() == 1 and themeConfig:get_data().eval.ScoreBo
 end
 
 
-t[#t+1] = LoadFont("Common Normal")..{
-	InitCommand=cmd(xy,SCREEN_CENTER_X,capWideScale(135,150);zoom,0.4;maxwidth,400/0.4),
+t[#t+1] = LoadFont("_wendy small")..{
+	InitCommand=cmd(xy,SCREEN_CENTER_X,capWideScale(135,150);zoom,0.28;maxwidth,400/0.4),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self) 
 		if GAMESTATE:IsCourseMode() then
@@ -22,8 +22,8 @@ t[#t+1] = LoadFont("Common Normal")..{
 }
 
 -- Rate String
-t[#t+1] = LoadFont("Common normal")..{
-	InitCommand=cmd(xy,SCREEN_CENTER_X,capWideScale(145,160);zoom,0.5;halign,0.5),
+t[#t+1] = LoadFont("_wendy small")..{
+	InitCommand=cmd(xy,SCREEN_CENTER_X,capWideScale(145,160);zoom,0.28;halign,0.5),
 	BeginCommand=function(self)
 		if getCurRateString() == "1x" then
 			self:settext("")
@@ -214,11 +214,11 @@ function scoreBoard(pn,position)
 	};
 
 	local fart = {"Holds", "Mines", "Rolls", "Lifts", "Fakes"}
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+230;zoomto,frameWidth/2-10,60;halign,0;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+226;zoomto,frameWidth/2-10,60;halign,0;valign,0;diffuse,color("#333333CC"))};
 	for i=1,#fart do
-		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX,frameY+230+10*i;zoom,0.4;halign,0;settext,fart[i])};
+		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX,frameY+226+10*i;zoom,0.4;halign,0;settext,fart[i])};
 		t[#t+1] = LoadFont("Common Normal")..{
-			InitCommand=cmd(xy,frameWidth/2,frameY+230+10*i;zoom,0.4;halign,1),
+			InitCommand=cmd(xy,frameWidth/2,frameY+226+10*i;zoom,0.4;halign,1),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
 				self:settextf("%03d/%03d",pss:GetRadarActual():GetValue("RadarCategory_"..fart[i]),pss:GetRadarPossible():GetValue("RadarCategory_"..fart[i]))
@@ -228,7 +228,7 @@ function scoreBoard(pn,position)
 	
 	-- stats stuff
 	local devianceTable = pss:GetOffsetVector()
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+25,frameY+230;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+25,frameY+226;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#333333CC"))};
 	local smallest,largest = wifeRange(devianceTable)
 	local doot = {"Mean", "Mean(Abs)", "Sd", "Smallest", "Largest"}
 	local mcscoot = {
@@ -240,8 +240,8 @@ function scoreBoard(pn,position)
 	}
 
 	for i=1,#doot do
-		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX+capWideScale(get43size(130),160),frameY+230+10*i;zoom,0.4;halign,0;settext,doot[i])};
-		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameWidth+20,frameY+230+10*i;zoom,0.4;halign,1;settextf,"%5.2fms",mcscoot[i])};
+		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX+capWideScale(get43size(130),160),frameY+226+10*i;zoom,0.4;halign,0;settext,doot[i])};
+		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameWidth+20,frameY+226+10*i;zoom,0.4;halign,1;settextf,"%5.2fms",mcscoot[i])};
 	end
 	
 	return t
