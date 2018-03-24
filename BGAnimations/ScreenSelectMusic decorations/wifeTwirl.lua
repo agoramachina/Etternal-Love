@@ -297,7 +297,7 @@ t[#t+1] = Def.BPMDisplay {
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
-t[#t+1] = LoadFont("Common Normal") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	SetCommand = function(self)
 		if song then
 			self:settext("BPM")
@@ -305,7 +305,7 @@ t[#t+1] = LoadFont("Common Normal") .. {
 			self:settext("")
 		end
 	end,
-	InitCommand=cmd(xy,capWideScale(get43size(384),384)+41,SCREEN_BOTTOM-100;halign,1;zoom,0.50),
+	InitCommand=cmd(xy,capWideScale(get43size(384),384)+41,SCREEN_BOTTOM-100;halign,1;zoom,0.35),
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
