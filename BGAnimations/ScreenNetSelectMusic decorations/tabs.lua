@@ -41,8 +41,8 @@ local t = Def.ActorFrame{
 }
 
 -- Just for debug
---[[
-t[#t+1] = LoadFont("Common Normal") .. {
+[[
+t[#t+1] = LoadFont("_miny") .. {
 	InitCommand=cmd(xy,300,300;halign,0;zoom,2;diffuse,getMainColor(2));
 	BeginCommand=cmd(queuecommand,"Set");
 	SetCommand=function(self)
@@ -50,7 +50,7 @@ t[#t+1] = LoadFont("Common Normal") .. {
 	end;
 	CodeMessageCommand=cmd(queuecommand,"Set");
 };
---]]
+]]
 --======================================================================================
 
 local tabNames = {"General","MSD","Score","Search","Profile","Filters"} -- this probably should be in tabmanager.
@@ -92,7 +92,7 @@ function tabs(index)
 	};
 		
 	t[#t+1] = LoadFont("_miny") .. {
-		InitCommand=cmd(y,5;valign,0;zoom,0.45;diffuse,getMainColor('positive'));
+		InitCommand=cmd(y,5;valign,0;zoom,0.4;diffuse,getMainColor('positive'));
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)
 			self:settext(tabNames[index])

@@ -3,7 +3,7 @@ local defaultConfig = {
 		DefaultScoreType = 4, -- refer to scripts/wife.lua for whatever scoring types are available
 		fallbackscoreType = 1,
 		TipType = 1, -- 1 = Hide,2=tips 3= random quotes phrases,
-		SongBGEnabled = true, 
+		SongBGEnabled = false, 
 		SongBGMouseEnabled = false,		-- removing soon
 		Particles = false,				-- removing soon
 		RateSort = true,
