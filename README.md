@@ -1,31 +1,9 @@
-# Etternal Love: an Etterna theme based of the "Simply Love" Stepmania theme
+# Etternal Love: an Etterna theme based off the "Simply Love" Stepmania theme
 
-## ---Transferring Player Preferences---
+## Transferring Player Preferences
 
-In order to keep player preferences, the older settings must be copied to the new theme (overwriting .
+To keep player player preferences from another theme, its settings must be copied to the new theme.
 
-In Linux for example, the contents of  `../Etterna/Save/Til Death_settings/` (avatarConfig.lua, colorConfig.lua, themeConfig.lua) should be copied to `../Etterna/Save/Etternal-Love_settings/` and the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_settings/` (playerConfig.lua) should be copied to `../Etterna/Save/LocalProfiles/00000001/Etternal-Love_settings/`. 
+In Linux for example, these settings can be found in  `../Etterna/Save/Til Death_settings/` (avatarConfig.lua, colorConfig.lua, themeConfig.lua) and can be copied to `../Etterna/Save/Etternal-Love_settings/`. 
 
-
-copy the contents of 
-	../Etterna/Save/Til Death_settings/
-to
-	../Etterna/Save/Etternal-Love_settings/
-
-avatarConfig.lua
-colorConfig.lua
-themeConfig.lua
-
-and the contents of
-	../Etterna/Save/LocalProfiles/00000001/Til Death_settings/
-to
-	../Etterna/Save/LocalProfiles/00000001/Etternal-Love_settings/
-
-playerConfig.lua
-
-
-
-
-
-TODO:
-
+Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_settings/` (playerConfig.lua) can be copied to `../Etterna/Save/LocalProfiles/00000001/Etternal-Love_settings/`. 
