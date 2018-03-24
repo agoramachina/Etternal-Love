@@ -97,6 +97,7 @@ local miniProgressBarX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).Gam
 local miniProgressBarY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.MiniProgressBarY
 
 -- CUZ WIDESCREEN DEFAULTS SCREAAAAAAAAAAAAAAAAAAAAAAAAAM -mina
+-- putting the WHY in WIDESCREENWHY -agoramachina
 if IsUsingWideScreen( ) then
 	miniProgressBarY = miniProgressBarY + WIDESCREENWHY
 	miniProgressBarX = miniProgressBarX - WIDESCREENWHX
@@ -717,7 +718,7 @@ local d = Def.ActorFrame{
 }
 
 if targetTrackerMode == 0 then
-	d[#d+1] = LoadFont("Common Normal")..{
+	d[#d+1] = LoadFont("C_wendy small")..{
 		Name = "PercentDifferential",
 		InitCommand=cmd(xy,targetTrackerX,targetTrackerY;zoom,targetTrackerZoom;halign,0;valign,1),
 		JudgmentMessageCommand=function(self,msg)
@@ -731,7 +732,7 @@ if targetTrackerMode == 0 then
 		end
 	}
 	else
-	d[#d+1] = LoadFont("Common Normal")..{
+	d[#d+1] = LoadFont("C_wendy small")..{
 		Name = "PBDifferential",
 		InitCommand=cmd(xy,targetTrackerX,targetTrackerY;zoom,targetTrackerZoom;halign,0;valign,1),
 		JudgmentMessageCommand=function(self,msg)
@@ -830,7 +831,7 @@ local j = Def.ActorFrame{
 }																					
 
  local function makeJudgeText(judge,index)		-- Makes text
- 	return LoadFont("Common normal")..{
+ 	return LoadFont("C_wendy small")..{
  		InitCommand=cmd(xy,frameX+5,frameY+7+(index*spacing);zoom,judgeFontSize;halign,0),
  		OnCommand=function(self)
  			settext(self,getShortJudgeStrings(judge))
@@ -840,7 +841,7 @@ local j = Def.ActorFrame{
  end
  
  local function makeJudgeCount(judge,index)		-- Makes county things for taps....
- 	return LoadFont("Common Normal")..{
+ 	return LoadFont("C_wendy small")..{
  		Name = judge,
 		InitCommand=cmd(xy,frameWidth+frameX-5,frameY+7+(index*spacing);zoom,countFontSize;horizalign,right;settext,0) 	}
  end
@@ -918,12 +919,12 @@ local e = Def.ActorFrame{
 		InitCommand=cmd(diffuse,getMainColor('highlight');xy,errorBarX,errorBarY;zoomto,2,errorBarHeight)
 	},
 	-- Indicates which side is which (early/late) These should be destroyed after the song starts.
-	LoadFont("Common Normal") .. {
+	LoadFont("C_wendy small") .. {
 		Name = "DestroyMe",
 		InitCommand=cmd(xy,errorBarX+errorBarFrameWidth/4,errorBarY;zoom,0.35),
 		BeginCommand=cmd(settext,"Late";diffusealpha,0;smooth,0.5;diffusealpha,0.5;sleep,1.5;smooth,0.5;diffusealpha,0),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("C_wendy small") .. {
 		Name = "DestroyMe2",
 		InitCommand=cmd(xy,errorBarX-errorBarFrameWidth/4,errorBarY;zoom,0.35),
 		BeginCommand=cmd(settext,"Early";diffusealpha,0;smooth,0.5;diffusealpha,0.5;sleep,1.5;smooth,0.5;diffusealpha,0;queuecommand,"Doot"),
@@ -984,12 +985,12 @@ local p = Def.ActorFrame{
 		StreamWidth=width,
 		Stream=Def.Quad{InitCommand=cmd(zoomy,height;diffuse,getMainColor("highlight"))}
 	},
-	LoadFont("Common Normal")..{																		-- title
+	LoadFont("C_wendy small")..{																		-- title
 		InitCommand=cmd(zoom,0.35;maxwidth,width*2),
 		BeginCommand=cmd(settext,GAMESTATE:GetCurrentSong():GetDisplayMainTitle()),
 		DoneLoadingNextSongMessageCommand=cmd(settext,GAMESTATE:GetCurrentSong():GetDisplayMainTitle())
 	},
-	LoadFont("Common Normal")..{																		-- total time
+	LoadFont("C_wendy small")..{																		-- total time
 		InitCommand=cmd(x,width/2;zoom,0.35;maxwidth,width*2;halign,1),
 		BeginCommand=function(self)
 			local ttime = GetPlayableTime()
@@ -1047,7 +1048,7 @@ end
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ]]
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("wendy small")..{
 	InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_BOTTOM-10;zoom,0.35;settext,getCurRateDisplayString()),
 	DoneLoadingNextSongMessageCommand=cmd(settext,getCurRateDisplayString())
 }
@@ -1079,9 +1080,9 @@ t[#t+1] = Def.ActorFrame{
 			settext(BPM,Round(GetBPS(a) * r,2))
 		end
 	end,
-	LoadFont("Common Normal")..{
+	LoadFont("wendy small")..{
 		Name="BPM",
-		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-20;halign,0.5;zoom,0.40)
+		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-30;halign,0.5;zoom,0.40)
 	},
 	DoneLoadingNextSongMessageCommand=cmd(queuecommand,"Init")
 }
@@ -1150,7 +1151,7 @@ t[#t+1] = Def.ActorFrame{
 		messageBox = self
 	end,
 	Def.BitmapText{
-		Name= "errorBarPosText", Font= "Common Normal", 
+		Name= "errorBarPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1165,7 +1166,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "errorBarSizeText", Font= "Common Normal", 
+		Name= "errorBarSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1180,7 +1181,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "targetTrackerPosText", Font= "Common Normal", 
+		Name= "targetTrackerPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1195,7 +1196,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "targetTrackerSizeText", Font= "Common Normal", 
+		Name= "targetTrackerSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1209,7 +1210,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "fullProgressBarPosText", Font= "Common Normal", 
+		Name= "fullProgressBarPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1224,7 +1225,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "fullProgressBarSizeText", Font= "Common Normal", 
+		Name= "fullProgressBarSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1239,7 +1240,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "miniProgressBarPosText", Font= "Common Normal", 
+		Name= "miniProgressBarPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1254,7 +1255,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "displayPercentPosText", Font= "Common Normal", 
+		Name= "displayPercentPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1269,7 +1270,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "displayPercentSizeText", Font= "Common Normal", 
+		Name= "displayPercentSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1283,7 +1284,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "noteFieldPosText", Font= "Common Normal", 
+		Name= "noteFieldPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1298,7 +1299,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "noteFieldSizeText", Font= "Common Normal", 
+		Name= "noteFieldSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1313,7 +1314,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "judgeCounterPosText", Font= "Common Normal", 
+		Name= "judgeCounterPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1329,7 +1330,7 @@ t[#t+1] = Def.ActorFrame{
 	},
 	-- had to throw this here because it was getting x/y fucked up
 	Def.BitmapText{
-		Name= "judgmentPosText", Font= "Common Normal", 
+		Name= "judgmentPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1346,7 +1347,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "judgmentSizeText", Font= "Common Normal", 
+		Name= "judgmentSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1361,7 +1362,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "comboPosText", Font= "Common Normal", 
+		Name= "comboPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1379,7 +1380,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "comboSizeText", Font= "Common Normal", 
+		Name= "comboSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1394,7 +1395,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "npsDisplayPosText", Font= "Common Normal", 
+		Name= "npsDisplayPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1411,7 +1412,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "npsDisplaySizeText", Font= "Common Normal", 
+		Name= "npsDisplaySizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1426,7 +1427,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "npsGraphPosText", Font= "Common Normal", 
+		Name= "npsGraphPosText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1443,7 +1444,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "npsGraphSizeText", Font= "Common Normal", 
+		Name= "npsGraphSizeText", Font= "C_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1460,7 +1461,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "Instructions", Font= "Common Normal",
+		Name= "Instructions", Font= "C_wendy small",
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:xy(SCREEN_WIDTH - 240, 110):zoom(.5):visible(true)
