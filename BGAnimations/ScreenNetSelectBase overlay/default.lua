@@ -37,7 +37,7 @@ t[#t+1] = LoadActor("../_frame")
 t[#t+1] = LoadActor("../_PlayerInfo")
 t[#t+1] = LoadActor("currentsort")
 t[#t+1] = LoadActor("currenttime")
-t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,5,32;halign,0;valign,1;zoom,0.55;diffuse,getMainColor("positive");settext,"Select Music:")}
+t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,5,42;halign,0;valign,1;zoom,0.55;diffuse,getMainColor("positive");settext,"Select Music:")}
 t[#t+1] = LoadActor("../_cursor")
 t[#t+1] = LoadActor("../_mouseselect")
 t[#t+1] = LoadActor("../_halppls")
