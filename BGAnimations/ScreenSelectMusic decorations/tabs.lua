@@ -86,7 +86,7 @@ function tabs(index)
 	};
 		
 	t[#t+1] = LoadFont("Common Normal") .. {
-		InitCommand=cmd(y,5;valign,0;zoom,0.45;diffuse,getMainColor('positive')),
+		InitCommand=cmd(y,1;valign,0;zoom,0.45;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			self:settext(tabNames[index])
