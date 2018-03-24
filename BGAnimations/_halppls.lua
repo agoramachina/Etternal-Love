@@ -55,7 +55,7 @@ t[#t+1] = Def.Quad{
 	InitCommand=cmd(xy,0,35;halign,0;valign,1;zoomto,SCREEN_WIDTH/2,4;faderight,1;);
 };
 
-t[#t+1] = LoadFont("Common Large")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	InitCommand=cmd(xy,5,32;halign,0;valign,1;zoom,0.55;settext,"Help Menu:";);
 };
 	
@@ -101,7 +101,7 @@ local function makeText(index)
 end;
 
 --[[ --debug
-t[#t+1] = LoadFont("Common Large")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="Timer";
 	InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_CENTER_Y+80;settext,"0.0");
 	SetCommand=function(self)

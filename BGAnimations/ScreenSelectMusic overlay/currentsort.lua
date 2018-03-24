@@ -25,7 +25,7 @@ t[#t+1] = Def.Quad{
 	InitCommand=cmd(xy,frameX,frameY;halign,1;zoomto,frameWidth,frameHeight;diffuse,getMainColor('frames'););
 };
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX,frameY+5;halign,1;zoom,0.55;maxwidth,(frameWidth-40)/0.35);
 	BeginCommand=cmd(queuecommand,"Set");
 	SetCommand=function(self)

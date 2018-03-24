@@ -107,7 +107,7 @@ t[#t+1] = LoadFont("Common Normal")..{
 	BeginCommand=cmd(settext,"Score Info")
 }
 
-t[#t+1] = LoadFont("Common Large")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="Grades",
 	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+20;zoom,0.6;halign,0;maxwidth,50/0.6),
 	SetCommand=function(self)

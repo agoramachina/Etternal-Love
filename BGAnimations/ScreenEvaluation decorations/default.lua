@@ -93,7 +93,7 @@ function scoreBoard(pn,position)
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+30;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+55;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 
-	t[#t+1] = LoadFont("Common Large")..{
+	t[#t+1] = LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+5,frameY+32;zoom,0.5;halign,0;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -102,7 +102,7 @@ function scoreBoard(pn,position)
 			self:diffuse(ByMSD(meter))
 		end,
 	};
-	t[#t+1] = LoadFont("Common Large")..{
+	t[#t+1] = LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameWidth+frameX,frameY+32;zoom,0.5;halign,1;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -111,7 +111,7 @@ function scoreBoard(pn,position)
 			self:diffuse(ByMSD(meter))
 		end,
 	};
-	t[#t+1] = LoadFont("Common Large") .. {
+	t[#t+1] = LoadFont("_wendy small") .. {
 		InitCommand=cmd(xy,frameWidth+frameX,frameY+7;zoom,0.5;halign,1;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -123,7 +123,7 @@ function scoreBoard(pn,position)
 	};
 	
 	-- Wife percent
-	t[#t+1] = LoadFont("Common Large")..{
+	t[#t+1] = LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+5,frameY+9;zoom,0.45;halign,0;valign,0;maxwidth,capWideScale(320,360)),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
@@ -166,14 +166,14 @@ function scoreBoard(pn,position)
 				end
 			end,
 		};
-		t[#t+1] = LoadFont("Common Large")..{
+		t[#t+1] = LoadFont("_wendy small")..{
 			InitCommand=cmd(xy,frameX+10,frameY+80+((k-1)*22);zoom,0.25;halign,0),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
 				self:settext(getJudgeStrings(v))
 			end
 		};
-		t[#t+1] = LoadFont("Common Large")..{
+		t[#t+1] = LoadFont("_wendy small")..{
 			InitCommand=cmd(xy,frameX+frameWidth-40,frameY+80+((k-1)*22);zoom,0.25;halign,1),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
@@ -201,7 +201,7 @@ function scoreBoard(pn,position)
 		};
 	end
 	
-	t[#t+1] = LoadFont("Common Large")..{
+	t[#t+1] = LoadFont("_wendy small")..{
 			InitCommand=cmd(xy,frameX+40,frameY*2.49;zoom,0.25;halign,0),
 			BeginCommand=cmd(queuecommand,"Set"),
 			Se2tCommand=function(self) 

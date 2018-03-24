@@ -12,7 +12,7 @@ local t = Def.ActorFrame{
 			self:zoomto(50,50)
 		end,
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(xy,PlayerFrameX+90,PlayerFrameY+24;halign,0;zoom,0.45;maxwidth,120;diffuse,getMainColor('positive')),
 		SetCommand=function(self)
 			self:settext(getDifficulty(GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty()))
@@ -20,7 +20,7 @@ local t = Def.ActorFrame{
 		end,
 		DoneLoadingNextSongMessageCommand=cmd(queuecommand,"Set")
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(xy,PlayerFrameX+52,PlayerFrameY+28;halign,0;zoom,0.75;maxwidth,50),
 		SetCommand=function(self)
 			local meter = GAMESTATE:GetCurrentSteps(PLAYER_1):GetMSD(getCurRateValue(),1)

@@ -27,7 +27,7 @@ local t = Def.ActorFrame{
 }
 
 -- Music Rate Display
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,18,SCREEN_BOTTOM-225;visible,true;halign,0;zoom,0.4;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	SetCommand=function(self)
 		self:settext(getCurRateDisplayString())
@@ -137,7 +137,7 @@ t[#t+1] = Def.ActorFrame{
 	
 	-- **score related stuff** These need to be updated with rate changed commands
 	-- Primary percent score
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+55,frameY+50;zoom,0.6;halign,0.5;maxwidth,125;valign,1),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -247,7 +247,7 @@ for i=1,5 do
 end
 
 -- Difficulty value ("meter"), need to change this later
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX+58,frameY-62;halign,0.5;zoom,0.6;maxwidth,110/0.6),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -264,7 +264,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 }
 
 -- Song duration
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,(capWideScale(get43size(384),384))+62,SCREEN_BOTTOM-85;visible,true;halign,1;zoom,capWideScale(get43size(0.6),0.6);maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -351,7 +351,7 @@ t[#t+1] = Def.Sprite {
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX,frameY-120;halign,0;zoom,0.4),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -365,7 +365,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX+135,frameY+45;zoom,0.3;halign,0.5;valign,1),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -385,7 +385,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX+135,frameY+60;zoom,0.3;halign,0.5;valign,1),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -424,7 +424,7 @@ t[#t+1] = Def.Quad{
 }
 
 -- perhaps need this perhaps not
--- t[#t+1] = LoadFont("Common Large") .. {
+-- t[#t+1] = LoadFont("_wendy small") .. {
 	-- InitCommand=cmd(xy,frameX+135,frameY+65;zoom,0.3;halign,0.5;valign,1),
 	-- BeginCommand=cmd(queuecommand,"Set"),
 	-- SetCommand=function(self)
@@ -445,7 +445,7 @@ t[#t+1] = Def.Quad{
 
 
 
--- t[#t+1] = LoadFont("Common Large") .. {
+-- t[#t+1] = LoadFont("_wendy small") .. {
 	-- InitCommand=cmd(xy,(capWideScale(get43size(384),384))+68,SCREEN_BOTTOM-135;halign,1;zoom,0.4,maxwidth,125),
 	-- BeginCommand=cmd(queuecommand,"Set"),
 	-- SetCommand=function(self)
@@ -465,7 +465,7 @@ t[#t+1] = Def.Quad{
 		-- self:diffusealpha(1)
 	-- end
 -- }
--- t[#t+1] = LoadFont("Common Large") .. {
+-- t[#t+1] = LoadFont("_wendy small") .. {
 	-- InitCommand=cmd(xy,20,capWideScale(SCREEN_TOP+170,SCREEN_TOP+194);halign,0;zoom,0.4;settext,"Active Filters: "..GetPersistentSearch();maxwidth,SCREEN_WIDTH*1.35),
 	-- EndingSearchMessageCommand=function(self, msg)
 		-- self:settext("Active Filters: "..msg.ActiveFilter)
@@ -473,7 +473,7 @@ t[#t+1] = Def.Quad{
 -- }
 
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX+120,frameY-60;halign,0;zoom,0.4,maxwidth,125),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -487,7 +487,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX+120,frameY-30;halign,0;zoom,0.4,maxwidth,125),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -501,7 +501,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX+120,frameY;halign,0;zoom,0.4,maxwidth,125),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -517,7 +517,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 
 
 --test actor
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX,frameY-120;halign,0;zoom,0.4,maxwidth,125),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)

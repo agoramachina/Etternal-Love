@@ -103,7 +103,7 @@ local function rankingLabel(i)
 				self:visible(false)
 			end
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(maxwidth,100),
 			DisplayCommand=function(self)
 				self:halign(0.5)
@@ -111,21 +111,21 @@ local function rankingLabel(i)
 				self:diffuse(byValidity(ths:GetEtternaValid()))
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(x,15;maxwidth,160),
 			DisplayCommand=function(self)
 				self:settextf("%5.2f", ths:GetSkillsetSSR(ms.SkillSets[rankingSkillset]))
 				self:diffuse(byValidity(ths:GetEtternaValid()))
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(x,55;maxwidth,580),
 			DisplayCommand=function(self)
 				self:settext(thssong:GetDisplayMainTitle())
 				self:diffuse(byValidity(ths:GetEtternaValid()))
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(x,220),
 			DisplayCommand=function(self)
 				self:halign(0.5)
@@ -134,7 +134,7 @@ local function rankingLabel(i)
 				self:diffuse(byValidity(ths:GetEtternaValid()))
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(x,240;maxwidth,160),
 			DisplayCommand=function(self)
 				self:settextf("%5.2f%%", ths:GetWifeScore()*100)
@@ -145,7 +145,7 @@ local function rankingLabel(i)
 				end
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(x,300),
 			DisplayCommand=function(self)
 				local diff = thssteps:GetDifficulty()
@@ -209,7 +209,7 @@ local function rankingButton(i)
 			end,
 			UpdateRankingMessageCommand=cmd(queuecommand,"Set")
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(diffuse,getMainColor('positive');maxwidth,rankingTitleSpacing;maxheight,25;zoom,0.85),
 			BeginCommand=function(self)
 				self:settext(ms.SkillSets[i])
@@ -243,7 +243,7 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,300;halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Next"),
 	},	
 	Def.Quad{
@@ -259,10 +259,10 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Previous"),
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,175;halign,0.5;zoom,0.3;diffuse,getMainColor('positive')),
 		DisplayCommand=function(self)
 			self:settextf("%i-%i", ((rankingPage-1)*25)+1, rankingPage*25)
@@ -290,13 +290,13 @@ local function littlebits(i)
 				self:visible(false)
 			end
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(y,22*i;halign,0;zoom,0.5;diffuse,getMainColor('positive')),
 			SetCommand=function(self)
 				self:settext(ms.SkillSets[i]..":")
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(xy,240,22*i;halign,1;zoom,0.5),
 			SetCommand=function(self)
 				local rating = profile:GetPlayerSkillsetRating(ms.SkillSets[i])
@@ -323,7 +323,7 @@ local profilebuttons = Def.ActorFrame{
 			self:visible(false)
 		end
 	end,
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(diffuse,getMainColor('positive');settext,"Save Profile";zoom,0.3)
 	},
 	Def.Quad{
@@ -338,7 +338,7 @@ local profilebuttons = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {InitCommand=cmd(x,100;diffuse,getMainColor('positive');settext,"Import Scores";zoom,0.3)},
+	LoadFont("_wendy small") .. {InitCommand=cmd(x,100;diffuse,getMainColor('positive');settext,"Import Scores";zoom,0.3)},
 	Def.Quad{
 		InitCommand=cmd(x,100;zoomto,100,20;diffusealpha,buttondiffuse),
 		MouseLeftClickMessageCommand=function(self)
@@ -351,7 +351,7 @@ local profilebuttons = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {InitCommand=cmd(x,200;diffuse,getMainColor('positive');settext,"Validate All";zoom,0.3)},
+	LoadFont("_wendy small") .. {InitCommand=cmd(x,200;diffuse,getMainColor('positive');settext,"Validate All";zoom,0.3)},
 	Def.Quad{
 		InitCommand=cmd(x,200;zoomto,100,20;diffusealpha,buttondiffuse),
 		MouseLeftClickMessageCommand=function(self)

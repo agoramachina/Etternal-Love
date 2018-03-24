@@ -7,7 +7,7 @@ function GetLocalProfiles()
 		local profileID = PROFILEMAN:GetLocalProfileIDFromIndex(p)
 		local profile=PROFILEMAN:GetLocalProfileFromIndex(p)
 		local ProfileCard = Def.ActorFrame {
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				Text=string.format("%s: %.2f",profile:GetDisplayName(), profile:GetPlayerRating()),
 				InitCommand=cmd(xy,34/2,-10;zoom,0.4;ztest,true,maxwidth,(200-34-4)/0.4)
 			},
@@ -243,7 +243,7 @@ t[#t+1] = Def.ActorFrame{
 	};
 };
 t[#t+1] = LoadActor("_frame");
-t[#t+1] = LoadFont("Common Large")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	InitCommand=cmd(xy,5,32;halign,0;valign,1;zoom,0.55;diffuse,getMainColor('positive');settext,"Select Profile:";);
 }
 

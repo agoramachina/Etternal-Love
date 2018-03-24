@@ -776,7 +776,7 @@ local cp = Def.ActorFrame{
 		InitCommand=cmd(xy,60 + mpOffset,(SCREEN_HEIGHT*0.62)-90;;zoomto, 60, 13;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
 	},
 	-- Displays your current percentage score
-	LoadFont("Common Large")..{											
+	LoadFont("_wendy small")..{											
 		Name = "DisplayPercent",
 		InitCommand=cmd(xy,115 + mpOffset,220;zoom,0.3;halign,1;valign,1),
 		OnCommand=function(self)

@@ -81,37 +81,37 @@ local f = Def.ActorFrame{
 		MESSAGEMAN:Broadcast("UpdateFilter")
 		SCREENMAN:set_input_redirected(PLAYER_1, false)
 	end,
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX,frameY;zoom,0.3;halign,0),
 		SetCommand=function(self) 
 			self:settext("Left click on the filter value to set it.")
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX,frameY+20;zoom,0.3;halign,0),
 		SetCommand=function(self) 
 			self:settext("Right click/Start/Back to cancel input.")
 		end,
 	},
-		LoadFont("Common Large")..{
+		LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX,frameY+40;zoom,0.3;halign,0),
 		SetCommand=function(self) 
 			self:settext("Greyed out values are inactive.")
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX,frameY+60;zoom,0.3;halign,0),
 		SetCommand=function(self) 
 			self:settext("Using both bounds creates a range.")
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX,frameY+80;zoom,0.3;halign,0),
 		SetCommand=function(self) 
 			self:settext("'Highest Only' applies only to Mode: Or")
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+frameWidth/2,175;zoom,textzoom;halign,0),
 		SetCommand=function(self) 
 			self:settextf("Max Rate:%5.1fx",FILTERMAN:GetMaxFilterRate())
@@ -135,7 +135,7 @@ local f = Def.ActorFrame{
 			end
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+frameWidth/2,175 + spacingY;zoom,textzoom;halign,0),
 		SetCommand=function(self) 
 			self:settextf("Min Rate:%5.1fx",FILTERMAN:GetMinFilterRate())
@@ -159,7 +159,7 @@ local f = Def.ActorFrame{
 			end
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+frameWidth/2,175 + spacingY * 2;zoom,textzoom;halign,0),
 		SetCommand=function(self)
 			if FILTERMAN:GetFilterMode() then 
@@ -180,7 +180,7 @@ local f = Def.ActorFrame{
 			end
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+frameWidth/2,175 + spacingY * 3;zoom,textzoom;halign,0),
 		SetCommand=function(self)
 			if FILTERMAN:GetHighestSkillsetsOnly() then 
@@ -206,7 +206,7 @@ local f = Def.ActorFrame{
 			end
 		end,
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+frameWidth/2,175 + spacingY * 4;zoom,textzoom;halign,0;settext,""),
 		FilterResultsMessageCommand=function(self, msg)
 			self:settext("Matches: "..msg.Matches.."/"..msg.Total)
@@ -216,7 +216,7 @@ local f = Def.ActorFrame{
 
 local function CreateFilterInputBox(i)
 	local t = Def.ActorFrame{
-		LoadFont("Common Large")..{
+		LoadFont("_wendy small")..{
 			InitCommand=cmd(addx,10;addy,175 + (i-1)*spacingY;halign,0;zoom,textzoom),
 			SetCommand=cmd(settext, ms.SkillSets[i])
 		},
@@ -242,7 +242,7 @@ local function CreateFilterInputBox(i)
 			NumericInputEndedMessageCommand=cmd(queuecommand,"Set"),
 			NumericInputActiveMessageCommand=cmd(queuecommand,"Set"),
 		},
-		LoadFont("Common Large")..{
+		LoadFont("_wendy small")..{
 			InitCommand=cmd(addx,150;addy,175 + (i-1)*spacingY;halign,1;maxwidth,40;zoom,textzoom),
 			SetCommand=function(self)
 				local fval = FILTERMAN:GetSSFilter(i,0)				-- lower bounds
@@ -278,7 +278,7 @@ local function CreateFilterInputBox(i)
 			NumericInputEndedMessageCommand=cmd(queuecommand,"Set"),
 			NumericInputActiveMessageCommand=cmd(queuecommand,"Set"),
 		},
-		LoadFont("Common Large")..{
+		LoadFont("_wendy small")..{
 			InitCommand=cmd(addx,175;addy,175 + (i-1)*spacingY;halign,1;maxwidth,40;zoom,textzoom),
 			SetCommand=function(self)
 				local fval = FILTERMAN:GetSSFilter(i,1)				-- upper bounds
@@ -313,7 +313,7 @@ f[#f+1] = Def.Quad{
         end
     end
     }
-f[#f+1] = LoadFont("Common Large") .. {
+f[#f+1] = LoadFont("_wendy small") .. {
         InitCommand=cmd(xy,frameX+frameWidth-150,frameY+250;halign,0.5;zoom,0.35),
         BeginCommand=function(self)
             self:settext( 'Reset' )

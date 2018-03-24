@@ -153,7 +153,7 @@ t[#t+1] = Def.ActorFrame{
 	Def.Quad{
 		InitCommand=cmd(xy,frameX+20,frameY-210;zoomto,400,300;halign,0;valign,0;diffuse,color("#333333CC"););
 	};
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+250-capWideScale(get43size(120),30),frameY-90;zoom,0.7;halign,0.5;maxwidth,470),
 		SetCommand=function(self) 
 			if active then
@@ -166,28 +166,28 @@ t[#t+1] = Def.ActorFrame{
 		end,
 		UpdateStringMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+250-capWideScale(get43size(120),30),frameY-50;zoom,0.7;halign,0.5;maxwidth,470;settext,searchstring),
 		SetCommand=function(self) 
 			self:settext(searchstring)
 		end,
 		UpdateStringMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+20,frameY-200;zoom,0.4;halign,0),
 		SetCommand=function(self) 
 			self:settext("Start to lock search results.")
 		end,
 		UpdateStringMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+20,frameY-175;zoom,0.4;halign,0;settext,"Back to cancel search.";),
 		SetCommand=function(self) 
 			self:settext("Back to cancel search.")
 		end,
 		UpdateStringMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+20,frameY-150;zoom,0.4;halign,0;settext,"Delete resets search query.";),
 		SetCommand=function(self) 
 			self:settext("Delete resets search query.")

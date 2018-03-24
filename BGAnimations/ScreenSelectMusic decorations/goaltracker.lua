@@ -124,7 +124,7 @@ local function makescoregoal(i)
 				self:y((goalsperpage-i)*-goalYspacing)
 			end,
 			Def.Quad{InitCommand=cmd(xy,-16,20;zoomto,frameWidth-10,goalYspacing-2;halign,0;valign,1;diffuse,getMainColor('frames');diffusealpha,0.35)},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(xy,-14,goalrow2Y;halign,0;zoom,0.25;diffuse,getMainColor('positive');maxwidth,56),
 				SetCommand=function(self)
 					if update then 
@@ -146,7 +146,7 @@ local function makescoregoal(i)
 				end,
 				UpdateGoalsMessageCommand=cmd(queuecommand,"Set")
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(x,30;halign,0;zoom,0.25;diffuse,getMainColor('positive');maxwidth,600),
 				SetCommand=function(self)
 					if update then
@@ -175,7 +175,7 @@ local function makescoregoal(i)
 					end
 				end
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(halign,0;zoom,0.25;diffuse,getMainColor('positive');maxwidth,80),
 				SetCommand=function(self)
 					if update then 
@@ -205,7 +205,7 @@ local function makescoregoal(i)
 					end
 				end
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(xy,-6,goalrow2Y;halign,0;zoom,0.2;diffuse,getMainColor('positive')),
 				SetCommand=function(self)
 					if update then 
@@ -220,7 +220,7 @@ local function makescoregoal(i)
 				end,
 				UpdateGoalsMessageCommand=cmd(queuecommand,"Set")
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(xy,30,goalrow2Y;halign,0;zoom,0.2;diffuse,getMainColor('positive')),
 				SetCommand=function(self)
 					if update then 
@@ -261,7 +261,7 @@ local function makescoregoal(i)
 					end
 				end
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(xy,300,goalrow2Y;halign,0;zoom,0.2;diffuse,getMainColor('positive');maxwidth,80),
 				SetCommand=function(self)
 					if update then 
@@ -277,7 +277,7 @@ local function makescoregoal(i)
 				end,
 				UpdateGoalsMessageCommand=cmd(queuecommand,"Set")
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(x,200;halign,0;zoom,0.2;diffuse,getMainColor('positive');maxwidth,800),
 				SetCommand=function(self)
 					if update then
@@ -292,7 +292,7 @@ local function makescoregoal(i)
 				end,
 				UpdateGoalsMessageCommand=cmd(queuecommand,"Set")
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(xy,200,goalrow2Y;halign,0;zoom,0.2;diffuse,getMainColor('positive');maxwidth,800),
 				SetCommand=function(self)
 					if update then 
@@ -313,7 +313,7 @@ local function makescoregoal(i)
 				end,
 				UpdateGoalsMessageCommand=cmd(queuecommand,"Set")
 			},
-			LoadFont("Common Large") .. {
+			LoadFont("_wendy small") .. {
 				InitCommand=cmd(x,-12;halign,0;zoom,0.25;diffuse,getMainColor('positive');maxwidth,160),
 				SetCommand=function(self)
 					if update then 
@@ -378,7 +378,7 @@ local function filterButton(i)
 		end,
 		UpdateGoalsMessageCommand=cmd(queuecommand,"Set"),
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(xy,20+frameX+rankingX+(i-1+i*(1/(1+3)))*rankingTitleWidth,frameY+rankingY-45;halign,0.5;diffuse,getMainColor('positive');maxwidth,rankingTitleWidth;maxheight,25),
 			BeginCommand=function(self)
 				self:settext(fawa[i])
@@ -399,7 +399,7 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,300;halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Next"),
 	},	
 	Def.Quad{
@@ -411,10 +411,10 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Previous"),
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,175;halign,0.5;zoom,0.3;diffuse,getMainColor('positive')),
 		SetCommand=function(self)
 			self:settextf("Showing %i-%i of %i", math.min(((currentgoalpage-1)*goalsperpage)+1, #displayindex), math.min(currentgoalpage*goalsperpage, #displayindex), #displayindex)

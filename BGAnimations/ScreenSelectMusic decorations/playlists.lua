@@ -109,7 +109,7 @@ local r = Def.ActorFrame{
 			self:visible(false)
 		end
 	end,
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(xy,rankingX,rankingY;zoom,0.4;halign,0;maxwidth,360),
 		DisplayPlaylistMessageCommand=function(self)
 		pl = SONGMAN:GetActivePlaylist()
@@ -131,7 +131,7 @@ local function RateDisplayButton(i)
 		ResizeCommand=function(self)
 			self:GetChild("Button"):zoomto(self:GetChild("Text"):GetZoomedWidth(),self:GetChild("Text"):GetZoomedHeight())
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			Name="Text",
 			DisplayPlaylistCommand=function(self)
 				local ratestring = string.format("%.2f", chartlist[i + ((currentchartpage - 1) * chartsperplaylist)]:GetRate()):gsub("%.?0+$", "").."x"
@@ -165,7 +165,7 @@ local function TitleDisplayButton(i)
 		ResizeCommand=function(self)
 			self:GetChild("Button"):zoomto(self:GetChild("Text"):GetZoomedWidth(),self:GetChild("Text"):GetZoomedHeight())
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			Name="Text",
 			InitCommand=cmd(halign,0),
 			DisplayPlaylistCommand=function(self)
@@ -197,7 +197,7 @@ local function DeleteChartButton(i)
 		ResizeCommand=function(self)
 			self:GetChild("Button"):zoomto(self:GetChild("Text"):GetZoomedWidth(),self:GetChild("Text"):GetZoomedHeight())
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			Name="Text",
 			InitCommand=cmd(halign,0),
 			DisplayPlaylistCommand=function(self)
@@ -245,7 +245,7 @@ local function rankingLabel(i)
 				self:visible(true)
 			end
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(maxwidth,100),
 			DisplayPlaylistCommand=function(self)
 				self:halign(0.5)
@@ -253,13 +253,13 @@ local function rankingLabel(i)
 				self:settext(((rankingPage-1)*25)+ i + ((currentchartpage - 1) * chartsperplaylist.."."))
 			end
 		},
-		LoadFont("Common Large") .. {	-- pack mouseover for later
+		LoadFont("_wendy small") .. {	-- pack mouseover for later
 			InitCommand=cmd(x,15;maxwidth,580),
 			DisplayPlaylistCommand=function(self)
 				--self:settext(songlist[i]:GetGroupName())
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(x,256;maxwidth,160),
 			DisplayPlaylistCommand=function(self)
 				if chartloaded then
@@ -273,7 +273,7 @@ local function rankingLabel(i)
 				end
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(x,300),
 			DisplayPlaylistCommand=function(self)
 				self:halign(0.5)
@@ -303,7 +303,7 @@ local b2 = Def.ActorFrame{
 }
 
 --Add chart button
--- b2[#b2+1] = LoadFont("Common Large") .. {InitCommand=cmd(zoom,0.3;x,245;settext,"Add Chart")}
+-- b2[#b2+1] = LoadFont("_wendy small") .. {InitCommand=cmd(zoom,0.3;x,245;settext,"Add Chart")}
 -- b2[#b2+1] = Def.Quad{
 	-- InitCommand=cmd(x,245;diffusealpha,buttondiffuse;zoomto,80,20),
 	-- MouseLeftClickMessageCommand=function(self)
@@ -313,7 +313,7 @@ local b2 = Def.ActorFrame{
 	-- end
 -- }
 -- Play As Course button
-b2[#b2+1] = LoadFont("Common Large") .. {InitCommand=cmd(zoom,0.3;x,85;settext,"Play As Course")}
+b2[#b2+1] = LoadFont("_wendy small") .. {InitCommand=cmd(zoom,0.3;x,85;settext,"Play As Course")}
 b2[#b2+1] = Def.Quad{
 	InitCommand=cmd(x,85;diffusealpha,buttondiffuse;zoomto,110,20),
 	MouseLeftClickMessageCommand=function(self)
@@ -324,7 +324,7 @@ b2[#b2+1] = Def.Quad{
 }
 
 -- Back button
-b2[#b2+1] = LoadFont("Common Large") .. {InitCommand=cmd(zoom,0.3;settext,"Back")}
+b2[#b2+1] = LoadFont("_wendy small") .. {InitCommand=cmd(zoom,0.3;settext,"Back")}
 b2[#b2+1] = Def.Quad{
 	InitCommand=cmd(diffusealpha,buttondiffuse;zoomto,110,20),
 	MouseLeftClickMessageCommand=function(self)
@@ -348,7 +348,7 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,300;halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Next"),
 		DisplayAllMessageCommand=cmd(visible,false),
 		DisplayPlaylistMessageCommand=cmd(visible,true)
@@ -363,12 +363,12 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Previous"),
 		DisplayAllMessageCommand=cmd(visible,false),
 		DisplayPlaylistMessageCommand=cmd(visible,true)
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,175;halign,0.5;zoom,0.3;diffuse,getMainColor('positive')),
 		SetCommand=function(self)
 			self:settextf("Showing %i-%i of %i", math.min(((currentchartpage-1)*chartsperplaylist)+1, #chartlist), math.min(currentchartpage*chartsperplaylist, #chartlist), #chartlist)
@@ -393,7 +393,7 @@ local function PlaylistTitleDisplayButton(i)
 		ResizeCommand=function(self)
 			self:GetChild("Button"):zoomto(self:GetChild("Text"):GetZoomedWidth(),self:GetChild("Text"):GetZoomedHeight())
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			Name="Text",
 			InitCommand=cmd(halign,0;maxwidth,frameWidth * 3 + 140),
 			AllDisplayCommand=function(self)
@@ -424,7 +424,7 @@ local function DeletePlaylistButton(i)
 		ResizeCommand=function(self)
 			self:GetChild("Button"):zoomto(self:GetChild("Text"):GetZoomedWidth(),self:GetChild("Text"):GetZoomedHeight())
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			Name="Text",
 			InitCommand=cmd(halign,0;maxwidth,frameWidth * 3 + 140),
 			AllDisplayCommand=function(self)
@@ -465,7 +465,7 @@ local function PlaylistSelectLabel(i)
 				self:visible(false)
 			end
 		end,
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(maxwidth,100),
 			AllDisplayCommand=function(self)
 				self:halign(0.5)
@@ -473,21 +473,21 @@ local function PlaylistSelectLabel(i)
 				self:settext(((rankingPage-1)*25)+i + ((currentplaylistpage - 1) * playlistsperpage)..".")
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(xy,15,row2Yoffset),
 			AllDisplayCommand=function(self)
 				self:diffuse(getMainColor("positive"))
 				self:settextf("Number of charts: %d", allplaylists[i + ((currentplaylistpage - 1) * playlistsperpage)]:GetNumCharts())
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(xy,200,row2Yoffset),
 			AllDisplayCommand=function(self)
 				self:settextf("Average Rating:")
 				self:diffuse(getMainColor("positive"))
 			end
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(xy,295,row2Yoffset),
 			AllDisplayCommand=function(self)
 				local rating = allplaylists[i + ((currentplaylistpage - 1) * playlistsperpage)]:GetAverageRating()
@@ -523,7 +523,7 @@ local b = Def.ActorFrame{
 
 -- zzzz button positioning is lame... use shortcut key for now whynot
 -- New Playlist
--- b[#b+1] = LoadFont("Common Large") .. {InitCommand=cmd(zoom,0.3;settext,"New Playlist")}
+-- b[#b+1] = LoadFont("_wendy small") .. {InitCommand=cmd(zoom,0.3;settext,"New Playlist")}
 -- b[#b+1] = Def.Quad{
 	-- InitCommand=cmd(diffusealpha,buttondiffuse;zoomto,110,20),
 	-- MouseLeftClickMessageCommand=function(self)
@@ -557,7 +557,7 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,300;halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Next"),
 		DisplayPlaylistMessageCommand=cmd(visible,false),
 		DisplayAllMessageCommand=cmd(visible,true)
@@ -571,12 +571,12 @@ r[#r+1] = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(halign,0;zoom,0.3;diffuse,getMainColor('positive');settext,"Previous"),
 		DisplayPlaylistMessageCommand=cmd(visible,false),
 		DisplayAllMessageCommand=cmd(visible,true)
 	},
-	LoadFont("Common Large") .. {
+	LoadFont("_wendy small") .. {
 		InitCommand=cmd(x,175;halign,0.5;zoom,0.3;diffuse,getMainColor('positive')),
 		SetCommand=function(self)
 			self:settextf("Showing %i-%i of %i", math.min(((currentplaylistpage-1)*playlistsperpage)+1, #allplaylists), math.min(currentplaylistpage*playlistsperpage, #allplaylists), #allplaylists)

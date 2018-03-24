@@ -11,7 +11,7 @@ t[#t+1] = Def.Quad{
 	InitCommand=cmd(draworder,-300;xy,frameX,frameY-100;zoomto,SCREEN_WIDTH,160;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.15;diffusebottomedge,color("0,0,0,0"))
 }
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,10,frameY-180;zoom,0.65;valign,1;halign,0;diffuse,getDifficultyColor("Difficulty_Couple")),
 	OnCommand=function(self)
 		self:settext(getThemeName())

@@ -60,7 +60,7 @@ t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,frameHeigh
 --Skillset label function
 local function littlebits(i)
 	local t = Def.ActorFrame{
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 		InitCommand=cmd(xy,frameX+35,frameY+120 + 22*i;halign,0;valign,0;zoom,0.5;maxwidth,110/0.6),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -83,7 +83,7 @@ local function littlebits(i)
 		end,
 		UpdateMSDInfoCommand=cmd(queuecommand,"Set"),
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 		InitCommand=cmd(xy,frameX+225,frameY+120 + 22*i;halign,1;valign,0;zoom,0.5;maxwidth,110/0.6),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -108,7 +108,7 @@ end
 --Song Title
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)}
 t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.6;halign,0;diffuse,getMainColor('positive');settext,"MSD Breakdown (Wip)")}
-t[#t+1] = LoadFont("Common Large")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	InitCommand=cmd(xy,frameX+5,frameY+35;zoom,0.6;halign,0;diffuse,getMainColor('positive');maxwidth,SCREEN_CENTER_X/0.7),
 	SetCommand=function(self)
 		if song then
@@ -122,7 +122,7 @@ t[#t+1] = LoadFont("Common Large")..{
 
 
 -- Music Rate Display
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX+frameWidth-100,frameY+offsetY+65;visible,true;halign,0;zoom,0.4;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	SetCommand=function(self)
 		self:settext(getCurRateDisplayString())

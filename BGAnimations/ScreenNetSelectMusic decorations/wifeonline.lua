@@ -297,7 +297,7 @@ t[#t+1] = Def.Quad{
 t[#t+1] = Def.ActorFrame{
 	-- **score related stuff** These need to be updated with rate changed commands
 	-- Primary percent score
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,wifeX,wifeY;zoom,0.3;halign,0.5;maxwidth,175;valign,1),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -321,7 +321,7 @@ t[#t+1] = Def.ActorFrame{
 	},
 	
 	-- Primary ScoreType
-	LoadFont("Common Large")..{
+	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,wifescoretypeX,wifescoretypeY;zoom,0.3;halign,1;valign,1),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -435,7 +435,7 @@ t[#t+1] = Def.ActorFrame{
 }
 
 -- Difficulty value ("meter"), need to change this later
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,difficultyX,difficultyY;halign,0.5;zoom,0.4;maxwidth,110/0.6),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -532,7 +532,7 @@ t[#t+1] = Def.Sprite {
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,negativebpmX,negativebpmY;halign,0;zoom,0.25);
 	BeginCommand=cmd(queuecommand,"Set");
 	SetCommand=function(self)
@@ -548,7 +548,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 }
 
 --test actor
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,frameX,frameY-120;halign,0;zoom,0.4,maxwidth,125),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
@@ -560,7 +560,7 @@ t[#t+1] = LoadFont("Common Large") .. {
 
 
 -- Song duration
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,lengthx,lengthy;visible,true;halign,1;zoom,capWideScale(get43size(0.4),0.4);maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
