@@ -1048,7 +1048,7 @@ end
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ]]
 
-t[#t+1] = LoadFont("wendy small")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_BOTTOM-10;zoom,0.35;settext,getCurRateDisplayString()),
 	DoneLoadingNextSongMessageCommand=cmd(settext,getCurRateDisplayString())
 }
@@ -1080,7 +1080,7 @@ t[#t+1] = Def.ActorFrame{
 			settext(BPM,Round(GetBPS(a) * r,2))
 		end
 	end,
-	LoadFont("wendy small")..{
+	LoadFont("_wendy small")..{
 		Name="BPM",
 		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-30;halign,0.5;zoom,0.40)
 	},

@@ -94,7 +94,7 @@ function scoreBoard(pn,position)
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+55;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY+32;zoom,0.5;halign,0;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameX+5,frameY+28;zoom,0.35;halign,0;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local meter = GAMESTATE:GetCurrentSteps(PLAYER_1):GetMSD(getCurRateValue(), 1)
@@ -103,7 +103,7 @@ function scoreBoard(pn,position)
 		end,
 	};
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameWidth+frameX,frameY+32;zoom,0.5;halign,1;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameWidth+frameX,frameY+24;zoom,0.38;halign,1;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local meter = score:GetSkillsetSSR("Overall")
@@ -112,7 +112,7 @@ function scoreBoard(pn,position)
 		end,
 	};
 	t[#t+1] = LoadFont("_wendy small") .. {
-		InitCommand=cmd(xy,frameWidth+frameX,frameY+7;zoom,0.5;halign,1;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameWidth+frameX,frameY+7;zoom,0.30;halign,1;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local steps = GAMESTATE:GetCurrentSteps(PLAYER_1)
@@ -124,7 +124,7 @@ function scoreBoard(pn,position)
 	
 	-- Wife percent
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY+9;zoom,0.45;halign,0;valign,0;maxwidth,capWideScale(320,360)),
+		InitCommand=cmd(xy,frameX+5,frameY;zoom,0.3;halign,0;valign,0;maxwidth,capWideScale(320,360)),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:diffuse(getGradeColor(pss:GetWifeGrade()))
@@ -146,8 +146,8 @@ function scoreBoard(pn,position)
 		end,
 	};
 	
-	t[#t+1] = LoadFont("Common Normal")..{
-		InitCommand=cmd(xy,frameX+5,frameY+63;zoom,0.40;halign,0;maxwidth,frameWidth/0.4),
+	t[#t+1] = LoadFont("_wendy small")..{
+		InitCommand=cmd(xy,frameX+5,frameY+63;zoom,0.30;halign,0;maxwidth,frameWidth/0.4),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:settext(GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString('ModsLevel_Current'))
