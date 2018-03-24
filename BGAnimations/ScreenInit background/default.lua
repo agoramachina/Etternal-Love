@@ -97,14 +97,14 @@ t[#t+1] = Def.ActorFrame {
 	Def.ActorFrame {
 	  OnCommand=cmd(playcommandonchildren,"ChildrenOn"),
 	  ChildrenOnCommand=cmd(diffusealpha,0;sleep,0.5;linear,0.5;diffusealpha,1),
-		LoadFont("Common Normal") .. {
+		LoadFont("_wendy small") .. {
 			Text=getThemeName(),
 			InitCommand=cmd(y,-24),
 			OnCommand=cmd(sleep,.5;linear,3;diffuse,getDifficultyColor("Difficulty_Couple");diffusealpha,0)
 		},
-		LoadFont("Common Normal") .. {
+		LoadFont("_wendy small") .. {
 			Text="Created by " .. minanyms[math.random(#minanyms)],
-			InitCommand=cmd(y,16;zoom,0.75;maxwidth,SCREEN_WIDTH),
+			InitCommand=cmd(y,16;zoom,0.5;maxwidth,SCREEN_WIDTH),
 			OnCommand=cmd(sleep,.5;linear,3;diffuse,getDifficultyColor("Difficulty_Couple");diffusealpha,0)
 		},
 	}

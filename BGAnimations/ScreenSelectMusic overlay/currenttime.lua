@@ -1,13 +1,13 @@
 local t = Def.ActorFrame{}
 
-t[#t+1] = LoadFont("Common Normal") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	Name = "currentTime",
-	InitCommand=cmd(xy,SCREEN_WIDTH-5,SCREEN_BOTTOM-5;halign,1;valign,1;zoom,0.45)
+	InitCommand=cmd(xy,SCREEN_WIDTH-5,SCREEN_BOTTOM;halign,1;valign,1;zoom,0.19)
 }
 
-t[#t+1] = LoadFont("Common Normal") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	Name = "SessionTime",
-	InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_BOTTOM-5;halign,0.5;valign,1;zoom,0.45)
+	InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_BOTTOM-5;halign,0.5;valign,1;zoom,0.19)
 }
 
 local function Update(self)
