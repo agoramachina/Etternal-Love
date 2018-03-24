@@ -13,7 +13,7 @@ local t = Def.ActorFrame{
 		end,
 	},
 	LoadFont("_wendy small") .. {
-		InitCommand=cmd(xy,PlayerFrameX+90,PlayerFrameY+24;halign,0;zoom,0.45;maxwidth,120;diffuse,getMainColor('positive')),
+		InitCommand=cmd(xy,PlayerFrameX+90,PlayerFrameY+24;halign,0;zoom,0.40;maxwidth,120;diffuse,getMainColor('positive')),
 		SetCommand=function(self)
 			self:settext(getDifficulty(GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty()))
 			self:diffuse(getDifficultyColor(GetCustomDifficulty(GAMESTATE:GetCurrentSteps(PLAYER_1):GetStepsType(),GAMESTATE:GetCurrentSteps(PLAYER_1):GetDifficulty())))
@@ -21,7 +21,7 @@ local t = Def.ActorFrame{
 		DoneLoadingNextSongMessageCommand=cmd(queuecommand,"Set")
 	},
 	LoadFont("_wendy small") .. {
-		InitCommand=cmd(xy,PlayerFrameX+52,PlayerFrameY+28;halign,0;zoom,0.75;maxwidth,50),
+		InitCommand=cmd(xy,PlayerFrameX+52,PlayerFrameY+28;halign,0;zoom,0.65;maxwidth,58),
 		SetCommand=function(self)
 			local meter = GAMESTATE:GetCurrentSteps(PLAYER_1):GetMSD(getCurRateValue(),1)
 			self:settextf("%05.2f",meter)

@@ -94,7 +94,7 @@ function scoreBoard(pn,position)
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+55;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY+28;zoom,0.35;halign,0;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameX+5,frameY+23;zoom,0.38;halign,0;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local meter = GAMESTATE:GetCurrentSteps(PLAYER_1):GetMSD(getCurRateValue(), 1)
@@ -103,7 +103,7 @@ function scoreBoard(pn,position)
 		end,
 	};
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameWidth+frameX,frameY+24;zoom,0.38;halign,1;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameWidth+frameX,frameY+23;zoom,0.38;halign,1;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local meter = score:GetSkillsetSSR("Overall")
@@ -112,7 +112,7 @@ function scoreBoard(pn,position)
 		end,
 	};
 	t[#t+1] = LoadFont("_wendy small") .. {
-		InitCommand=cmd(xy,frameWidth+frameX,frameY+7;zoom,0.30;halign,1;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameWidth+frameX,frameY-3;zoom,0.38;halign,1;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local steps = GAMESTATE:GetCurrentSteps(PLAYER_1)
@@ -124,7 +124,7 @@ function scoreBoard(pn,position)
 	
 	-- Wife percent
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY;zoom,0.3;halign,0;valign,0;maxwidth,capWideScale(320,360)),
+		InitCommand=cmd(xy,frameX+5,frameY-10;zoom,0.48;halign,0;valign,0;maxwidth,capWideScale(320,360)),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:diffuse(getGradeColor(pss:GetWifeGrade()))
