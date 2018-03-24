@@ -91,7 +91,7 @@ function tabs(index)
 		end;
 	};
 		
-	t[#t+1] = LoadFont("Common Normal") .. {
+	t[#t+1] = LoadFont("_miny") .. {
 		InitCommand=cmd(y,5;valign,0;zoom,0.45;diffuse,getMainColor('positive'));
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)

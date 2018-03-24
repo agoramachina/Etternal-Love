@@ -1,6 +1,6 @@
 
 vi regex
-:%s@=\(\f\+\)@\='='.(submatch(1)*1.3)@g
+:%s@=\(\f\+\)@\='='.(submatch(1)*.5)@g
 :%s@=\(\d\+\)@\= '=' . (submatch(1) + 50)@g
 :%s@<obj param="\(\d\+\)@\='<obj param="' . (submatch(1) + 50)@g
 
