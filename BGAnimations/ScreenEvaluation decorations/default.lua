@@ -147,7 +147,7 @@ function scoreBoard(pn,position)
 	};
 	
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY+63;zoom,0.30;halign,0;maxwidth,frameWidth/0.4),
+		InitCommand=cmd(xy,frameX+5,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/0.4),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:settext(GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString('ModsLevel_Current'))
@@ -155,9 +155,9 @@ function scoreBoard(pn,position)
 	}
 
 	for k,v in ipairs(judges) do
-		t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+80+((k-1)*22);zoomto,frameWidth,18;halign,0;diffuse,byJudgment(v);diffusealpha,0.5)};
+		t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+94+((k-1)*22);zoomto,frameWidth,18;halign,0;diffuse,byJudgment(v);diffusealpha,0.5)};
 		t[#t+1] = Def.Quad{
-			InitCommand=cmd(xy,frameX,frameY+80+((k-1)*22);zoomto,0,18;halign,0;diffuse,byJudgment(v);diffusealpha,0.5;),
+			InitCommand=cmd(xy,frameX,frameY+94+((k-1)*22);zoomto,0,18;halign,0;diffuse,byJudgment(v);diffusealpha,0.5;),
 			BeginCommand=cmd(glowshift;effectcolor1,color("1,1,1,"..tostring(pss:GetPercentageOfTaps(v)*0.4));effectcolor2,color("1,1,1,0");sleep,0.5;decelerate,2;zoomx,frameWidth*pss:GetPercentageOfTaps(v)),
 			CodeMessageCommand=function(self,params)
 				if params.Name == "PrevJudge" or params.Name == "NextJudge" then
@@ -167,14 +167,14 @@ function scoreBoard(pn,position)
 			end,
 		};
 		t[#t+1] = LoadFont("_wendy small")..{
-			InitCommand=cmd(xy,frameX+10,frameY+80+((k-1)*22);zoom,0.25;halign,0),
+			InitCommand=cmd(xy,frameX+10,frameY+94+((k-1)*22);zoom,0.25;halign,0),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
 				self:settext(getJudgeStrings(v))
 			end
 		};
 		t[#t+1] = LoadFont("_wendy small")..{
-			InitCommand=cmd(xy,frameX+frameWidth-40,frameY+80+((k-1)*22);zoom,0.25;halign,1),
+			InitCommand=cmd(xy,frameX+frameWidth-40,frameY+94+((k-1)*22);zoom,0.25;halign,1),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
 				self:settext(pss:GetTapNoteScores(v))
@@ -187,7 +187,7 @@ function scoreBoard(pn,position)
 			end,
 		};
 		t[#t+1] = LoadFont("Common Normal")..{
-			InitCommand=cmd(xy,frameX+frameWidth-38,frameY+80+((k-1)*22);zoom,0.3;halign,0),
+			InitCommand=cmd(xy,frameX+frameWidth-38,frameY+94+((k-1)*22);zoom,0.3;halign,0),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
 				self:settextf("(%03.2f%%)",pss:GetPercentageOfTaps(v)*100)
