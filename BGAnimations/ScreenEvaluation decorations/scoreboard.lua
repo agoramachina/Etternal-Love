@@ -121,7 +121,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		},
 
 		--rank
-		LoadFont("Common normal")..{
+		LoadFont("_wendy small")..{
 			InitCommand=cmd(xy,framex-8,framey+12+(drawindex*spacing);zoom,0.35),
 			BeginCommand=function(self)
 				if #hsTable >= 1 then
@@ -138,7 +138,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		-- Wife grade and %score
 		LoadFont("Common normal")..{
 			Name="grade",
-			InitCommand=cmd(xy,framex+10,framey+11+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.3),
+			InitCommand=cmd(xy,framex+14,framey+4+(drawindex*spacing);zoom,0.46;halign,0;maxwidth,(frameWidth-15)/0.3),
 			BeginCommand=function(self)
 				if hsTable[index]:GetWifeScore() == 0 then 
 					self:settextf("NA (%s)", "Wife")
@@ -151,7 +151,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		--mods
 		LoadFont("Common normal")..{
 			Name="option",
-			InitCommand=cmd(xy,framex+10,framey+11+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=cmd(xy,framex+14,framey+14+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
 			BeginCommand=function(self)
 				self:settext(hsTable[index]:GetModifiers())
 				self:visible(false)
@@ -193,7 +193,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		--judgment
 		LoadFont("Common normal")..{
 			Name="judge";
-			InitCommand=cmd(xy,framex+10,framey+20+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=cmd(xy,framex+104framey+20+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
 			BeginCommand=function(self)
 				if #hsTable >= 1 and index>= 1 then
 					self:settextf("%d / %d / %d / %d / %d / %d",

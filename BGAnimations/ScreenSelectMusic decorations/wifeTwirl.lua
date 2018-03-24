@@ -138,7 +138,7 @@ t[#t+1] = Def.ActorFrame{
 	-- **score related stuff** These need to be updated with rate changed commands
 	-- Primary percent score
 	LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+55,frameY+58;zoom,0.6;halign,0.5;maxwidth,125;valign,1),
+		InitCommand=cmd(xy,frameX+55,frameY+66;zoom,0.6;halign,0.5;maxwidth,125;valign,1),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			if song and score then
