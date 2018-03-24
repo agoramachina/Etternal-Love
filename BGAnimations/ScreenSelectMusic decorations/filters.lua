@@ -56,7 +56,7 @@ local f = Def.ActorFrame{
 	InitCommand=cmd(xy,frameX,frameY;halign,0),
 	Def.Quad{InitCommand=cmd(zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#333333CC"))},
 	Def.Quad{InitCommand=cmd(zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)},
-	LoadFont("Common Normal")..{InitCommand=cmd(xy,5,offsetY-9;zoom,0.6;halign,0;diffuse,getMainColor('positive');settext,"Filters (WIP)")},
+	LoadFont("_wendy small")..{InitCommand=cmd(xy,5,offsetY-9;zoom,0.6;halign,0;diffuse,getMainColor('positive');settext,"Filters (WIP)")},
 	OnCommand=function(self)
 		whee = SCREENMAN:GetTopScreen():GetMusicWheel()
 		SCREENMAN:GetTopScreen():AddInputCallback(FilterInput)
