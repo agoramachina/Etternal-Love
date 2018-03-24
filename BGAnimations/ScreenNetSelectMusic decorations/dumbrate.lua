@@ -90,7 +90,7 @@ local t = Def.ActorFrame{
 --Skillset label function
 local function littlebits(i)
 	local t = Def.ActorFrame{
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(xy,frameX+35,frameY+120 + 22*i;halign,0;valign,0;zoom,0.5;maxwidth,110/0.6),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self)
@@ -109,7 +109,7 @@ local function littlebits(i)
 			end,
 			UpdateMSDInfoCommand=cmd(queuecommand,"Set"),
 		},
-		LoadFont("Common Large") .. {
+		LoadFont("_wendy small") .. {
 			InitCommand=cmd(xy,frameX+225,frameY+120 + 22*i;halign,1;valign,0;zoom,0.5;maxwidth,110/0.6),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self)
@@ -128,7 +128,7 @@ local function littlebits(i)
 end
 
 -- Music Rate Display
-t[#t+1] = LoadFont("Common Large") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,curateX,curateY;visible,true;halign,0;zoom,0.35;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	SetCommand=function(self)
 		self:settext(getCurRateDisplayString())
