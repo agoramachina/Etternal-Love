@@ -56,7 +56,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	--Revamped. SMO stuff for now. -Misterkister
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,AvatarX+53,AvatarY+7;halign,0;zoom,0.6;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -74,7 +74,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,AvatarX+53,AvatarY+20;halign,0;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -83,7 +83,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,AvatarX+53,AvatarY+30;halign,0;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -92,7 +92,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,AvatarX+53,AvatarY+40;halign,0;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -102,7 +102,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,SCREEN_CENTER_X-125,AvatarY+40;halign,0.5;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -112,7 +112,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
 	--Level system revamped. -Misterkister
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,SCREEN_CENTER_X,AvatarY+25;halign,0.5;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -129,7 +129,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,SCREEN_WIDTH-5,AvatarY+10;halign,1;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -138,7 +138,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,SCREEN_WIDTH-5,AvatarY+20;halign,1;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
@@ -147,7 +147,7 @@ t[#t+1] = Def.ActorFrame{
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
 		PlayerUnjoinedMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_miny") .. {
 		InitCommand=cmd(xy,SCREEN_WIDTH-5,AvatarY+30;halign,1;zoom,0.35;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
