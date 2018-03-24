@@ -305,7 +305,7 @@ t[#t+1] = LoadFont("_wendy small") .. {
 			self:settext("")
 		end
 	end,
-	InitCommand=cmd(xy,capWideScale(get43size(384),384)+41,SCREEN_BOTTOM-100;halign,1;zoom,0.35),
+	InitCommand=cmd(xy,capWideScale(get43size(384),384)+41,SCREEN_BOTTOM-110;halign,1;zoom,0.35),
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 

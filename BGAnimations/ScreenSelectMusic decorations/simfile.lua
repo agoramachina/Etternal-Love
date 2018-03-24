@@ -211,7 +211,7 @@ t[#t+1] = LoadFont("Common Normal")..{
 
 t[#t+1] = LoadFont("Common Normal")..{
 	Name="Song BPM";
-	InitCommand=cmd(xy,frameX+offsetX+150,frameY+offsetY+130;zoom,0.4;halign,0;maxwidth,(frameWidth-offsetX*2-150)/0.4);
+	InitCommand=cmd(xy,frameX+offsetX+154,frameY+offsetY+124;zoom,0.45;halign,0;maxwidth,(frameWidth-offsetX*2-150)/0.4);
 	SetCommand=function(self)
 		local song = GAMESTATE:GetCurrentSong()
 		local bpms = {0,0}

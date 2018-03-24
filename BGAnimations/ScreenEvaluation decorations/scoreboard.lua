@@ -193,7 +193,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		--judgment
 		LoadFont("Common normal")..{
 			Name="judge";
-			InitCommand=cmd(xy,framex+20,framey+20+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=cmd(xy,framex+21,framey+20+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
 			BeginCommand=function(self)
 				if #hsTable >= 1 and index>= 1 then
 					self:settextf("%d / %d / %d / %d / %d / %d",
