@@ -1,6 +1,6 @@
-# Etternal Love: an Etterna theme based off the "Simply Love" Stepmania theme
+## Etternal Love: an Etterna theme based off the "Simply Love" Stepmania theme
 
-## Transferring Player Preferences
+### Transferring Player Preferences
 
 To keep player player preferences from another theme, its settings must be copied to the new theme.
 
