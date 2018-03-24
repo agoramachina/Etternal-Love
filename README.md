@@ -1,4 +1,4 @@
-## Etternal Love: an Etterna theme based off the "Simply Love" Stepmania theme
+## Etternal Love: an Etterna theme inspired by the "Simply Love" Stepmania theme
 
 ### Transferring Player Preferences
 
@@ -12,7 +12,7 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 
 * change gray quads on Select Music Screen
 * add background animation to Title Screen
-* get Simply Fonts 
+* Simply Fonts 
 
 
 ### Screenshots 
