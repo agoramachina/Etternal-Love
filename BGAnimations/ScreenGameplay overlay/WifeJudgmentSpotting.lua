@@ -1154,7 +1154,7 @@ t[#t+1] = Def.ActorFrame{
 		Name= "errorBarPosText", Font= "_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
-				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
+				:shadowlength(2):xy(10, 20):zoom(.3):visible(false)
 		end,
 		UpdateCommand=function(self)
 			local text= {
@@ -1169,7 +1169,7 @@ t[#t+1] = Def.ActorFrame{
 		Name= "errorBarSizeText", Font= "_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
-				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
+				:shadowlength(2):xy(10, 20):zoom(.3):visible(false)
 		end,
 		UpdateCommand=function(self)
 			local text= {
@@ -1184,7 +1184,7 @@ t[#t+1] = Def.ActorFrame{
 		Name= "targetTrackerPosText", Font= "_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
-				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
+				:shadowlength(2):xy(10, 20):zoom(.3):visible(false)
 		end,
 		UpdateCommand=function(self)
 			local text= {
@@ -1199,7 +1199,7 @@ t[#t+1] = Def.ActorFrame{
 		Name= "targetTrackerSizeText", Font= "_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
-				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
+				:shadowlength(2):xy(10, 20):zoom(.3):visible(false)
 		end,
 		UpdateCommand=function(self)
 			local text= {
