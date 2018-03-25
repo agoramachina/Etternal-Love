@@ -181,8 +181,8 @@ t[#t+1] = Def.ActorFrame{
 	},
 	
 	-- Date score achieved on
-	LoadFont("Common Normal")..{
-		InitCommand=cmd(xy,frameX+185,frameY+59;zoom,0.4;halign,0),
+	LoadFont("_wendy small")..{
+		InitCommand=cmd(xy,frameX+185,frameY+59;zoom,0.2;halign,0),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			if song and score then
@@ -196,8 +196,8 @@ t[#t+1] = Def.ActorFrame{
 	},
 
 	-- MaxCombo
-	LoadFont("Common Normal")..{
-		InitCommand=cmd(xy,frameX+185,frameY+49;zoom,0.4;halign,0),
+	LoadFont("_wendy small")..{
+		InitCommand=cmd(xy,frameX+185,frameY+44;zoom,0.2;halign,0),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			if song and score then
@@ -215,8 +215,8 @@ t[#t+1] = Def.ActorFrame{
 -- "Radar values" aka basic chart information
 local function radarPairs(i)
 	local o = Def.ActorFrame{
-		LoadFont("Common Normal")..{
-			InitCommand=cmd(xy,frameX+13,frameY-52+13*i;zoom,0.5;halign,0;maxwidth,120),
+		LoadFont("_wendy small")..{
+			InitCommand=cmd(xy,frameX+13,frameY-50+13*i;zoom,0.25;halign,0;maxwidth,146),
 			SetCommand=function(self)
 				if song then
 					self:settext(ms.RelevantRadarsShort[i])
@@ -226,8 +226,8 @@ local function radarPairs(i)
 			end,
 			RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 		},
-		LoadFont("Common Normal")..{
-			InitCommand=cmd(xy,frameX+105,frameY-52+13*i;zoom,0.5;halign,1;maxwidth,60),
+		LoadFont("_wendy small")..{
+			InitCommand=cmd(xy,frameX+105,frameY-50+13*i;zoom,0.25;halign,1;maxwidth,60),
 			SetCommand=function(self)
 				if song then		
 					self:settext(steps:GetRelevantRadars(PLAYER_1)[i])
