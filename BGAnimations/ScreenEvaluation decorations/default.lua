@@ -9,8 +9,8 @@ if GAMESTATE:GetNumPlayersEnabled() == 1 and themeConfig:get_data().eval.ScoreBo
 end
 
 
-t[#t+1] = LoadFont("_wendy small")..{
-	InitCommand=cmd(xy,SCREEN_CENTER_X,capWideScale(135,150);zoom,0.28;maxwidth,400/0.4),
+t[#t+1] = LoadFont("Common Normal")..{
+	InitCommand=cmd(xy,SCREEN_CENTER_X+32,capWideScale(135,150);zoom,.5;maxwidth,400/0.4),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self) 
 		if GAMESTATE:IsCourseMode() then
