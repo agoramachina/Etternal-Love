@@ -12,7 +12,8 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 
 * change gray quads on Select Music Screen
 * add background animation to Title Screen
-* Simply Fonts 
+* add network compatibility
+* FIX BPM
 
 
 ### Screenshots 
