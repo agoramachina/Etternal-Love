@@ -107,8 +107,8 @@ local t = Def.ActorFrame{
 		end,
 		UpdateStringMessageCommand=cmd(queuecommand,"Set"),
 	},
-	LoadFont("Common Normal")..{
-		InitCommand=cmd(xy,frameX+20,frameY+70;zoom,0.5;halign,0),
+	LoadFont("_wendy small")..{
+		InitCommand=cmd(xy,frameX+20,frameY+70;zoom,0.25;halign,0),
 		SetCommand=function(self) 
 			self:settext("Currently supports standard english alphabet only.")
 		end,

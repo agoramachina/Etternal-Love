@@ -393,7 +393,7 @@ for i=1,#judges do
 	t[#t+1] =makeJudge(i,judges[i])
 end
 
-t[#t+1] = LoadFont("_wendy small")..{
+t[#t+1] = LoadFont("Common normal")..{
 	Name="Score",
 	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+288;zoom,0.5;halign,0),
 	SetCommand=function(self)

@@ -109,7 +109,7 @@ end
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)}
 t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.5;halign,0;diffuse,getMainColor('positive');settext,"MSD Breakdown (WIP)")}
 t[#t+1] = LoadFont("_wendy small")..{
-	InitCommand=cmd(xy,frameX+5,frameY+35;zoom,0.6;halign,0;diffuse,getMainColor('positive');maxwidth,SCREEN_CENTER_X/0.7),
+	InitCommand=cmd(xy,frameX+5,frameY+64;zoom,0.5;halign,0;diffuse,getMainColor('positive');maxwidth,SCREEN_CENTER_X/0.7),
 	SetCommand=function(self)
 		if song then
 			self:settext(song:GetDisplayMainTitle())
@@ -123,7 +123,7 @@ t[#t+1] = LoadFont("_wendy small")..{
 
 -- Music Rate Display
 t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,frameX+frameWidth-100,frameY+offsetY+65;visible,true;halign,0;zoom,0.4;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
+	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+54;visible,true;halign,0;zoom,0.25;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	SetCommand=function(self)
 		self:settext(getCurRateDisplayString())
 	end,
@@ -131,9 +131,9 @@ t[#t+1] = LoadFont("_wendy small") .. {
 }
 
 --Difficulty
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="StepsAndMeter",
-	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+50;zoom,0.5;halign,1),
+	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+72;zoom,0.25;halign,1),
 	SetCommand=function(self)
 		steps = GAMESTATE:GetCurrentSteps(pn)
 		if steps ~= nil then
@@ -151,9 +151,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 
 
 --NPS
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="NPS";
-	InitCommand=cmd(xy,frameX+frameWidth-15,frameY+60;zoom,0.4;halign,1;);
+	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+90;zoom,0.25;halign,1;);
 	SetCommand=function(self)
 		steps = GAMESTATE:GetCurrentSteps(pn)
 		--local song = GAMESTATE:GetCurrentSong()

@@ -61,8 +61,8 @@ local playlistsperpage = 10
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#333333CC"))}
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)}
 t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.5;halign,0;diffuse,getMainColor('positive');settext,"Playlists (WIP)")}
-t[#t+1] = LoadFont("Common Normal")..{
-	InitCommand=cmd(xy,frameWidth,frameY+offsetY-9;zoom,0.6;halign,1;diffuse,getMainColor('positive')),
+t[#t+1] = LoadFont("_wendy small")..{
+	InitCommand=cmd(xy,frameWidth,frameY+offsetY-9;zoom,0.25;halign,1;diffuse,getMainColor('positive')),
 	DisplayPlaylistMessageCommand=cmd(settext,"Ctrl+A to add a new chart"),
 	DisplayAllMessageCommand=cmd(settext,"Ctrl+P to add a new playlist"),
 }
