@@ -138,7 +138,7 @@ t[#t+1] = Def.ActorFrame{
 	-- **score related stuff** These need to be updated with rate changed commands
 	-- Primary percent score
 	LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+55,frameY+66;zoom,0.6;halign,0.5;maxwidth,125;valign,1),
+		InitCommand=cmd(xy,frameX+55,frameY+74;zoom,0.6;halign,0.5;maxwidth,125;valign,1),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			if song and score then
@@ -284,7 +284,7 @@ t[#t+1] = LoadFont("_wendy small") .. {
 t[#t+1] = Def.BPMDisplay {
 	File=THEME:GetPathF("BPMDisplay", "bpm"),
 	Name="BPMDisplay",
-	InitCommand=cmd(xy,capWideScale(get43size(384),384)+62,SCREEN_BOTTOM-100;halign,1;zoom,0.50),
+	InitCommand=cmd(xy,capWideScale(get43size(384),384)+62,SCREEN_BOTTOM-100;halign,1;zoom,0.40),
 	SetCommand=function(self)
 		if song then 
 			self:visible(1)
