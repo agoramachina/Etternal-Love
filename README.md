@@ -14,6 +14,7 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 * add background animation to Title Screen
 * add network compatibility
 * FIX BPM
+* get rid of weird white quad in upper left corner of selectMusicScreen
 
 
 ### Screenshots 
@@ -21,3 +22,4 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 ![](Graphics/assets/screenshots/screen1.png)
 ![](Graphics/assets/screenshots/screen2.png)
 ![](Graphics/assets/screenshots/screen3.png)
+![](Graphics/assets/screenshots/screen4.png)
