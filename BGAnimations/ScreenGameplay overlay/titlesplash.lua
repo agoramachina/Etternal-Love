@@ -10,9 +10,9 @@ local t = Def.ActorFrame{	-- splashy thing when you first start a song
 		OnCommand=cmd(smooth,0.5;diffusealpha,0.7;sleep,1;smooth,0.3;smooth,0.4;diffusealpha,0)
 	},
 	
-	LoadFont("_wendy small") .. {
+	LoadFont("Common Normal") .. {
 		Name="DestroyMe2",
-		InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_CENTER_Y-50;zoom,0.5;diffusealpha,0;maxwidth,400/0.45),
+		InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_CENTER_Y-50;zoom,0.6;diffusealpha,0;maxwidth,400/0.45),
 		BeginCommand=cmd(settext,GAMESTATE:GetCurrentSong():GetDisplayMainTitle()),
 		OnCommand=cmd(smooth,0.5;diffusealpha,1;sleep,1;smooth,0.3;smooth,0.4;diffusealpha,0)
 	},
