@@ -79,7 +79,7 @@ local t = Def.ActorFrame {
 		Name="Number",
 		InitCommand=cmd(xy,x-4,y;zoom,zoom - 0.1;halign,1;valign,1;skewx,-0.125;visible,false),
 	},
-	LoadFont("Common Normal") .. {
+	LoadFont("_wendy small") .. {
 		Name="Label",
 		InitCommand=cmd(xy,x,y;zoom,zoom;diffusebottomedge,color("0.75,0.75,0.75,1");halign,0;valign,1;visible,false),
 	},
@@ -106,7 +106,7 @@ local t = Def.ActorFrame {
 		
 		-- FullCombo Rewards
 		if param.FullComboW1 then
-			c.Number:diffuse(color("#00aeef"))
+			c.Number:diffuse(color("#0073ff"))
 			c.Number:glowshift()
 		elseif param.FullComboW2 then
 			c.Number:diffuse(color("#fff568"))
