@@ -154,7 +154,7 @@ t[#t+1] = Def.ActorFrame{
 	
 	-- Rate for the displayed score
 	LoadFont("Common Normal")..{
-		InitCommand=cmd(xy,frameX+55,frameY+58;zoom,0.5;halign,0.5),
+		InitCommand=cmd(xy,frameX+55,frameY+150;zoom,0.5;halign,0.5),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			if song and score then 
@@ -227,7 +227,7 @@ local function radarPairs(i)
 			RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 		},
 		LoadFont("Common Normal")..{
-			InitCommand=cmd(xy,frameX+105,frameY+-52+13*i;zoom,0.5;halign,1;maxwidth,60),
+			InitCommand=cmd(xy,frameX+105,frameY-52+13*i;zoom,0.5;halign,1;maxwidth,60),
 			SetCommand=function(self)
 				if song then		
 					self:settext(steps:GetRelevantRadars(PLAYER_1)[i])
@@ -305,7 +305,7 @@ t[#t+1] = LoadFont("_wendy small") .. {
 			self:settext("")
 		end
 	end,
-	InitCommand=cmd(xy,capWideScale(get43size(384),384)+41,SCREEN_BOTTOM-110;halign,1;zoom,0.35),
+	InitCommand=cmd(xy,capWideScale(get43size(384),384)+30,SCREEN_BOTTOM-110;halign,1;zoom,0.35),
 	RefreshChartInfoMessageCommand=cmd(queuecommand,"Set"),
 }
 
