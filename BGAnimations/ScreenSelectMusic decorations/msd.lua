@@ -109,7 +109,7 @@ end
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)}
 t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.5;halign,0;diffuse,getMainColor('positive');settext,"MSD Breakdown (WIP)")}
 t[#t+1] = LoadFont("_wendy small")..{
-	InitCommand=cmd(xy,frameX+5,frameY+64;zoom,0.5;halign,0;diffuse,getMainColor('positive');maxwidth,SCREEN_CENTER_X/0.7),
+	InitCommand=cmd(xy,frameX+5,frameY+86;zoom,0.5;halign,0;diffuse,getMainColor('positive');maxwidth,SCREEN_CENTER_X/0.7),
 	SetCommand=function(self)
 		if song then
 			self:settext(song:GetDisplayMainTitle())
@@ -123,7 +123,7 @@ t[#t+1] = LoadFont("_wendy small")..{
 
 -- Music Rate Display
 t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+54;visible,true;halign,0;zoom,0.25;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
+	InitCommand=cmd(xy,frameX+frameWidth-68,frameY+offsetY+54;visible,true;halign,0;zoom,0.25;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	SetCommand=function(self)
 		self:settext(getCurRateDisplayString())
 	end,
