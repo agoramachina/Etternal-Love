@@ -51,7 +51,7 @@ local displayindex = {}
 
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#333333CC"))}
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)}
-t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.4;halign,0;diffuse,getMainColor('positive');settext,"Goal Tracker (WIP)")}
+t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.5;halign,0;diffuse,getMainColor('positive');settext,"Goal Tracker (WIP)")}
 
 -- prolly a clever way to cut this down to like 5 lines - mina
 local function filterDisplay (playergoals)

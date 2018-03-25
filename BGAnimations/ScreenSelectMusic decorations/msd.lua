@@ -107,7 +107,7 @@ end
 
 --Song Title
 t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)}
-t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.6;halign,0;diffuse,getMainColor('positive');settext,"MSD Breakdown (Wip)")}
+t[#t+1] = LoadFont("_wendy small")..{InitCommand=cmd(xy,frameX+5,frameY+offsetY-9;zoom,0.5;halign,0;diffuse,getMainColor('positive');settext,"MSD Breakdown (WIP)")}
 t[#t+1] = LoadFont("_wendy small")..{
 	InitCommand=cmd(xy,frameX+5,frameY+35;zoom,0.6;halign,0;diffuse,getMainColor('positive');maxwidth,SCREEN_CENTER_X/0.7),
 	SetCommand=function(self)

@@ -6,7 +6,7 @@ t[#t+1] = LoadActor("currenttime")
 
 --what the settext says
 t[#t+1] = LoadFont("_wendy small")..{
-	InitCommand=cmd(xy,5,44;halign,0;valign,1;zoom,0.55;diffuse,getMainColor('positive');settext,"Results:")
+	InitCommand=cmd(xy,5,43;halign,0;valign,1;zoom,0.55;diffuse,getMainColor('positive');settext,"Results:")
 }
 
 --Group folder name
