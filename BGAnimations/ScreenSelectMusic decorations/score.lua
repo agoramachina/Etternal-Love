@@ -174,9 +174,9 @@ t[#t+1] = LoadFont("_wendy small")..{
 	-- ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 -- }
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="ClearType",
-	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+41;zoom,0.5;halign,0);
+	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+47;zoom,0.3;halign,0);
 	SetCommand=function(self)
 		if score and update then
 			self:settext(getClearTypeFromScore(pn,score,0))
@@ -186,9 +186,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 	ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 }
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="Combo",
-	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+58;zoom,0.4;halign,0);
+	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+70;zoom,0.2;halign,0);
 	SetCommand=function(self)
 		if score and update then
 			local maxCombo = getScoreMaxCombo(score)
@@ -200,9 +200,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 	ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 }
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="MissCount",
-	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+73;zoom,0.4;halign,0);
+	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+85;zoom,0.2;halign,0);
 	SetCommand=function(self)
 		if score and update then
 			local missCount = getScoreMissCount(score)
@@ -218,9 +218,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 	ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 }
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="Date",
-	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+88;zoom,0.4;halign,0);
+	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+101;zoom,0.2;halign,0);
 	SetCommand=function(self)
 		if score and update then
 			self:settext("Date Achieved: "..getScoreDate(score))
@@ -231,9 +231,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 	ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 }
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="Mods",
-	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+103;zoom,0.4;halign,0);
+	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+115;zoom,0.2;halign,0);
 	SetCommand=function(self)
 		if score and update then
 			self:settext("Mods: " ..score:GetModifiers())
@@ -244,9 +244,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 	ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 }
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="StepsAndMeter",
-	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+10;zoom,0.5;halign,1),
+	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+10;zoom,0.25;halign,1),
 	SetCommand=function(self)
 		local steps = GAMESTATE:GetCurrentSteps(pn)
 		if score and update then
@@ -262,8 +262,8 @@ t[#t+1] = LoadFont("Common Normal")..{
 	ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 }
 
-t[#t+1] = LoadFont("Common Normal")..{
-	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+frameHeight-10;zoom,0.4;halign,1),
+t[#t+1] = LoadFont("_wendy small")..{
+	InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+frameHeight-10;zoom,0.25;halign,1),
 	SetCommand=function(self)
 		if rates ~= nil and rtTable[rates[rateIndex]] ~= nil and update then
 			self:settextf("Rate %s - Showing %d/%d",rates[rateIndex],scoreIndex,#rtTable[rates[rateIndex]])
@@ -274,9 +274,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 	ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
 }
 
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="ChordCohesion",
-	InitCommand=cmd(xy,frameX+frameWidth/40,frameY+frameHeight-10;zoom,0.4;halign,0),
+	InitCommand=cmd(xy,frameX+frameWidth/40,frameY+frameHeight-10;zoom,0.25;halign,0),
 	SetCommand=function(self)
 		if score and update then
 			if score:GetChordCohesion() == true then
@@ -309,7 +309,7 @@ t[#t+1] = Def.Quad{
 }
 
 local function makeText(index)
-	return LoadFont("Common Normal")..{
+	return LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+frameWidth-offsetX,frameY+offsetY+15+(index*15);zoom,fontScale;halign,1),
 		SetCommand=function(self)
 			local count = 0
@@ -341,16 +341,16 @@ local function makeJudge(index,judge)
 	local t = Def.ActorFrame{InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+142+((index-1)*18))}
 
 	--labels
-	t[#t+1] = LoadFont("Common Normal")..{
-		InitCommand=cmd(zoom,0.5;halign,0),
+	t[#t+1] = LoadFont("_wendy small")..{
+		InitCommand=cmd(zoom,0.3;halign,0),
 		BeginCommand=function(self)
 			self:settext(getJudgeStrings(judge))
 			self:diffuse(byJudgment(judge))
 		end
 	};
 
-	t[#t+1] = LoadFont("Common Normal")..{
-		InitCommand=cmd(x,120;zoom,0.5;halign,1),
+	t[#t+1] = LoadFont("_wendy small")..{
+		InitCommand=cmd(x,120;zoom,0.3;halign,1),
 		SetCommand=function(self)
 			if score and update then
 				if judge ~= 'HoldNoteScore_Held' and judge ~= 'HoldNoteScore_LetGo' then
@@ -365,7 +365,7 @@ local function makeJudge(index,judge)
 		ScoreUpdateMessageCommand=cmd(queuecommand,"Set"),
 	};
 
-	t[#t+1] = LoadFont("Common Normal")..{
+	t[#t+1] = LoadFont("_wendy small")..{
 		InitCommand=cmd(x,122;zoom,0.3;halign,0),
 		SetCommand=function(self)
 			if score ~= nil and update then
@@ -393,9 +393,9 @@ for i=1,#judges do
 	t[#t+1] =makeJudge(i,judges[i])
 end
 
-t[#t+1] = LoadFont("Common normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="Score",
-	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+288;zoom,0.5;halign,0),
+	InitCommand=cmd(xy,frameX+offsetX,frameY+offsetY+296;zoom,0.2;halign,0),
 	SetCommand=function(self)
 		if score ~= nil and update then
 			if score:HasReplayData() then 
