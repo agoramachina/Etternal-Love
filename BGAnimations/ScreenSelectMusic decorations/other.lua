@@ -63,7 +63,7 @@ t[#t+1] = LoadFont("Common Normal")..{
 };
 
 local function makeText1(index)
-	return LoadFont("Common Normal")..{
+	return LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+offsetX2,frameY+offsetY+(index*distY);zoom,fontScale;halign,0;maxwidth,offsetX1/fontScale);
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)
@@ -74,7 +74,7 @@ local function makeText1(index)
 end;
 
 local function makeText2(index)
-	return LoadFont("Common Normal")..{
+	return LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+offsetX1+offsetX2*2,frameY+offsetY+(index*distY);zoom,fontScale;halign,0;maxwidth,(frameWidth-offsetX1)/fontScale);
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)
