@@ -94,7 +94,7 @@ function scoreBoard(pn,position)
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+55;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+8,frameY+23;zoom,0.38;halign,0;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameX,frameY+23;zoom,0.38;halign,0;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local meter = GAMESTATE:GetCurrentSteps(PLAYER_1):GetMSD(getCurRateValue(), 1)
@@ -148,7 +148,7 @@ function scoreBoard(pn,position)
 	
 	--- 
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+6,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/0.4),
+		InitCommand=cmd(xy,frameX+6,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/0.2),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:settext(GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString('ModsLevel_Current'))
