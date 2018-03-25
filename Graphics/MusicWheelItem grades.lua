@@ -45,8 +45,8 @@ return Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("Common Normal") .. {
-        InitCommand=cmd(xy,16,-1;zoom,0.5;maxwidth,WideScale(get43size(20),20)/0.5),
+	LoadFont("_wendy small") .. {
+        InitCommand=cmd(xy,16,-1;zoom,0.5;maxwidth,WideScale(get43size(20),20)/0.3),
         SetGradeCommand=function(self,params)
 			local sGrade = params.Grade or 'Grade_None'
 			self:valign(0.5)
