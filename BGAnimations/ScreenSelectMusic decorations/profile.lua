@@ -282,7 +282,7 @@ end
 
 local function littlebits(i)
 	local t = Def.ActorFrame{
-		InitCommand=cmd(xy,frameX+30,frameY + 50),
+		InitCommand=cmd(xy,frameX+30,frameY + 36),
 		UpdateRankingMessageCommand=function(self)
 			if rankingSkillset == 1 and update then
 				self:visible(true)

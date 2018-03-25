@@ -362,7 +362,7 @@ local fawa = {"All Goals","Completed","Incomplete"}
 local function filterButton(i)
 	local t = Def.ActorFrame{
 		Def.Quad{
-		InitCommand=cmd(xy,20+frameX+rankingX+(i-1+i*(1/(1+3)))*rankingTitleWidth,frameY+rankingY-60;zoomto,rankingTitleWidth,30;halign,0.5;valign,0;diffuse,getMainColor('frames');diffusealpha,0.35),
+		InitCommand=cmd(xy,17+frameX+rankingX+(i-1+i*(1/(1+3)))*rankingTitleWidth,frameY+rankingY-60;zoomto,rankingTitleWidth+22,32;halign,0.5;valign,0;diffuse,getMainColor('frames');diffusealpha,0.35),
 		SetCommand=function(self)
 			if i == goalFilter then
 				self:diffusealpha(1)
@@ -379,7 +379,7 @@ local function filterButton(i)
 		UpdateGoalsMessageCommand=cmd(queuecommand,"Set"),
 		},
 		LoadFont("_wendy small") .. {
-			InitCommand=cmd(xy,20+frameX+rankingX+(i-1+i*(1/(1+3)))*rankingTitleWidth,frameY+rankingY-45;halign,0.5;diffuse,getMainColor('positive');maxwidth,rankingTitleWidth;maxheight,25),
+			InitCommand=cmd(xy,17+frameX+rankingX+(i-1+i*(1/(1+3)))*rankingTitleWidth,frameY+rankingY-45;halign,0.5;diffuse,getMainColor('positive');maxwidth,rankingTitleWidth;maxheight,25),
 			BeginCommand=function(self)
 				self:settext(fawa[i])
 			end,
