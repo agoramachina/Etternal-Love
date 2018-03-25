@@ -122,9 +122,9 @@ t[#t+1] = LoadFont("_wendy small")..{
 }
 
 -- Wife display
-t[#t+1] = LoadFont("Common Normal")..{
+t[#t+1] = LoadFont("_wendy small")..{
 	Name="Score",
-	InitCommand=cmd(xy,frameX+offsetX+55,frameY+offsetY+28;zoom,0.5;halign,0),
+	InitCommand=cmd(xy,frameX+offsetX+55,frameY+offsetY+28;zoom,0.4;halign,0),
 	SetCommand=function(self)
 		if score and update then
 			if score:GetWifeScore() == 0 then 

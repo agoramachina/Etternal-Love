@@ -86,7 +86,7 @@ function tabs(index)
 	};
 		
 	t[#t+1] = LoadFont("_wendy small") .. {
-		InitCommand=cmd(y,4;valign,0;zoom,0.2;diffuse,getMainColor('positive')),
+		InitCommand=cmd(y,-2;valign,0;zoom,0.2;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			self:settext(tabNames[index])
