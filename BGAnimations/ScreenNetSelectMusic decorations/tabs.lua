@@ -42,7 +42,7 @@ local t = Def.ActorFrame{
 
 -- Just for debug
 [[
-t[#t+1] = LoadFont("_miny") .. {
+t[#t+1] = LoadFont("_wendy small") .. {
 	InitCommand=cmd(xy,300,300;halign,0;zoom,2;diffuse,getMainColor(2));
 	BeginCommand=cmd(queuecommand,"Set");
 	SetCommand=function(self)
@@ -91,8 +91,8 @@ function tabs(index)
 		end;
 	};
 		
-	t[#t+1] = LoadFont("_miny") .. {
-		InitCommand=cmd(y,5;valign,0;zoom,0.4;diffuse,getMainColor('positive'));
+	t[#t+1] = LoadFont("_wendy small") .. {
+		InitCommand=cmd(y,5;valign,0;zoom,0.25;diffuse,getMainColor('positive'));
 		BeginCommand=cmd(queuecommand,"Set");
 		SetCommand=function(self)
 			self:settext(tabNames[index])

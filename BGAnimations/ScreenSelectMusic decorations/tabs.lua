@@ -97,7 +97,7 @@ function tabs(index)
 					self:diffuse(getSimpleColor(index))
 				end
 			else
-				self:diffuse(color("#666666"))
+				self:diffuse(color("#1E282F"))
 			end
 		end,
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set"),
