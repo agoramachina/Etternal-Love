@@ -43,11 +43,11 @@ function LoadCard(cColor)
 	local t = Def.ActorFrame {
 		Def.Quad {
 			InitCommand=cmd(zoomto,200+4,230+4);
-			OnCommand=cmd(diffuse,color("1,1,1,1"));
+			OnCommand=cmd(diffuse,getMainColor('highlight'));
 		};
 		Def.Quad {
 			InitCommand=cmd(zoomto,200,230);
-			OnCommand=cmd(diffusealpha,0.5;diffuse,cColor);
+			OnCommand=cmd(diffusealpha,0.5;diffuse,getMainColor('frames'));
 		};
 	};
 	return t
