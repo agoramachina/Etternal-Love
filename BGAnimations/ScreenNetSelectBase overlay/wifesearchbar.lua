@@ -151,7 +151,7 @@ t[#t+1] = Def.ActorFrame{
 	end;
 	
 	Def.Quad{
-		InitCommand=cmd(xy,frameX+20,frameY-210;zoomto,400,300;halign,0;valign,0;diffuse,color("#333333CC"););
+		InitCommand=cmd(xy,frameX+20,frameY-210;zoomto,400,300;halign,0;valign,0;diffuse,color("#1E282FCC"););
 	};
 	LoadFont("_wendy small")..{
 		InitCommand=cmd(xy,frameX+250-capWideScale(get43size(120),30),frameY-90;zoom,0.7;halign,0.5;maxwidth,470),

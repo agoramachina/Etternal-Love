@@ -288,7 +288,7 @@ rateY = SCREEN_CENTER_Y-100
 end
 
 t[#t+1] = Def.Quad{
-	InitCommand=cmd(xy,infoboxx,infoboxy;zoomto,infoboxwidth,infoboxheight;halign,0;valign,0;diffuse,color("#333333CC");diffusealpha,0.66)
+	InitCommand=cmd(xy,infoboxx,infoboxy;zoomto,infoboxwidth,infoboxheight;halign,0;valign,0;diffuse,color("#1E282FCC");diffusealpha,0.66)
 }
 t[#t+1] = Def.Quad{
 	InitCommand=cmd(xy,infoboxx,infoboxy;zoomto,infoboxbar,infoboxheight;halign,0;valign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)

@@ -25,7 +25,7 @@ local function scroller(index)
 			if index == cursor then
 				self:diffuse(color("#FFFFFF"))
 			else
-				self:diffuse(color("#666666"))
+				self:diffuse(color("#656573"))
 			end;
 		end;
 		CodeMessageCommand=function(self,params)
@@ -47,21 +47,21 @@ local function scroller(index)
 				if index == cursor then
 					self:diffuse(color("#FFFFFF"))
 				else
-					self:diffuse(color("#666666"))
+					self:diffuse(color("#656573"))
 				end
 			end
 			if params.Name == "ColorRight" then
 				if index == cursor then
 					self:diffuse(color("#FFFFFF"))
 				else
-					self:diffuse(color("#666666"))
+					self:diffuse(color("#656573"))
 				end
 			end
 			if params.Name == "ColorStart" then
 				if index == cursor then
 					self:diffuse(color("#FFFFFF"))
 				else
-					self:diffuse(color("#666666"))
+					self:diffuse(color("#656573"))
 				end
 			end
 		end;
@@ -130,7 +130,7 @@ t[#t+1] = LoadFont("Common Normal") .. {
 	InitCommand=cmd(xy,SCREEN_CENTER_X-60,SCREEN_CENTER_Y;zoom,0.8;);
 	OnCommand=function(self)
 		self:settext("#")
-		self:diffuse(color("#666666"))
+		self:diffuse(color("#656573"))
 	end;
 }
 

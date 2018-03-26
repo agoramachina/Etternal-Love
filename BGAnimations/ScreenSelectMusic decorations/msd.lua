@@ -55,7 +55,7 @@ local t = Def.ActorFrame{
 }
 
 --BG quad
-t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#333333CC"))}
+t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#1E282FCC"))}
 
 --Skillset label function
 local function littlebits(i)

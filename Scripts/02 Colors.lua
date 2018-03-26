@@ -26,7 +26,7 @@ local themeColors = {
 		Grade_Tier06	= color("#c97bff"), -- C
 		Grade_Tier07	= color("#8c6239"), -- D
 		Grade_Failed	= color("0.8,0.8,0.8,1"), -- F
-		Grade_None		= color("#666666"), -- no play
+		Grade_None		= color("#656573"), -- no play
 	},
 
 	Difficulty = {

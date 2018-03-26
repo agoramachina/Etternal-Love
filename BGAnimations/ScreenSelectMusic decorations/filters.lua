@@ -54,7 +54,7 @@ end
 
 local f = Def.ActorFrame{
 	InitCommand=cmd(xy,frameX,frameY;halign,0),
-	Def.Quad{InitCommand=cmd(zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#333333CC"))},
+	Def.Quad{InitCommand=cmd(zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#1E282FCC"))},
 	Def.Quad{InitCommand=cmd(zoomto,frameWidth,offsetY;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,0.5)},
 	LoadFont("_wendy small")..{InitCommand=cmd(xy,5,offsetY-9;zoom,0.5;halign,0;diffuse,getMainColor('positive');settext,"Filters (WIP)")},
 	OnCommand=function(self)
@@ -189,7 +189,7 @@ local f = Def.ActorFrame{
 				self:settext("Highest Only: ".."OFF")
 			end
 			if FILTERMAN:GetFilterMode() then 
-				self:diffuse(color("#666666"))
+				self:diffuse(color("#656573"))
 			else
 				self:diffuse(color("#FFFFFF"))
 			end
@@ -233,7 +233,7 @@ local function CreateFilterInputBox(i)
 			end,
 			SetCommand=function(self)
 				if ActiveSS == i and activebound == 0 then
-					self:diffuse(color("#666666"))
+					self:diffuse(color("#656573"))
 				else
 					self:diffuse(color("#000000"))
 				end
@@ -248,7 +248,7 @@ local function CreateFilterInputBox(i)
 				local fval = FILTERMAN:GetSSFilter(i,0)				-- lower bounds
 				self:settext(fval)
 				if fval <= 0 and ActiveSS ~= i then
-					self:diffuse(color("#666666"))
+					self:diffuse(color("#656573"))
 				elseif activebound == 0 then
 					self:diffuse(color("#FFFFFF"))
 				end
@@ -269,7 +269,7 @@ local function CreateFilterInputBox(i)
 			end,
 			SetCommand=function(self)
 				if ActiveSS == i and activebound == 1 then
-					self:diffuse(color("#666666"))
+					self:diffuse(color("#656573"))
 				else
 					self:diffuse(color("#000000"))
 				end
@@ -284,7 +284,7 @@ local function CreateFilterInputBox(i)
 				local fval = FILTERMAN:GetSSFilter(i,1)				-- upper bounds
 				self:settext(fval)
 				if fval <= 0 and ActiveSS ~= i then
-					self:diffuse(color("#666666"))
+					self:diffuse(color("#656573"))
 				elseif activebound == 1 then
 					self:diffuse(color("#FFFFFF"))
 				end

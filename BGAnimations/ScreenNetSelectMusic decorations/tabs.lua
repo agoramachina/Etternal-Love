@@ -99,7 +99,7 @@ function tabs(index)
 			if isTabEnabled(index) then
 				self:diffuse(getMainColor('positive'))
 			else
-				self:diffuse(color("#666666"))
+				self:diffuse(color("#656573"))
 			end;
 		end;
 		PlayerJoinedMessageCommand=cmd(queuecommand,"Set");

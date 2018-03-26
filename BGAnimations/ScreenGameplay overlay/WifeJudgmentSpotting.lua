@@ -977,7 +977,7 @@ local p = Def.ActorFrame{
 		self:zoomto(fullProgressBarWidth,fullProgressBarHeight)
 		fb = self
 	end,
-	Def.Quad{InitCommand=cmd(zoomto,width,height;diffuse,color("#666666");diffusealpha,alpha)},			-- background
+	Def.Quad{InitCommand=cmd(zoomto,width,height;diffuse,color("#656573");diffusealpha,alpha)},			-- background
 	Def.SongMeterDisplay{
 		InitCommand=function(self)
 			self:SetUpdateRate(0.5)
@@ -1028,7 +1028,7 @@ mb = Def.ActorFrame{
 		self:xy(miniProgressBarX,miniProgressBarY)
 		mb = self
 	end,
-	Def.Quad{InitCommand=cmd(zoomto,width,height;diffuse,color("#666666");diffusealpha,alpha)}, 	-- background
+	Def.Quad{InitCommand=cmd(zoomto,width,height;diffuse,color("#656573");diffusealpha,alpha)}, 	-- background
 	Def.Quad{InitCommand=cmd(x,1+width/2;zoomto,1,height;diffuse,color("#555555"))},				-- ending indicator
 	Def.SongMeterDisplay{
 		InitCommand=function(self)

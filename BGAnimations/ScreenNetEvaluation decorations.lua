@@ -203,8 +203,8 @@ function scoreBoard(pn,position)
 	local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn)
 	local score = getScoreFromTable(getScoreList(PLAYER_1),pss:GetPersonalHighScoreIndex()+1)
 	
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY;zoomto,frameWidth+10,220;halign,0;valign,0;diffuse,color("#333333CC"))};
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,smoframeX,smoframeY;zoomto,zoomlength,zoomheight;halign,0;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY;zoomto,frameWidth+10,220;halign,0;valign,0;diffuse,color("#1E282FCC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,smoframeX,smoframeY;zoomto,zoomlength,zoomheight;halign,0;valign,0;diffuse,color("#1E282FCC"))};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+30;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+55;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 
@@ -449,7 +449,7 @@ end
 	end
 
 	local fart = {"Holds", "Mines", "Rolls", "Lifts", "Fakes"}
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+230;zoomto,frameWidth/2-10,60;halign,0;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+230;zoomto,frameWidth/2-10,60;halign,0;valign,0;diffuse,color("#1E282FCC"))};
 	for i=1,#fart do
 		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX,frameY+230+10*i;zoom,0.4;halign,0;settext,fart[i])};
 		t[#t+1] = LoadFont("Common Normal")..{
@@ -463,7 +463,7 @@ end
 	
 	-- stats stuff
 	devianceTable = pss:GetOffsetVector()
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+25,frameY+230;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+25,frameY+230;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#1E282FCC"))};
 	local smallest,largest = wifeRange(devianceTable)
 	local doot = {"Mean", "Mean(Abs)", "Sd", "Smallest", "Largest"}
 	local mcscoot = {

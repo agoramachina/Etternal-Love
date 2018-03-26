@@ -89,7 +89,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 
 		--The main quad
 		Def.Quad{
-			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,frameWidth,30;halign,0;valign,0;diffuse,color("#333333");diffusealpha,1;diffuserightedge,color("#33333333")),
+			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,frameWidth,30;halign,0;valign,0;diffuse,color("#1E282F");diffusealpha,1;diffuserightedge,color("#1E282F33")),
 			BeginCommand=function(self)
 				self:visible(GAMESTATE:IsHumanPlayer(pn))
 			end
@@ -97,7 +97,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 
 		--Highlight quad for the current score
 		Def.Quad{
-			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,frameWidth,30;halign,0;valign,0;diffuse,color("#ffffff");diffusealpha,0.3;diffuserightedge,color("#33333300")),
+			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,frameWidth,30;halign,0;valign,0;diffuse,color("#ffffff");diffusealpha,0.3;diffuserightedge,color("#1E282F00")),
 			BeginCommand=function(self)
 				self:visible(GAMESTATE:IsHumanPlayer(pn) and equals)
 			end

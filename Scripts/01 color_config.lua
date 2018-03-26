@@ -6,12 +6,12 @@ local defaultConfig = {
 		negative = "#C1006F", 
 	    positive = "#820081", 
 	    frames = "#000111", 
-	    disabled = "#666666"
+	    disabled = "#656573"
 	},
 
 	clearType = {
 		Clear = "#33aaff", 
-		SDCB = "#666666", 
+		SDCB = "#656573", 
 		Invalid = "#e61e25", 
 	    BF = "#999999", 
 	    MFC = "#66ccff", 
@@ -19,11 +19,11 @@ local defaultConfig = {
 	    SDP = "#cc8800", 
 	    WF = "#dddddd", 
 	    MF = "#cc6666", 
-	    NoPlay = "#666666", 
+	    NoPlay = "#656573", 
 	    SDG = "#448844", 
 	    PFC = "#eeaa00", 
 	    Failed = "#e61e25", 
-	    None = "#666666"
+	    None = "#656573"
 	},
 
 	difficulty = {
@@ -37,10 +37,10 @@ local defaultConfig = {
 	    Beginner = "#FF003C", 
 	    Difficulty_Routine = "#52008E", 
 	    Difficulty_Medium = "#8200A1", 
-	    Difficulty_Edit = "#666666", 
+	    Difficulty_Edit = "#656573", 
 	    Easy = "#C1006F", 
 	    Difficulty_Easy = "#C1006F", 
-	    Edit = "#666666", 
+	    Edit = "#656573", 
 	    Couple = "#ed0972", 
 	    Medium = "#8200A1"
 	},
@@ -56,10 +56,10 @@ local defaultConfig = {
 	    Beginner = "#FF003C", 
 	    Difficulty_Routine = "#52008E", 
 	    Difficulty_Medium = "#8200A1", 
-	    Difficulty_Edit = "#666666", 
+	    Difficulty_Edit = "#656573", 
 	    Easy = "#C1006F", 
 	    Difficulty_Easy = "#C1006F", 
-	    Edit = "#666666", 
+	    Edit = "#656573", 
 	    Couple = "#ed0972", 
 	    Medium = "#8200A1"
 	},
@@ -83,7 +83,7 @@ local defaultConfig = {
 	    Grade_Tier16 = "#000000", 
 	    Grade_Tier17 = "#000000", 
 	    Grade_Failed = "#cdcdcd", 
-	    Grade_None = "#666666"
+	    Grade_None = "#656573"
 	},
 
 	judgment = { -- Colors of each Judgment types

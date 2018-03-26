@@ -19,7 +19,7 @@ local t = Def.ActorFrame{
 
 
 t[#t+1] = Def.Banner{
-	InitCommand=cmd(x,10;y,61;halign,0;valign,0;scaletoclipped,capWideScale(get43size(384),384),capWideScale(get43size(120),120)),
+	InitCommand=cmd(x,8;y,58;halign,0;valign,0;scaletoclipped,capWideScale(get43size(384),384),capWideScale(get43size(120),120)),
 	SetMessageCommand=function(self)
 		if update then
 			local top = SCREENMAN:GetTopScreen()

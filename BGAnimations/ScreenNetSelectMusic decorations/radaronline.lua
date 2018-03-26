@@ -31,7 +31,7 @@ local offsetY = 20
 local pn = GAMESTATE:GetEnabledPlayers()[1]
 
 -- t[#t+1] = Def.Quad{
-	-- InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#333333CC"));
+	-- InitCommand=cmd(xy,frameX,frameY;zoomto,frameWidth,frameHeight;halign,0;valign,0;diffuse,color("#1E282FCC"));
 -- };
 
 -- t[#t+1] = Def.Quad{

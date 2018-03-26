@@ -6,7 +6,7 @@ local moveDownP2 = false
 local lockSpeedP1 = false
 local lockSpeedP2 = false
 
-local laneColor = color("#333333")
+local laneColor = color("#1E282F")
 
 local cols = GAMESTATE:GetCurrentStyle():ColumnsPerPlayer()
 
