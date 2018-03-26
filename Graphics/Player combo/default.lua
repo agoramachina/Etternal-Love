@@ -75,11 +75,11 @@ end
 
 local t = Def.ActorFrame {
 	InitCommand=cmd(vertalign,bottom),
-	LoadFont( "Combo", "numbers" ) .. {
+	LoadFont("_wendy small") .. {
 		Name="Number",
-		InitCommand=cmd(xy,x-4,y;zoom,zoom - 0.1;halign,1;valign,1;skewx,-0.125;visible,false),
+		InitCommand=cmd(xy,x-4,y;zoom,zoom + 0.1;halign,1;valign,1;visible,false),
 	},
-	LoadFont("Common normal") .. {
+	LoadFont("_wendy small") .. {
 		Name="Label",
 		InitCommand=cmd(xy,x,y;zoom,zoom;diffusebottomedge,color("0.75,0.75,0.75,1");halign,0;valign,1;visible,false),
 	},

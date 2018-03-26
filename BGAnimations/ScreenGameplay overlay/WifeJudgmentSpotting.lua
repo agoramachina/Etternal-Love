@@ -990,8 +990,8 @@ local p = Def.ActorFrame{
 		BeginCommand=cmd(settext,GAMESTATE:GetCurrentSong():GetDisplayMainTitle()),
 		DoneLoadingNextSongMessageCommand=cmd(settext,GAMESTATE:GetCurrentSong():GetDisplayMainTitle())
 	},
-	LoadFont("Common normal")..{																		-- total time
-		InitCommand=cmd(x,width/2;zoom,0.35;maxwidth,width*2;halign,1),
+	LoadFont("_wendy small")..{																		-- total time
+		InitCommand=cmd(x,width/2;zoom,0.3;maxwidth,width*2;halign,1),
 		BeginCommand=function(self)
 			local ttime = GetPlayableTime()
 			settext(self,SecondsToMMSS(ttime))
@@ -1362,7 +1362,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "comboPosText", Font= "_Common normal", 
+		Name= "comboPosText", Font= "Common normal", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
@@ -1380,7 +1380,7 @@ t[#t+1] = Def.ActorFrame{
 		end,
 	},
 	Def.BitmapText{
-		Name= "comboSizeText", Font= "_wendy small", 
+		Name= "comboSizeText", Font= "Common normal", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
