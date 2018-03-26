@@ -1,8 +1,8 @@
-## Etternal Love: an Etterna theme inspired by the "Simply Love" Stepmania theme
+## Etternal Love: an Etterna theme inspired by SM5's "Simply Love"
 
 ### Transferring Player Preferences
 
-To keep player player preferences from another theme, its settings must be copied to the new theme.
+To keep player preferences from another theme, its settings must be copied to the new theme.
 
 In Linux for example, these settings can be found in  `../Etterna/Save/Til Death_settings/` (avatarConfig.lua, colorConfig.lua, themeConfig.lua) and can be copied to `../Etterna/Save/Etternal-Love_settings/`. 
 
