@@ -8,8 +8,7 @@ In Linux for example, these settings can be found in  `../Etterna/Save/Til Death
 
 Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_settings/` (playerConfig.lua) can be copied to `../Etterna/Save/LocalProfiles/00000001/Etternal-Love_settings/`. 
 
-### TODO
-
+### TODO:
 * change gray quads on Select Music Screen
 * add background animation to Title Screen
 * add network compatibility
