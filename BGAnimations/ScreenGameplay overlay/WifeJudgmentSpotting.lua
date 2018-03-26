@@ -1096,7 +1096,7 @@ t[#t+1] = Def.ActorFrame{
 ]]
 
 local x = 0
-local y = 60
+local y = 75
 
 -- CUZ WIDESCREEN DEFAULTS SCREAAAAAAAAAAAAAAAAAAAAAAAAAM -mina
 if IsUsingWideScreen( ) then

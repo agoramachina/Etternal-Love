@@ -57,7 +57,7 @@ t[#t+1] = Def.ActorFrame{
 	},
 	--Revamped. SMO stuff for now. -Misterkister
 	LoadFont("_wendy small") .. {
-		InitCommand=cmd(xy,AvatarX+53,AvatarY+7;halign,0;zoom,0.35;diffuse,getMainColor('positive')),
+		InitCommand=cmd(xy,AvatarX+53,AvatarY+7;halign,0;zoom,0.3;diffuse,getMainColor('positive')),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local tiers = {[0] = "1: Novice", [7] = "2: Basic", [13] = "3: Intermediate", [17] = "4: Advanced", [21] = "5: Expert", [25] = "6: Master", [29] = "7: Veteran", [35] = "8: Legendary", [40] = "9: Vibro Legend"}
