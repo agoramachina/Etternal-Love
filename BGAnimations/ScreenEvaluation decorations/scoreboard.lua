@@ -138,7 +138,7 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		-- Wife grade and %score
 		LoadFont("Common normal")..{
 			Name="grade",
-			InitCommand=cmd(xy,framex+14,framey+4+(drawindex*spacing);zoom,0.46;halign,0;maxwidth,(frameWidth-15)/0.3),
+			InitCommand=cmd(xy,framex+10,framey+11+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.3),
 			BeginCommand=function(self)
 				if hsTable[index]:GetWifeScore() == 0 then 
 					self:settextf("NA (%s)", "Wife")
@@ -169,7 +169,16 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 			end
 		},
 		
-
+		--cleartype text
+		LoadFont("Common normal")..{
+			InitCommand=cmd(xy,framex+130+capWideScale(get43size(0),50),framey+12+(drawindex*spacing);zoom,0.35;halign,0.5;maxwidth,(frameWidth-15)/0.35),
+			BeginCommand=function(self)
+				if #hsTable >= 1 and index>= 1 then
+					self:settext(getClearTypeFromScore(pn,hsTable[index],0))
+					self:diffuse(getClearTypeFromScore(pn,hsTable[index],2))
+				end
+			end
+		},
 		
 		--max combo
 		LoadFont("Common normal")..{

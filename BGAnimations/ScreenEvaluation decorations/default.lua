@@ -8,12 +8,13 @@ if GAMESTATE:GetNumPlayersEnabled() == 1 and themeConfig:get_data().eval.ScoreBo
 	t[#t+1] = LoadActor("scoreboard")
 end
 
-
+---Title Display
 t[#t+1] = LoadFont("Common Normal")..{
 	InitCommand=cmd(xy,SCREEN_CENTER_X+32,capWideScale(135,150);zoom,.4;maxwidth,400/0.4),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self) 
 		if GAMESTATE:IsCourseMode() then
+			---add to new line to allow for longer song titles? -agoramachina
 			self:settext(GAMESTATE:GetCurrentCourse():GetDisplayFullTitle().." // "..GAMESTATE:GetCurrentCourse():GetScripter())
 		else
 			self:settext(GAMESTATE:GetCurrentSong():GetDisplayMainTitle().." // "..GAMESTATE:GetCurrentSong():GetDisplayArtist()) 

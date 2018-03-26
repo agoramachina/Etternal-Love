@@ -58,7 +58,7 @@ t[#t+1] = Def.Sprite {
 			else
 				self:visible(false)
 			end;
-			self:scaletofit(frameX+5,frameY+5+offsetY,frameX+150+5,frameY+150*3/4+offsetY+5)
+			self:scaletofit(frameX+5,frameY+5+offsetY,frameX+150+10,frameY+150*3/4+offsetY+10)
 			self:y(frameY+5+offsetY+150*3/8)
 			self:x(frameX+75+5)
 			self:smooth(0.5)
