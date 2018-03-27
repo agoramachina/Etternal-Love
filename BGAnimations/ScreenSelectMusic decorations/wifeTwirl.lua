@@ -28,7 +28,7 @@ local t = Def.ActorFrame{
 
 -- Music Rate Display
 t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,18,SCREEN_BOTTOM-225;visible,true;halign,0;zoom,0.4;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
+	InitCommand=cmd(xy,18,SCREEN_BOTTOM-230;visible,true;halign,0;zoom,0.4;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	SetCommand=function(self)
 		self:settext(getCurRateDisplayString())
 	end,
@@ -265,7 +265,7 @@ t[#t+1] = LoadFont("_wendy small") .. {
 
 -- Song duration
 t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,(capWideScale(get43size(384),384))+62,SCREEN_BOTTOM-85;visible,true;halign,1;zoom,capWideScale(get43size(0.6),0.6);maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
+	InitCommand=cmd(xy,(capWideScale(get43size(384),384))+62,SCREEN_BOTTOM-85;visible,true;halign,1;zoom,0.45,capWideScale(get43size(0.6),0.6);maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
 		if song then

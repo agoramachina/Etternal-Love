@@ -150,7 +150,7 @@ function scoreBoard(pn,position)
 	
 	--- 
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/.5),
+		InitCommand=cmd(xy,frameX+5,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/.45),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:settext(GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString('ModsLevel_Current'))
