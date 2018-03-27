@@ -547,7 +547,7 @@ end
 
 -- next/prev for all playlists
 r[#r+1] = Def.ActorFrame{
-	InitCommand=cmd(xy,frameX+10,frameY+rankingY+250),
+	InitCommand=cmd(xy,frameX+12,frameY+rankingY+250),
 	Def.Quad{
 		InitCommand=cmd(xy,300,-8;zoomto,40,20;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,buttondiffuse),
 		MouseLeftClickMessageCommand=function(self)
