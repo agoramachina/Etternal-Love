@@ -9,11 +9,11 @@ In Linux for example, these settings can be found in  `../Etterna/Save/Til Death
 Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_settings/` (playerConfig.lua) can be copied to `../Etterna/Save/LocalProfiles/00000001/Etternal-Love_settings/`. 
 
 ### Screenshots 
-![](Graphics/assets/screenshots/screen0.png)
-![](Graphics/assets/screenshots/screen1.png)
-![](Graphics/assets/screenshots/screen2.png)
-![](Graphics/assets/screenshots/screen3.png) 
-![](Graphics/assets/screenshots/screen4.png) 
+![](Graphics/assets/screenshots/screen01.png)
+![](Graphics/assets/screenshots/screen11.png)
+![](Graphics/assets/screenshots/screen21.png)
+![](Graphics/assets/screenshots/screen31.png) 
+![](Graphics/assets/screenshots/screen41.png) 
 
 ### TODO:
 * add alpha to gray quads on Select Music Screen
