@@ -1,5 +1,26 @@
 local defaultConfig = {
 	global = {
+
+		VisualTheme =
+	{
+		Default = "Hearts",
+		Choices = { "Hearts", "Arrows" },
+	},
+	RainbowMode = {
+		Default = false,
+		Choices = { "On", "Off" },
+		Values 	= { true , false }
+	},
+	-- - - - - - - - - - - - - - - - - - - -
+	-- SimplyLoveColor saves the theme color for the next time
+	-- the StepMania application is started.
+	SimplyLoveColor =
+	{
+		-- a nice pinkish-purple, by default
+		Default = 3,
+		Choices = { 1,2,3,4,5,6,7,8,9,10,11,12 },
+		Values = { 1,2,3,4,5,6,7,8,9,10,11,12 }
+	},
 		DefaultScoreType = 4, -- refer to scripts/wife.lua for whatever scoring types are available
 		fallbackscoreType = 1,
 		TipType = 1, -- 1 = Hide,2=tips 3= random quotes phrases,
@@ -29,5 +50,5 @@ local defaultConfig = {
 	}
 }
 
-themeConfig = create_setting("themeConfig", "themeConfig.lua", defaultConfig,-1)
+themeConfig = create_setting("theme_Config", "theme_Config.lua", defaultConfig,-1)
 themeConfig:load()
