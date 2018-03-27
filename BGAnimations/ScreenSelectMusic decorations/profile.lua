@@ -338,7 +338,7 @@ local profilebuttons = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("_wendy small") .. {InitCommand=cmd(x,135;diffuse,getMainColor('positive');settext,"Import Scores";zoom,0.3)},
+	LoadFont("_wendy small") .. {InitCommand=cmd(x,130;diffuse,getMainColor('positive');settext,"Import Scores";zoom,0.3)},
 	Def.Quad{
 		InitCommand=cmd(x,105;zoomto,100,20;diffusealpha,buttondiffuse),
 		MouseLeftClickMessageCommand=function(self)
@@ -351,7 +351,7 @@ local profilebuttons = Def.ActorFrame{
 			end
 		end
 	},
-	LoadFont("_wendy small") .. {InitCommand=cmd(x,270;diffuse,getMainColor('positive');settext,"Validate All";zoom,0.3)},
+	LoadFont("_wendy small") .. {InitCommand=cmd(x,260;diffuse,getMainColor('positive');settext,"Validate All";zoom,0.3)},
 	Def.Quad{
 		InitCommand=cmd(x,210;zoomto,100,20;diffusealpha,buttondiffuse),
 		MouseLeftClickMessageCommand=function(self)
