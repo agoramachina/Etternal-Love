@@ -90,7 +90,9 @@ function scoreBoard(pn,position)
 	local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn)
 	local score = SCOREMAN:GetMostRecentScore()
 	
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY;zoomto,frameWidth+10,220;halign,0;valign,0;diffuse,color("#1E282FCC"))};
+
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-8,frameY-3;zoomto,frameWidth+16,300;halign,0;valign,0;diffuse,getMainColor('highlight'))};	
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY;zoomto,frameWidth+10,223;halign,0;valign,0;diffuse,color("#1E282FEE"))};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+30;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+55;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 
@@ -216,11 +218,11 @@ function scoreBoard(pn,position)
 	};
 
 	local fart = {"Holds", "Mines", "Rolls", "Lifts", "Fakes"}
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+226;zoomto,frameWidth/2-10,60;halign,0;valign,0;diffuse,color("#1E282FCC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+226;zoomto,frameWidth/2-5,60;halign,0;valign,0;diffuse,color("#1E282FEE"))};
 	for i=1,#fart do
 		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX+8,frameY+226+10*i;zoom,0.4;halign,0;settext,fart[i])};
 		t[#t+1] = LoadFont("Common Normal")..{
-			InitCommand=cmd(xy,frameWidth/2-8,frameY+226+10*i;zoom,0.4;halign,1),
+			InitCommand=cmd(xy,frameWidth/2-2,frameY+226+10*i;zoom,0.4;halign,1),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
 				self:settextf("%03d/%03d",pss:GetRadarActual():GetValue("RadarCategory_"..fart[i]),pss:GetRadarPossible():GetValue("RadarCategory_"..fart[i]))
@@ -230,7 +232,7 @@ function scoreBoard(pn,position)
 	
 	-- stats stuff
 	local devianceTable = pss:GetOffsetVector()
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+25,frameY+226;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#1E282FCC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+25,frameY+226;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#1E282FEE"))};
 	local smallest,largest = wifeRange(devianceTable)
 	local doot = {"Mean", "Mean(Abs)", "Sd", "Smallest", "Largest"}
 	local mcscoot = {
