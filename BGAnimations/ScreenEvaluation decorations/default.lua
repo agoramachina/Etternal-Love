@@ -105,7 +105,7 @@ function scoreBoard(pn,position)
 		end,
 	};
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameWidth+frameX,frameY+23;zoom,0.38;halign,1;valign,0;maxwidth,200),
+		InitCommand=cmd(xy,frameWidth+frameX+5,frameY+23;zoom,0.38;halign,1;valign,0;maxwidth,200),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			local meter = score:GetSkillsetSSR("Overall")
@@ -150,7 +150,7 @@ function scoreBoard(pn,position)
 	
 	--- 
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/.55),
+		InitCommand=cmd(xy,frameX+5,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/.5),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:settext(GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString('ModsLevel_Current'))
