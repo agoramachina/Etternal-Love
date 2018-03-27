@@ -90,7 +90,7 @@ function scoreBoard(pn,position)
 	local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn)
 	local score = SCOREMAN:GetMostRecentScore()
 	
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY;zoomto,frameWidth+10,220;halign,0;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY;zoomto,frameWidth+10,220;halign,0;valign,0;diffuse,color("#1E282FCC"))};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+30;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+55;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
 
@@ -149,7 +149,7 @@ function scoreBoard(pn,position)
 	
 	--- 
 	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+5,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/0.8),
+		InitCommand=cmd(xy,frameX+5,frameY+70;zoom,0.30;halign,0;maxwidth,frameWidth/.55),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self) 
 			self:settext(GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptionsString('ModsLevel_Current'))
@@ -216,11 +216,11 @@ function scoreBoard(pn,position)
 	};
 
 	local fart = {"Holds", "Mines", "Rolls", "Lifts", "Fakes"}
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+226;zoomto,frameWidth/2-10,60;halign,0;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY+226;zoomto,frameWidth/2-10,60;halign,0;valign,0;diffuse,color("#1E282FCC"))};
 	for i=1,#fart do
-		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX,frameY+226+10*i;zoom,0.4;halign,0;settext,fart[i])};
+		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX+8,frameY+226+10*i;zoom,0.4;halign,0;settext,fart[i])};
 		t[#t+1] = LoadFont("Common Normal")..{
-			InitCommand=cmd(xy,frameWidth/2,frameY+226+10*i;zoom,0.4;halign,1),
+			InitCommand=cmd(xy,frameWidth/2-8,frameY+226+10*i;zoom,0.4;halign,1),
 			BeginCommand=cmd(queuecommand,"Set"),
 			SetCommand=function(self) 
 				self:settextf("%03d/%03d",pss:GetRadarActual():GetValue("RadarCategory_"..fart[i]),pss:GetRadarPossible():GetValue("RadarCategory_"..fart[i]))
@@ -230,7 +230,7 @@ function scoreBoard(pn,position)
 	
 	-- stats stuff
 	local devianceTable = pss:GetOffsetVector()
-	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+30,frameY+226;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#333333CC"))};
+	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameWidth+25,frameY+226;zoomto,frameWidth/2+10,60;halign,1;valign,0;diffuse,color("#1E282FCC"))};
 	local smallest,largest = wifeRange(devianceTable)
 	local doot = {"Mean", "Mean(Abs)", "Sd", "Smallest", "Largest"}
 	local mcscoot = {
@@ -243,7 +243,7 @@ function scoreBoard(pn,position)
 
 	for i=1,#doot do
 		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameX+capWideScale(get43size(130),160),frameY+226+10*i;zoom,0.4;halign,0;settext,doot[i])};
-		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameWidth+20,frameY+226+10*i;zoom,0.4;halign,1;settextf,"%5.2fms",mcscoot[i])};
+		t[#t+1] = LoadFont("Common Normal")..{InitCommand=cmd(xy,frameWidth+12,frameY+226+10*i;zoom,0.4;halign,1;settextf,"%5.2fms",mcscoot[i])};
 	end
 	
 	return t
