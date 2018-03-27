@@ -123,7 +123,7 @@ local function makescoregoal(i)
 			InitCommand=function(self)
 				self:y((goalsperpage-i)*-goalYspacing)
 			end,
-			Def.Quad{InitCommand=cmd(xy,-16,20;zoomto,frameWidth-10,goalYspacing-2;halign,0;valign,1;diffuse,getMainColor('frames');diffusealpha,0.35)},
+			Def.Quad{InitCommand=cmd(xy,-16,20;zoomto,frameWidth-20,goalYspacing-2;halign,0;valign,1;diffuse,getMainColor('frames');diffusealpha,0.35)},
 			LoadFont("_wendy small") .. {
 				InitCommand=cmd(xy,-14,goalrow2Y;halign,0;zoom,0.25;diffuse,getMainColor('positive');maxwidth,56),
 				SetCommand=function(self)
