@@ -135,6 +135,7 @@ simpleColor = {
 	return color(simpleColor[i])
 end
 
+
 function getRandomColor()
 	rainbow = {
 		"#FF3C23",
