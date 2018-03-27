@@ -58,7 +58,7 @@ for i=1, #fantabars do
 	o[#o+1] = Def.Quad{InitCommand=cmd(y, fitY(-tst[judge]*fantabars[i]); zoomto,plotWidth+plotMargin,1;diffuse,byJudgment(bantafars[i]))}
 end
 -- Background
-o[#o+1] = Def.Quad{InitCommand=cmd(zoomto,plotWidth+plotMargin+11,plotHeight+plotMargin+11;diffuse,getMainColor('highlight');diffusealpha,0.8)}
+o[#o+1] = Def.Quad{InitCommand=cmd(zoomto,plotWidth+plotMargin+12,plotHeight+plotMargin+12;diffuse,getMainColor('highlight');diffusealpha,0.8)}
 o[#o+1] = Def.Quad{InitCommand=cmd(zoomto,plotWidth+plotMargin+6,plotHeight+plotMargin+6;diffuse,color("0.05,0.05,0.05,0.5");diffusealpha,0.9)}
 -- Convert noterows to timestamps and plot dots
 local wuab = {}

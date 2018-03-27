@@ -1,39 +1,27 @@
--- if the MenuTimer is enabled, we should reset SSM's MenuTimer now that we've reached Gameplay
-if PREFSMAN:GetPreference("MenuTimer") then
-	SL.Global.MenuTimer.ScreenSelectMusic = ThemePrefs.Get("ScreenSelectMusicMenuTimer")
+-- load certain preferences before gameplay initializes
+local modslevel = topscreen  == "ScreenEditOptions" and "ModsLevel_Stage" or "ModsLevel_Preferred"
+local playeroptions = GAMESTATE:GetPlayerState(PLAYER_1):GetPlayerOptions(modslevel)
+playeroptions:Mini( 2 - playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).ReceptorSize/50 )
+local profile = PROFILEMAN:GetProfile(PLAYER_1)
+if profile:IsCurrentChartPermamirror() then	-- turn on mirror if song is flagged as perma mirror
+	playeroptions:Mirror( true )
 end
 
-local Players = GAMESTATE:GetHumanPlayers()
-local t = Def.ActorFrame{ Name="GameplayUnderlay" }
-
--- underlay stuff like BackgroundFilter, ColumnFlash, and MeasureCounter
-for player in ivalues(Players) do
-	t[#t+1] = LoadActor("./PerPlayer/Danger.lua", player)
-	t[#t+1] = LoadActor("./PerPlayer/Filter.lua", player)
+local bgtype = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).BackgroundType
+local songoptions = GAMESTATE:GetSongOptionsObject('ModsLevel_Preferred')
+-- this seems really stupid - mina
+if bgtype == 1 then
+	songoptions:StaticBackground(false)
+	songoptions:RandomBGOnly(false)
+elseif bgtype == 2 then 
+	songoptions:StaticBackground(true)
+	songoptions:RandomBGOnly(false)
+elseif bgtype == 3 then
+	songoptions:StaticBackground(false)
+	songoptions:RandomBGOnly(true)
 end
 
--- semi-transparent quad at the top of ScreenGameplay
-t[#t+1] = LoadActor("./Shared/Header.lua")
-
--- Song title and progress bar for how much song remains
-t[#t+1] = LoadActor("./Shared/SongInfoBar.lua")
-
--- More per-player stuff
-for player in ivalues(Players) do
-	t[#t+1] = LoadActor("./PerPlayer/Score.lua", player)
-	t[#t+1] = LoadActor("./PerPlayer/LifeMeter/default.lua", player)
-	t[#t+1] = LoadActor("./PerPlayer/ColumnFlashOnMiss.lua", player)
-	t[#t+1] = LoadActor("./PerPlayer/MeasureCounter.lua", player)
-	t[#t+1] = LoadActor("./PerPlayer/DifficultyMeter.lua", player)
-	t[#t+1] = LoadActor("./PerPlayer/TargetScore/default.lua", player)
-	t[#t+1] = LoadActor("./PerPlayer/StepStatistics/default.lua", player)
-end
-
-
-if GAMESTATE:IsPlayerEnabled(PLAYER_1) and GAMESTATE:IsPlayerEnabled(PLAYER_2) then
-	t[#t+1] = LoadActor("./Shared/WhoIsCurrentlyWinning.lua")
-end
-
-t[#t+1] = LoadActor("./Shared/BPMDisplay.lua")
-
+local t = Def.ActorFrame{}
+t[#t+1] = LoadActor("bg")
+t[#t+1] = LoadActor("ScreenFilter")
 return t
