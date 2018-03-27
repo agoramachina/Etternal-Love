@@ -27,7 +27,7 @@ local af = Def.ActorFrame{
 -- non-RainbowMode (normal) background
 
 local file_info = {
-	ColorRGB = {0,1,1,0,0,0,1,1,1,1},
+	ColorRGB = {0,4,3,4,3,0,4,3,4,3},
 	diffusealpha = {0.05,0.2,0.1,0.1,0.1,0.1,0.1,0.05,0.1,0.1},
 	xy = {0,40,80,120,200,280,360,400,480,560},
 	texcoordvelocity = {{0.03,0.01},{0.03,0.02},{0.03,0.01},{0.02,0.02},{0.03,0.03},{0.02,0.02},{0.03,0.01},{-0.03,0.01},{0.05,0.03},{0.03,0.04}}
@@ -55,8 +55,8 @@ local t = Def.ActorFrame {
 for i=1,10 do
 	t[#t+1] = Def.Sprite {
 		Texture=file,
-		InitCommand=cmd(diffuse, ColorRGB( file_info.ColorRGB[i] ) ),
-		ColorSelectedMessageCommand=cmd(linear, 0.5; diffuse, ColorRGB( file_info.ColorRGB[i] ); diffusealpha, file_info.diffusealpha[i] ),
+		InitCommand=cmd(diffuse, getSimpleColor( file_info.ColorRGB[i] ) ),
+		ColorSelectedMessageCommand=cmd(linear, 0.5; diffuse, getSimpleColor( file_info.ColorRGB[i] ); diffusealpha, file_info.diffusealpha[i] ),
 		OnCommand=cmd(zoom,1.3; xy, file_info.xy[i], file_info.xy[i]; customtexturerect,0,0,1,1;
 			texcoordvelocity, file_info.texcoordvelocity[i][1], file_info.texcoordvelocity[i][2]; diffusealpha, file_info.diffusealpha[i] ),
 		BackgroundImageChangedMessageCommand=function(self)
@@ -68,196 +68,5 @@ end
 
 af[#af+1] = t
 
--- --------------------------------------------------------
--- RainbowMode background
-
-af[#af+1] = Def.ActorFrame{
-	InitCommand=function(self)
-		if not 'RainbowMode' == true then
-			self:visible(false)
-		end
-	end,
-	OnCommand=cmd(Center; bob; effectmagnitude,0,50,0; effectperiod,8),
-	BackgroundImageChangedMessageCommand=function(self)
-		if 'RainbowMode' == true then
-			self:visible(true):linear(0.6):diffusealpha(1)
-		else
-			self:linear(0.6):diffusealpha(0):queuecommand("Hide")
-		end
-	end,
-	HideCommand=function(self) self:visible(false) end,
-
-
-	Def.ActorFrame{
-		OnCommand=cmd(bob; effectmagnitude,0,0,50; effectperiod,12),
-
-		Def.ActorFrame{
-			InitCommand=cmd(diffusealpha,0; queuecommand, "Appear"; playcommand, "NewColor" ),
-			OnCommand=function(self)
-				delay = 0.7
-			end,
-
-			AppearCommand=cmd(linear,1; diffusealpha, 1; queuecommand, "Loop"),
-			-- OffCommand=cmd(linear,1; diffusealpha,0),
-
-			LoopCommand=function(self)
-				index = index + 1
-				self:queuecommand('NewColor')
-				self:sleep(delay)
-				self:queuecommand('Loop')
-			end,
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom,1.3; x,000; y,-000; z,-030; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.04 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.3 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-050; y,040; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.04,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,050; y,-080; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.05,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-100; y,120; z,-200; customtexturerect,0,0,1,1; texcoordvelocity,0.06,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,100; y,-160; z,-040; customtexturerect,0,0,1,1; texcoordvelocity,0.07,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.3),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-150; y,210; z,-050; customtexturerect,0,0,1,1; texcoordvelocity,0.08,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.3),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,150; y,-250; z,-200; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.03 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-200; y,290; z,-060; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.03 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.3),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,200; y,-330; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-250; y,370; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.03 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,250; y,-410; z,-050; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.3),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-300; y,450; z,-000; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,300; y,-490; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-350; y,530; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,350; y,-570; z,-000; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.3),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-400; y,610; z,-200; customtexturerect,0,0,1,1; texcoordvelocity,0.04,.03 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,400; y,-650; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-450; y,690; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.02,.04 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,450; y,-730; z,-200; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-500; y,770; z,-200; customtexturerect,0,0,1,1; texcoordvelocity,0.06,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,500; y,-810; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.04,.01 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-550; y,850; z,-070; customtexturerect,0,0,1,1; texcoordvelocity,0.03,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,550; y,-890; z,-200; customtexturerect,0,0,1,1; texcoordvelocity,0.02,.03 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,-600; y,930; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.06,.02 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index-1); diffusealpha, 0.2 ),
-			},
-
-			Def.Sprite{
-				Texture=file,
-				InitCommand=cmd(zoom, 1.3; x,600; y,-970; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.04,.04 ),
-				NewColorCommand=cmd(linear, delay; diffuse, getSimpleColor(index+1); diffusealpha, 0.2 ),
-			}
-		}
-	}
-}
 
 return af
