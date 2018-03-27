@@ -28,7 +28,7 @@ local t = Def.ActorFrame{
 
 -- Music Rate Display
 t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,18,SCREEN_BOTTOM-230;visible,true;halign,0;zoom,0.4;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
+	InitCommand=cmd(xy,18,SCREEN_BOTTOM-235;visible,true;halign,0;zoom,0.4;maxwidth,capWideScale(get43size(360),360)/capWideScale(get43size(0.45),0.45)),
 	SetCommand=function(self)
 		self:settext(getCurRateDisplayString())
 	end,
@@ -131,14 +131,14 @@ t[#t+1] = Def.Actor{
 
 t[#t+1] = Def.ActorFrame{
 	-- **frames/bars**
-	Def.Quad{InitCommand=cmd(xy,frameX,frameY-76;zoomto,110,94;halign,0;valign,0;diffuse,color("#1E282FCC");diffusealpha,0.66)},			--Upper Bar
+	Def.Quad{InitCommand=cmd(xy,frameX,frameY-80;zoomto,110,98;halign,0;valign,0;diffuse,color("#1E282FCC");diffusealpha,0.66)},			--Upper Bar
 	Def.Quad{InitCommand=cmd(xy,frameX,frameY+18;zoomto,frameWidth+4,50;halign,0;valign,0;diffuse,color("#1E282FCC");diffusealpha,0.66)},	--Lower Bar
-	Def.Quad{InitCommand=cmd(xy,frameX,frameY-76;zoomto,8,144;halign,0;valign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)},		--Side Bar (purple streak on the left)
+	Def.Quad{InitCommand=cmd(xy,frameX,frameY-80;zoomto,8,148;halign,0;valign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)},		--Side Bar (purple streak on the left)
 	
 	-- **score related stuff** These need to be updated with rate changed commands
 	-- Primary percent score
 	LoadFont("_wendy small")..{
-		InitCommand=cmd(xy,frameX+62,frameY+78;zoom,0.66;halign,0.5;maxwidth,125;valign,1),
+		InitCommand=cmd(xy,frameX+64,frameY+78;zoom,0.66;halign,0.5;maxwidth,125;valign,1),
 		BeginCommand=cmd(queuecommand,"Set"),
 		SetCommand=function(self)
 			if song and score then
