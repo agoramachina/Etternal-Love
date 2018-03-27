@@ -16,8 +16,13 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 ![](Graphics/assets/screenshots/screen4.png) 
 
 ### TODO:
-* change gray quads on Select Music Screen
-* add background animation to Title Screen
-* add network compatibility
-* FIX BPM
-* get rid of weird white quad in upper left corner of selectMusicScreen
+* add alpha to gray quads on Select Music Screen
+* ~~add background animation~~
+* add player color/visual options for background
+* change colorconfig vspacing, add theme color options
+* network compatibility
+* FIX BPM DISPLAY on Select Music Screen
+* fix banner border on Select Music Screen
+* GET RID OF WEIRD WHITE QUAD in upper left corner of Screens (underlay?)
+* more testing on non-widescreens
+* revamp Gameplay Screen
