@@ -389,7 +389,7 @@ local function filterButton(i)
 end
 
 r[#r+1] = Def.ActorFrame{
-	InitCommand=cmd(xy,frameX+10,frameY+rankingY+250),
+	InitCommand=cmd(xy,frameX+25,frameY+rankingY+255),
 	Def.Quad{
 		InitCommand=cmd(xy,300,-8;zoom,40,20;halign,0;valign,0;diffuse,getMainColor('frames');diffusealpha,buttondiffuse),
 		MouseLeftClickMessageCommand=function(self)
