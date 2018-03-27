@@ -1,8 +1,8 @@
 local judge = GetTimingDifficulty()
 local tst = { 1.50,1.33,1.16,1.00,0.84,0.66,0.50,0.33,0.20 }
 
-local plotWidth, plotHeight = 400,120
-local plotX, plotY = SCREEN_WIDTH - 9 - plotWidth/2, SCREEN_HEIGHT - 56 - plotHeight/2
+local plotWidth, plotHeight = 410,130
+local plotX, plotY = SCREEN_WIDTH - 35 - plotWidth/2, SCREEN_HEIGHT - 90 - plotHeight/2
 local dotDims, plotMargin = 2, 4
 local maxOffset = 180*tst[judge]
 local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1)
@@ -58,7 +58,8 @@ for i=1, #fantabars do
 	o[#o+1] = Def.Quad{InitCommand=cmd(y, fitY(-tst[judge]*fantabars[i]); zoomto,plotWidth+plotMargin,1;diffuse,byJudgment(bantafars[i]))}
 end
 -- Background
-o[#o+1] = Def.Quad{InitCommand=cmd(zoomto,plotWidth+plotMargin,plotHeight+plotMargin;diffuse,color("0.05,0.05,0.05,0.05");diffusealpha,0.8)}
+o[#o+1] = Def.Quad{InitCommand=cmd(zoomto,plotWidth+plotMargin+11,plotHeight+plotMargin+11;diffuse,getMainColor('highlight');diffusealpha,0.8)}
+o[#o+1] = Def.Quad{InitCommand=cmd(zoomto,plotWidth+plotMargin+6,plotHeight+plotMargin+6;diffuse,color("0.05,0.05,0.05,0.5");diffusealpha,0.9)}
 -- Convert noterows to timestamps and plot dots
 local wuab = {}
 for i=1,#nrt do

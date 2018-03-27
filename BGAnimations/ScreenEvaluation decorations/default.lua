@@ -90,7 +90,6 @@ function scoreBoard(pn,position)
 	local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn)
 	local score = SCOREMAN:GetMostRecentScore()
 	
-
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-8,frameY-3;zoomto,frameWidth+16,300;halign,0;valign,0;diffuse,getMainColor('highlight'))};	
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX-5,frameY;zoomto,frameWidth+10,223;halign,0;valign,0;diffuse,color("#1E282FEE"))};
 	t[#t+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+30;zoomto,frameWidth,2;halign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)};
