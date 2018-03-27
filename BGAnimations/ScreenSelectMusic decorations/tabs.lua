@@ -76,7 +76,7 @@ function tabs(index)
 
 	t[#t+1] = Def.Quad{
 		Name="TabBG";
-		InitCommand=cmd(y,-2;valign,0;zoomto,frameWidth,20;diffusecolor,getMainColor('frames');diffusealpha,0.85);
+		InitCommand=cmd(y,-2;valign,0;zoomto,frameWidth+16,20;diffusecolor,getMainColor('frames');diffusealpha,0.85);
 		MouseLeftClickMessageCommand=function(self)
 			if isOver(self) then
 				setTabIndex(index-1)
