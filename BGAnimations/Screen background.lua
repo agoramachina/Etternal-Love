@@ -30,7 +30,7 @@ local af = Def.ActorFrame{
 -- non-RainbowMode (normal) background
 
 local file_info = {
-	ColorRGB = {2,1,2,1,2,1,2,2,1,2},
+	ColorRGB = {getMainColor('highlight'),getMainColor('positive'),getMainColor('highlight'),getMainColor('positive'),getMainColor('highlight'),getMainColor('positive'),getMainColor('highlight'),getMainColor('highlight'),getMainColor('positive'),getMainColor('highlight')},
 	diffusealpha = {0.05,0.2,0.1,0.1,0.1,0.1,0.1,0.05,0.1,0.1},
 	xy = {0,40,80,120,200,280,360,400,480,560},
 	texcoordvelocity = {{0.03,0.01},{0.03,0.02},{0.03,0.01},{0.02,0.02},{0.03,0.03},{0.02,0.02},{0.03,0.01},{-0.03,0.01},{0.05,0.03},{0.03,0.04}}
@@ -60,8 +60,8 @@ local t = Def.ActorFrame {
 for i=1,10 do
 	t[#t+1] = Def.Sprite {
 		Texture=file,
-		InitCommand=cmd(diffuse, getEtternalColor( file_info.ColorRGB[i] ) ),  ---fix this --agoramachina
-		ColorSelectedMessageCommand=cmd(linear, 0.5; diffuse, getMainColor( file_info.ColorRGB[i] ); diffusealpha, file_info.diffusealpha[i] ),
+		InitCommand=cmd(diffuse, file_info.ColorRGB[i]  ),  ---fix this --agoramachina
+		--ColorSelectedMessageCommand=cmd(linear, 0.5; diffuse, getMainColor( file_info.ColorRGB[i] ); diffusealpha, file_info.diffusealpha[i] ),
 
 		OnCommand=cmd(zoom,1.3; xy, file_info.xy[i], file_info.xy[i]; customtexturerect,0,0,1,1;
 			texcoordvelocity, file_info.texcoordvelocity[i][1], file_info.texcoordvelocity[i][2]; diffusealpha, file_info.diffusealpha[i] ),
