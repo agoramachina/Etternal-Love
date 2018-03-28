@@ -16,7 +16,6 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 ![](Graphics/assets/screenshots/screen4.png) 
 
 ### TODO:
-* add alpha to gray quads on Select Music Screen
 * ~~add background animation~~
 * add player color/visual options for background
 * change colorconfig vspacing, add theme color options
