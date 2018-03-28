@@ -1,7 +1,7 @@
 -- the best way to spread holiday cheer is singing loud for all to hear
-if PREFSMAN:GetPreference("EasterEggs") and MonthOfYear()==11 then
-	return LoadActor( THEME:GetPathB("", "_shared background normal/snow.mp4") )..{ InitCommand=function(self) self:FullScreen():Center() end }
-end
+--if PREFSMAN:GetPreference("EasterEggs") and MonthOfYear()==11 then
+--	return LoadActor( THEME:GetPathB("", "_shared background normal/snow.mp4") )..{ InitCommand=function(self) self:FullScreen():Center() end }
+--end
 
 local file = THEME:GetPathB("", "_shared background normal/" .. theme_config.Get("VisualTheme") .. ".png")
 
@@ -19,7 +19,7 @@ local af = Def.ActorFrame{
 		InitCommand=function(self) self:FullScreen():Center():diffuse( theme_config.Get("RainbowMode") and Color.White or Color.Black ) end,
 		BackgroundImageChangedMessageCommand=function(self)
 			THEME:ReloadMetrics()
-			SL.Global.ActiveColorIndex = theme_config.Get("RainbowMode") and 3 or theme_config.Get("SimplyLoveColor")  ---do this next
+			SL.Global.ActiveColorIndex = theme_config.Get("RainbowMode") and 3 or theme_config.Get("SimplyLoveColor")  ---do this next -agoramachina
 			self:linear(1):diffuse( theme_config.Get("RainbowMode") and Color.White or Color.Black )
 		end,
 	}
@@ -37,19 +37,19 @@ local file_info = {
 
 local t = Def.ActorFrame {
 	InitCommand=function(self)
-		if theme_config.Get("RainbowMode") then
-			self:visible(false)
-		else
+--		if theme_config.Get("RainbowMode") then
+--			self:visible(false)
+--		else
 			self:diffusealpha(0)
 		end
 	end,
 	OnCommand=cmd(accelerate,0.8; diffusealpha,1),
 	BackgroundImageChangedMessageCommand=function(self)
-		if not theme_config.Get("RainbowMode") then
+--		if not theme_config.Get("RainbowMode") then
 			self:visible(true):linear(0.6):diffusealpha(1)
-		else
-			self:linear(0.6):diffusealpha(0):queuecommand("Hide")
-		end
+--		else
+--			self:linear(0.6):diffusealpha(0):queuecommand("Hide")
+--		end
 	end,
 	HideCommand=function(self) self:visible(false) end,
 }
@@ -90,7 +90,7 @@ af[#af+1] = Def.ActorFrame{
 	HideCommand=function(self) self:visible(false) end,
 
 
-	Def.ActorFrame{
+--[[	Def.ActorFrame{
 		OnCommand=cmd(bob; effectmagnitude,0,0,50; effectperiod,12),
 
 		Def.ActorFrame{
@@ -258,7 +258,7 @@ af[#af+1] = Def.ActorFrame{
 				InitCommand=cmd(zoom, 1.3; x,600; y,-970; z,-100; customtexturerect,0,0,1,1; texcoordvelocity,0.04,.04 ),
 				NewColorCommand=cmd(linear, delay; diffuse, GetHexColor(index+1); diffusealpha, 0.2 ),
 			}
-		}
+		} --]]
 	}
 }
 

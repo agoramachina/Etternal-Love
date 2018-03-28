@@ -3,7 +3,7 @@ local cursorIndex = {1,1}
 local selected = {"",""}
 local currentItems = {{},{}}
 
-local maxItems = 17-- odd only
+local maxItems = 19-- odd only
 local configData = colorConfig:get_data()
 
 local frameX = {30,180,450}

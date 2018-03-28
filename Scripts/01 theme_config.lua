@@ -14,12 +14,12 @@ local defaultConfig = {
 	-- - - - - - - - - - - - - - - - - - - -
 	-- SimplyLoveColor saves the theme color for the next time
 	-- the StepMania application is started.
-	SimplyLoveColor =
+	EtternalColor = --agoramachina
 	{
 		-- a nice pinkish-purple, by default
-		Default = 3,
-		Choices = { 1,2,3,4,5,6,7,8,9,10,11,12 },
-		Values = { 1,2,3,4,5,6,7,8,9,10,11,12 }
+		Default = 1,
+		Choices = { 1,2},
+		Values = { 1,2}
 	},
 		DefaultScoreType = 4, -- refer to scripts/wife.lua for whatever scoring types are available
 		fallbackscoreType = 1,
