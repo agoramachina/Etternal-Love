@@ -8,7 +8,7 @@ return Def.ActorFrame{
 		Def.SongMeterDisplay{
 			StreamWidth=_screen.w/2-10,
 			Stream=Def.Quad{ 
-				InitCommand=cmd(zoomy,18; diffuse,DifficultyIndexColor(2))
+				InitCommand=cmd(zoomy,18; diffuse,getMainColor("highlight"))
 			}
 		},
 

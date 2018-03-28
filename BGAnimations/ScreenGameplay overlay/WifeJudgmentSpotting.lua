@@ -74,8 +74,8 @@ local wscale = errorBarFrameWidth/180
 
 --percent display things
 local displayPercentX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentX
-local displayPercentY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentY
-local displayPercentZoom = .6 + playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.DisplayPercentZoom
+local displayPercentY = -260+playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentY
+local displayPercentZoom = 1 + playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.DisplayPercentZoom
 
 --pa counter things
 local judgeCounterX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterX
@@ -773,13 +773,13 @@ local cp = Def.ActorFrame{
 		dp = self
 		self:zoom(displayPercentZoom):addx(displayPercentX):addy(displayPercentY)
 	end,
-	Def.Quad{
-		InitCommand=cmd(xy,60 + mpOffset,(SCREEN_HEIGHT*0.62)-90;;zoomto, 60, 13;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
-	},
+---	Def.Quad{
+---		InitCommand=cmd(xy,70 + mpOffset,(SCREEN_HEIGHT*0.62)-90;;zoomto, 60, 13;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
+---	},
 	-- Displays your current percentage score
 	LoadFont("_wendy small")..{											
 		Name = "DisplayPercent",
-		InitCommand=cmd(xy,115 + mpOffset,220;zoom,0.3;halign,1;valign,1),
+		InitCommand=cmd(xy,100 + mpOffset,201;zoom,0.3;halign,1;valign,1),
 		OnCommand=function(self)
 			self:settextf("%05.2f%%", 0)
 		end,
@@ -806,7 +806,7 @@ local frameY = (SCREEN_HEIGHT*0.62)-10 				 -- Y Position of the frame
 local spacing = 18									 -- Spacing between the judgetypes
 local frameWidth = 84								 -- Width of the Frame
 local frameHeight = ((#jdgT-1)*spacing)	+ 10		 -- Height of the Frame
-local judgeFontSize = 0.7							 -- Font sizes for different text elements 
+local judgeFontSize = 0.6							 -- Font sizes for different text elements 
 local countFontSize = 0.23
 local gradeFontSize = 0.25
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--
@@ -1070,7 +1070,7 @@ t[#t+1] = Def.ActorFrame{
 	end,
 	LoadFont("_wendy small")..{
 		Name="BPM",
-		InitCommand=cmd(x,SCREEN_WIDTH-75;y,25;halign,0.5;zoom,0.60)
+		InitCommand=cmd(x,SCREEN_WIDTH-80;y,22;halign,0.5;zoom,0.60)
 	},
 	DoneLoadingNextSongMessageCommand=cmd(queuecommand,"Init")
 }
