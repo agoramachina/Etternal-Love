@@ -94,7 +94,7 @@ function tabs(index)
 				if index == 6 and FILTERMAN:AnyActiveFilter() then
 					self:diffuse(color("#cc66ff"))
 				else					
-					self:diffuse(getetternalColor(index))
+					self:diffuse(getEtternalColor(index))
 				end
 			else
 				self:diffuse(color("#1E282F"))

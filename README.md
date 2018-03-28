@@ -1,4 +1,4 @@
-## Etternal Love: an Etterna theme inspired by SM5's "Simply Love"
+## Etternal Love: an Etterna theme inspired by SM5's "Simply Love" and based on Mina's 'Til Death Theme
 
 ### Transferring Player Preferences
 
