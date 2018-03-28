@@ -806,9 +806,9 @@ local frameY = (SCREEN_HEIGHT*0.62)-60 				 -- Y Position of the frame
 local spacing = 18									 -- Spacing between the judgetypes
 local frameWidth = 84								 -- Width of the Frame
 local frameHeight = ((#jdgT-1)*spacing)	+ 10		 -- Height of the Frame
-local judgeFontSize = 0.28							 -- Font sizes for different text elements 
-local countFontSize = 0.2
-local gradeFontSize = 0.3
+local judgeFontSize = 0.7							 -- Font sizes for different text elements 
+local countFontSize = 0.25
+local gradeFontSize = 0.35
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--
 
 local jdgCounts = {}								 -- Child references for the judge counter
@@ -831,8 +831,8 @@ local j = Def.ActorFrame{
 }																					
 
  local function makeJudgeText(judge,index)		-- Makes text
- 	return LoadFont("_wendy small")..{
- 		InitCommand=cmd(xy,frameX+16,frameY-60+(index*spacing);zoom,judgeFontSize;maxwidth,frameWidth/.3;halign,0),
+ 	return LoadFont("Common normal")..{
+ 		InitCommand=cmd(xy,frameX+12,frameY-104+(index*spacing);zoom,judgeFontSize;halign,0),
  		OnCommand=function(self)
  			settext(self,getShortJudgeStrings(judge))
  			diffuse(self,jcT[judge])
@@ -843,12 +843,12 @@ local j = Def.ActorFrame{
  local function makeJudgeCount(judge,index)		-- Makes county things for taps....
  	return LoadFont("_wendy small")..{
  		Name = judge,
-		InitCommand=cmd(xy,frameWidth+frameX-10,frameY-60+(index*spacing);zoom,countFontSize;horizalign,right;settext,0) 	}
+		InitCommand=cmd(xy,frameWidth+frameX-6,frameY-104+(index*spacing);zoom,countFontSize;horizalign,right;settext,0) 	}
  end
 
 
 -- Background
-j[#j+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY-60;zoomto,frameWidth+10,frameHeight+26;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)}
+j[#j+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY-102;zoomto,frameWidth+6,frameHeight+24;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)}
 
 -- Build judgeboard
 for i=1,#jdgT do
