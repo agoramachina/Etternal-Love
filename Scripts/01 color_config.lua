@@ -118,7 +118,7 @@ function setTableKeys(table)
 	curColor = table 
 end
 
-function getEtternalColor(i)
+function getEtternalColor(i) --agoramachina
 eternalColor = {	
 	    "#C1006F",
 	    "#413AD0"
