@@ -7,7 +7,7 @@ local file = THEME:GetPathB("", "_shared background normal/" .. theme_config.Get
 
 -- this variable will be used within the scope of this file like (index+1) and (index-1)
 -- to continue to diffuse each sprite as we shift through the colors available in SL.Colors
-local index = SL.Global.ActiveColorIndex
+-- local index = SL.Global.ActiveColorIndex
 
 -- time in seconds for the first NewColor (which is triggered from AF's InitCommand)
 -- should be 0 so that children sprites get colored properly immediately; we'll
@@ -29,7 +29,7 @@ local af = Def.ActorFrame{
 -- non-RainbowMode (normal) background
 
 local file_info = {
-	ColorRGB = {0,1,1,0,0,0,1,1,1,1},
+--	ColorRGB = {0,1,1,0,0,0,1,1,1,1},
 	diffusealpha = {0.05,0.2,0.1,0.1,0.1,0.1,0.1,0.05,0.1,0.1},
 	xy = {0,40,80,120,200,280,360,400,480,560},
 	texcoordvelocity = {{0.03,0.01},{0.03,0.02},{0.03,0.01},{0.02,0.02},{0.03,0.03},{0.02,0.02},{0.03,0.01},{-0.03,0.01},{0.05,0.03},{0.03,0.04}}
@@ -73,7 +73,7 @@ af[#af+1] = t
 -- --------------------------------------------------------
 -- RainbowMode background
 
-af[#af+1] = Def.ActorFrame{
+--[[af[#af+1] = Def.ActorFrame{
 	InitCommand=function(self)
 		if not theme_config.Get("RainbowMode") then
 			self:visible(false)
@@ -87,10 +87,10 @@ af[#af+1] = Def.ActorFrame{
 			self:linear(0.6):diffusealpha(0):queuecommand("Hide")
 		end
 	end,
-	HideCommand=function(self) self:visible(false) end,
+	HideCommand=function(self) self:visible(false) end, 
 
 
---[[	Def.ActorFrame{
+	Def.ActorFrame{
 		OnCommand=cmd(bob; effectmagnitude,0,0,50; effectperiod,12),
 
 		Def.ActorFrame{
