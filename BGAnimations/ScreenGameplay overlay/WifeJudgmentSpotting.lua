@@ -807,8 +807,8 @@ local spacing = 18									 -- Spacing between the judgetypes
 local frameWidth = 84								 -- Width of the Frame
 local frameHeight = ((#jdgT-1)*spacing)	+ 10		 -- Height of the Frame
 local judgeFontSize = 0.7							 -- Font sizes for different text elements 
-local countFontSize = 0.25
-local gradeFontSize = 0.35
+local countFontSize = 0.23
+local gradeFontSize = 0.33
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--
 
 local jdgCounts = {}								 -- Child references for the judge counter
