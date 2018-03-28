@@ -19,12 +19,12 @@ local t = Def.ActorFrame{
 			SongOrCourse = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse() or GAMESTATE:GetCurrentSong()
 			if SongOrCourse and SongOrCourse:HasBanner() then
 				self:visible(false)
-				Border( _screen.w/2-10, 22, 2 )
-
 			else
 				self:visible(true)
-			end
-		end,
+			end,
+	Def.Quad{
+		InitCommand=cmd(xy,70 + (SCREEN_HEIGHT*0.62)-90;;zoomto, 60, 13;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
+	},		end,
 
 		LoadActor("colored_banners/".. banner_directory .."/banner"..SL.Global.ActiveColorIndex.." (doubleres).png" )..{
 			Name="FallbackBanner",

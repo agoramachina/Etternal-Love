@@ -1142,7 +1142,7 @@ t[#t+1] = Def.ActorFrame{
 		Name= "errorBarPosText", Font= "_wendy small", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
-				:shadowlength(2):xy(10, 20):zoom(.3):visible(false)
+				:shadowlength(2):xy(10, 21):zoom(.3):visible(false)
 		end,
 		UpdateCommand=function(self)
 			local text= {
