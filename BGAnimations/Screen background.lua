@@ -1,5 +1,5 @@
-local VisualTheme=Arrows
-local RainbowMode=false
+--local VisualTheme=Arrows
+--local RainbowMode=false
 
 local file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")
 

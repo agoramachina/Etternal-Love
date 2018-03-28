@@ -14,13 +14,15 @@ local file = THEME:GetPathB("", "_shared background normal/" .. theme_config.Get
 -- change this variable in the AF's OnCommand so that color-shifts tween appropriately
 local delay = 0
 
+
+--removedrainbows
 local af = Def.ActorFrame{
 	Def.Quad{
-		InitCommand=function(self) self:FullScreen():Center():diffuse( theme_config.Get("RainbowMode") and Color.White or Color.Black ) end,
+		InitCommand=function(self) self:FullScreen():Center():diffuse( Color.Black ) end,
 		BackgroundImageChangedMessageCommand=function(self)
 			THEME:ReloadMetrics()
-			SL.Global.ActiveColorIndex = theme_config.Get("RainbowMode") and 3 or theme_config.Get("SimplyLoveColor")  ---do this next -agoramachina
-			self:linear(1):diffuse( theme_config.Get("RainbowMode") and Color.White or Color.Black )
+---			SL.Global.ActiveColorIndex = theme_config.Get("RainbowMode") and 3 or theme_config.Get("SimplyLoveColor")  ---do this next -agoramachina
+			self:linear(1):diffuse(Color.Black )
 		end,
 	}
 }
