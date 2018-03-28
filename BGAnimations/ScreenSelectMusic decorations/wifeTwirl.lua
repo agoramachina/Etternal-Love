@@ -352,7 +352,7 @@ t[#t+1] = Def.Sprite {
 }
 
 t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,frameX,frameY-120;halign,0;zoom,0.4),
+	InitCommand=cmd(xy,frameX+8,frameY-120;halign,0;zoom,0.4),
 	BeginCommand=cmd(queuecommand,"Set"),
 	SetCommand=function(self)
 		if steps:GetTimingData():HasWarps() then
