@@ -284,7 +284,7 @@ t[#t+1] = LoadFont("_wendy small") .. {
 t[#t+1] = Def.BPMDisplay {
 	File=THEME:GetPathF("BPMDisplay", "bpm"),
 	Name="BPMDisplay",
-	InitCommand=cmd(xy,capWideScale(get43size(384),384)+62,SCREEN_BOTTOM-100;halign,1;zoom,0.40),
+	InitCommand=cmd(xy,capWideScale(get43size(384),384)+62,SCREEN_BOTTOM-110;halign,1;zoom,0.55),
 	SetCommand=function(self)
 		if song then 
 			self:visible(1)
