@@ -977,19 +977,7 @@ local p = Def.ActorFrame{
 		self:zoomto(fullProgressBarWidth,fullProgressBarHeight)
 		fb = self
 	end,
-	Def.Quad{InitCommand=cmd(zoomto,width,height;diffuse,color("#656573");diffusealpha,alpha)},			-- background
-	Def.SongMeterDisplay{
-		InitCommand=function(self)
-			self:SetUpdateRate(0.5)
-		end,
-		StreamWidth=width,
-		Stream=Def.Quad{InitCommand=cmd(zoomy,height;diffuse,getMainColor("highlight"))}
-	},
-	LoadFont("Common normal")..{																		-- title
-		InitCommand=cmd(zoom,0.5;maxwidth,width*2),
-		BeginCommand=cmd(settext,GAMESTATE:GetCurrentSong():GetDisplayMainTitle()),
-		DoneLoadingNextSongMessageCommand=cmd(settext,GAMESTATE:GetCurrentSong():GetDisplayMainTitle())
-	},
+	
 	LoadFont("_wendy small")..{																		-- total time
 		InitCommand=cmd(x,width/2;zoom,0.3;maxwidth,width*2;halign,1),
 		BeginCommand=function(self)
@@ -1082,7 +1070,7 @@ t[#t+1] = Def.ActorFrame{
 	end,
 	LoadFont("_wendy small")..{
 		Name="BPM",
-		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-30;halign,0.5;zoom,0.40)
+		InitCommand=cmd(x,SCREEN_WIDTH-75;y,25;halign,0.5;zoom,0.60)
 	},
 	DoneLoadingNextSongMessageCommand=cmd(queuecommand,"Init")
 }

@@ -16,7 +16,7 @@ return Def.ActorFrame{
 	},
 
 	-- Song Title
-	LoadFont("_miso")..{
+	LoadFont("Common normal")..{
 		Name="SongTitle",
 		InitCommand=cmd(zoom,0.8; shadowlength,0.6; maxwidth, _screen.w/2.5 - 10; xy, _screen.cx, 20 ),
 		CurrentSongChangedMessageCommand=cmd(playcommand, "Update"),

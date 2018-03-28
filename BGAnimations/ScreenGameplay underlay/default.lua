@@ -21,10 +21,13 @@ elseif bgtype == 3 then
 	songoptions:RandomBGOnly(true)
 end
 
+
+local t = Def.ActorFrame{}
 -- semi-transparent quad at the top of ScreenGameplay
 t[#t+1] = LoadActor("Header.lua")
 
-local t = Def.ActorFrame{}
+-- Song title and progress bar for how much song remains
+t[#t+1] = LoadActor("SongInfoBar.lua")
 t[#t+1] = LoadActor("bg")
 t[#t+1] = LoadActor("ScreenFilter")
 return t

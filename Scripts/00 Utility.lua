@@ -1,6 +1,25 @@
 --Random helper functions that don't really belong anywhere else.
 
 
+------------------------------------------------------------------------------
+-- call this to draw a Quad with a border
+-- width of quad, height of quad, and border width, in pixels
+-- from Simply Love
+
+function Border(width, height, bw)
+	return Def.ActorFrame {
+		Def.Quad {
+			InitCommand=cmd(zoomto, width-2*bw, height-2*bw;  MaskSource,true)
+		},
+		Def.Quad {
+			InitCommand=cmd(zoomto,width,height; MaskDest)
+		},
+		Def.Quad {
+			InitCommand=cmd(diffusealpha,0; clearzbuffer,true)
+		},
+	}
+end;
+
 function get43size(size4_3)
 	return 640*(size4_3/854)
 end;
