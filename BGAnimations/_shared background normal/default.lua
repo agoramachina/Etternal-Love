@@ -3,7 +3,7 @@ if PREFSMAN:GetPreference("EasterEggs") and MonthOfYear()==11 then
 	return LoadActor( THEME:GetPathB("", "_shared background normal/snow.mp4") )..{ InitCommand=function(self) self:FullScreen():Center() end }
 end
 
-local file = THEME:GetPathB("", "_shared background normal/" .. ThemePrefs.Get("VisualTheme") .. ".png")
+local file = THEME:GetPathB("", "_shared background normal/" .. theme_config.Get("VisualTheme") .. ".png")
 
 -- this variable will be used within the scope of this file like (index+1) and (index-1)
 -- to continue to diffuse each sprite as we shift through the colors available in SL.Colors
@@ -16,11 +16,11 @@ local delay = 0
 
 local af = Def.ActorFrame{
 	Def.Quad{
-		InitCommand=function(self) self:FullScreen():Center():diffuse( ThemePrefs.Get("RainbowMode") and Color.White or Color.Black ) end,
+		InitCommand=function(self) self:FullScreen():Center():diffuse( theme_config.Get("RainbowMode") and Color.White or Color.Black ) end,
 		BackgroundImageChangedMessageCommand=function(self)
 			THEME:ReloadMetrics()
-			SL.Global.ActiveColorIndex = ThemePrefs.Get("RainbowMode") and 3 or ThemePrefs.Get("SimplyLoveColor")
-			self:linear(1):diffuse( ThemePrefs.Get("RainbowMode") and Color.White or Color.Black )
+			SL.Global.ActiveColorIndex = theme_config.Get("RainbowMode") and 3 or theme_config.Get("SimplyLoveColor")  ---do this next
+			self:linear(1):diffuse( theme_config.Get("RainbowMode") and Color.White or Color.Black )
 		end,
 	}
 }
@@ -37,7 +37,7 @@ local file_info = {
 
 local t = Def.ActorFrame {
 	InitCommand=function(self)
-		if ThemePrefs.Get("RainbowMode") then
+		if theme_config.Get("RainbowMode") then
 			self:visible(false)
 		else
 			self:diffusealpha(0)
@@ -45,7 +45,7 @@ local t = Def.ActorFrame {
 	end,
 	OnCommand=cmd(accelerate,0.8; diffusealpha,1),
 	BackgroundImageChangedMessageCommand=function(self)
-		if not ThemePrefs.Get("RainbowMode") then
+		if not theme_config.Get("RainbowMode") then
 			self:visible(true):linear(0.6):diffusealpha(1)
 		else
 			self:linear(0.6):diffusealpha(0):queuecommand("Hide")
@@ -62,7 +62,7 @@ for i=1,10 do
 		OnCommand=cmd(zoom,1.3; xy, file_info.xy[i], file_info.xy[i]; customtexturerect,0,0,1,1;
 			texcoordvelocity, file_info.texcoordvelocity[i][1], file_info.texcoordvelocity[i][2]; diffusealpha, file_info.diffusealpha[i] ),
 		BackgroundImageChangedMessageCommand=function(self)
-			local new_file = THEME:GetPathB("", "_shared background normal/" .. ThemePrefs.Get("VisualTheme") .. ".png")
+			local new_file = THEME:GetPathB("", "_shared background normal/" .. theme_config.Get("VisualTheme") .. ".png")
 			self:Load(new_file)
 		end
 	}
@@ -75,13 +75,13 @@ af[#af+1] = t
 
 af[#af+1] = Def.ActorFrame{
 	InitCommand=function(self)
-		if not ThemePrefs.Get("RainbowMode") then
+		if not theme_config.Get("RainbowMode") then
 			self:visible(false)
 		end
 	end,
 	OnCommand=cmd(Center; bob; effectmagnitude,0,50,0; effectperiod,8),
 	BackgroundImageChangedMessageCommand=function(self)
-		if ThemePrefs.Get("RainbowMode") then
+		if theme_config.Get("RainbowMode") then
 			self:visible(true):linear(0.6):diffusealpha(1)
 		else
 			self:linear(0.6):diffusealpha(0):queuecommand("Hide")
