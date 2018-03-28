@@ -60,7 +60,7 @@ local t = Def.ActorFrame {
 for i=1,10 do
 	t[#t+1] = Def.Sprite {
 		Texture=file,
-		InitCommand=cmd(diffuse, getSimpleColor( file_info.ColorRGB[i] ) ),  ---fix this --agoramachina
+		InitCommand=cmd(diffuse, getEtternalColor( file_info.ColorRGB[i] ) ),  ---fix this --agoramachina
 		ColorSelectedMessageCommand=cmd(linear, 0.5; diffuse, getMainColor( file_info.ColorRGB[i] ); diffusealpha, file_info.diffusealpha[i] ),
 
 		OnCommand=cmd(zoom,1.3; xy, file_info.xy[i], file_info.xy[i]; customtexturerect,0,0,1,1;

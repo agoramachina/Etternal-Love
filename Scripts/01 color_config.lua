@@ -118,8 +118,8 @@ function setTableKeys(table)
 	curColor = table 
 end
 
-function getSimpleColor(i) --replace this w/ getEtternalColor --agoramachina
-simpleColor = {
+function getEtternalColor(i) --replace this w/ getEtternalColor --agoramachina
+etternalColor = {
 		"#FF3C23",
 	    "#FF003C",
 	    "#C1006F",
@@ -132,7 +132,7 @@ simpleColor = {
 	    "#FFFF00",
 	    "#FFBE00",
 	    "#FF7D00"}
-	return color(simpleColor[i])
+	return color(etternalColor[i])
 end
 
 
