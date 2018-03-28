@@ -21,6 +21,9 @@ elseif bgtype == 3 then
 	songoptions:RandomBGOnly(true)
 end
 
+-- semi-transparent quad at the top of ScreenGameplay
+t[#t+1] = LoadActor("Header.lua")
+
 local t = Def.ActorFrame{}
 t[#t+1] = LoadActor("bg")
 t[#t+1] = LoadActor("ScreenFilter")
