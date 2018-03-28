@@ -801,14 +801,14 @@ end
 
 -- User Parameters
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--
-local frameX = 60 + mpOffset						 -- X position of the frame
-local frameY = (SCREEN_HEIGHT*0.62)-60 				 -- Y Position of the frame
+local frameX = SCREEN_WIDTH- 100 - mpOffset						 -- X position of the frame
+local frameY = (SCREEN_HEIGHT*0.62)-10 				 -- Y Position of the frame
 local spacing = 18									 -- Spacing between the judgetypes
 local frameWidth = 84								 -- Width of the Frame
 local frameHeight = ((#jdgT-1)*spacing)	+ 10		 -- Height of the Frame
 local judgeFontSize = 0.7							 -- Font sizes for different text elements 
 local countFontSize = 0.23
-local gradeFontSize = 0.33
+local gradeFontSize = 0.25
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--
 
 local jdgCounts = {}								 -- Child references for the judge counter

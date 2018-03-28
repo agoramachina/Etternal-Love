@@ -394,7 +394,7 @@ local function npsDisplay(pn)
 	if enabled.NPSDisplay[pn] then
 		t[#t+1] = LoadFont("Common Normal")..{
 			Name="Text"; -- sets the name of this actor as "Text". this is a child of the actor "t".
-			InitCommand=cmd(x,npsDisplayX+22;y,npsDisplayY-40;halign,0;zoom,npsDisplayZoom;halign,0;valign,0;shadowlength,1;settext,"0.0 NPS");
+			InitCommand=cmd(x,SCREEN_WIDTH+npsDisplayX-138;y,npsDisplayY+10;halign,0;zoom,npsDisplayZoom;halign,0;valign,0;shadowlength,1;settext,"0.0 NPS");
 			BeginCommand=function(self)
 				if pn == PLAYER_2 then
 					self:x(SCREEN_WIDTH-5)
