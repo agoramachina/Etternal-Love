@@ -1,13 +1,4 @@
-
--- this variable will be used within the scope of this file like (index+1) and (index-1)
--- to continue to diffuse each sprite as we shift through the colors available in SL.Colors
---local index = 1
-
 local file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")  --fix this: player color option selection  --agoramachina
-
--- this variable will be used within the scope of this file like (index+1) and (index-1)
--- to continue to diffuse each sprite as we shift through the colors available in SL.Colors
---local index = getRandomColor()
 
 -- time in seconds for the first NewColor (which is triggered from AF's InitCommand)
 -- should be 0 so that children sprites get colored properly immediately; we'll
@@ -19,9 +10,7 @@ local af = Def.ActorFrame{
 		InitCommand=function(self) self:FullScreen():Center():diffuse( Color.Black ) end,
 		BackgroundImageChangedMessageCommand=function(self)
 			THEME:ReloadMetrics()
----			ActiveColorIndex = ThemePrefs.Get("SimplyLoveColor")
 			self:linear(1):diffuse(Color.Black )
-
 		end,
 	}
 }
@@ -38,21 +27,11 @@ local file_info = {
 
 local t = Def.ActorFrame {
 	InitCommand=function(self)
-	--	if 'RainbowMode' == true then
-
-	--		self:visible(false)
-	--	else
 			self:diffusealpha(0)
-	--	end
 	end,
 	OnCommand=cmd(accelerate,0.8; diffusealpha,1),
 	BackgroundImageChangedMessageCommand=function(self)
-	--	if not 'RainbowMode' == true then
-
 			self:visible(true):linear(0.6):diffusealpha(1)
-	--	else
-	--		self:linear(0.6):diffusealpha(0):queuecommand("Hide")
-	--	end
 	end,
 	HideCommand=function(self) self:visible(false) end,
 }
@@ -60,9 +39,7 @@ local t = Def.ActorFrame {
 for i=1,10 do
 	t[#t+1] = Def.Sprite {
 		Texture=file,
-		InitCommand=cmd(diffuse, file_info.ColorRGB[i]  ),  ---fix this --agoramachina
-		--ColorSelectedMessageCommand=cmd(linear, 0.5; diffuse, getMainColor( file_info.ColorRGB[i] ); diffusealpha, file_info.diffusealpha[i] ),
-
+		InitCommand=cmd(diffuse, file_info.ColorRGB[i]  ), 
 		OnCommand=cmd(zoom,1.3; xy, file_info.xy[i], file_info.xy[i]; customtexturerect,0,0,1,1;
 			texcoordvelocity, file_info.texcoordvelocity[i][1], file_info.texcoordvelocity[i][2]; diffusealpha, file_info.diffusealpha[i] ),
 		BackgroundImageChangedMessageCommand=function(self)
