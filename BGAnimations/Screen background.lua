@@ -1,17 +1,13 @@
---local VisualTheme=Arrows
---local RainbowMode=false
-
-local file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")
 
 -- this variable will be used within the scope of this file like (index+1) and (index-1)
 -- to continue to diffuse each sprite as we shift through the colors available in SL.Colors
-local index = 1
+--local index = 1
 
-local file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")
+local file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")  --fix this: player color option selection  --agoramachina
 
 -- this variable will be used within the scope of this file like (index+1) and (index-1)
 -- to continue to diffuse each sprite as we shift through the colors available in SL.Colors
-local index = getRandomColor()
+--local index = getRandomColor()
 
 -- time in seconds for the first NewColor (which is triggered from AF's InitCommand)
 -- should be 0 so that children sprites get colored properly immediately; we'll
@@ -20,11 +16,11 @@ local delay = 0
 
 local af = Def.ActorFrame{
 	Def.Quad{
-		InitCommand=function(self) self:FullScreen():Center():diffuse( 'RainbowMode' == true and Color.White or Color.Black ) end,
+		InitCommand=function(self) self:FullScreen():Center():diffuse( Color.Black ) end,
 		BackgroundImageChangedMessageCommand=function(self)
 			THEME:ReloadMetrics()
-			ActiveColorIndex = 'RainbowMode' == true and 3 or ThemePrefs.Get("SimplyLoveColor")
-			self:linear(1):diffuse( 'RainbowMode' == true and Color.White or Color.Black )
+---			ActiveColorIndex = ThemePrefs.Get("SimplyLoveColor")
+			self:linear(1):diffuse(Color.Black )
 
 		end,
 	}
@@ -34,7 +30,7 @@ local af = Def.ActorFrame{
 -- non-RainbowMode (normal) background
 
 local file_info = {
-	ColorRGB = {2,4,2,4,2,4,2,2,4,2},
+	ColorRGB = {2,1,2,1,2,1,2,2,1,2},
 	diffusealpha = {0.05,0.2,0.1,0.1,0.1,0.1,0.1,0.05,0.1,0.1},
 	xy = {0,40,80,120,200,280,360,400,480,560},
 	texcoordvelocity = {{0.03,0.01},{0.03,0.02},{0.03,0.01},{0.02,0.02},{0.03,0.03},{0.02,0.02},{0.03,0.01},{-0.03,0.01},{0.05,0.03},{0.03,0.04}}
@@ -42,21 +38,21 @@ local file_info = {
 
 local t = Def.ActorFrame {
 	InitCommand=function(self)
-		if 'RainbowMode' == true then
+	--	if 'RainbowMode' == true then
 
-			self:visible(false)
-		else
+	--		self:visible(false)
+	--	else
 			self:diffusealpha(0)
-		end
+	--	end
 	end,
 	OnCommand=cmd(accelerate,0.8; diffusealpha,1),
 	BackgroundImageChangedMessageCommand=function(self)
-		if not 'RainbowMode' == true then
+	--	if not 'RainbowMode' == true then
 
 			self:visible(true):linear(0.6):diffusealpha(1)
-		else
-			self:linear(0.6):diffusealpha(0):queuecommand("Hide")
-		end
+	--	else
+	--		self:linear(0.6):diffusealpha(0):queuecommand("Hide")
+	--	end
 	end,
 	HideCommand=function(self) self:visible(false) end,
 }
@@ -64,7 +60,7 @@ local t = Def.ActorFrame {
 for i=1,10 do
 	t[#t+1] = Def.Sprite {
 		Texture=file,
-		InitCommand=cmd(diffuse, getSimpleColor( file_info.ColorRGB[i] ) ),
+		InitCommand=cmd(diffuse, getSimpleColor( file_info.ColorRGB[i] ) ),  ---fix this --agoramachina
 		ColorSelectedMessageCommand=cmd(linear, 0.5; diffuse, getMainColor( file_info.ColorRGB[i] ); diffusealpha, file_info.diffusealpha[i] ),
 
 		OnCommand=cmd(zoom,1.3; xy, file_info.xy[i], file_info.xy[i]; customtexturerect,0,0,1,1;
