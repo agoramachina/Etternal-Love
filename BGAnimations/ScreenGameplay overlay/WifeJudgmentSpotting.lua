@@ -75,7 +75,7 @@ local wscale = errorBarFrameWidth/180
 --percent display things
 local displayPercentX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentX
 local displayPercentY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentY
-local displayPercentZoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.DisplayPercentZoom
+local displayPercentZoom = .6 + playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.DisplayPercentZoom
 
 --pa counter things
 local judgeCounterX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterX
@@ -802,13 +802,13 @@ end
 -- User Parameters
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--
 local frameX = 60 + mpOffset						 -- X position of the frame
-local frameY = (SCREEN_HEIGHT*0.62)-90 				 -- Y Position of the frame
-local spacing = 10									 -- Spacing between the judgetypes
-local frameWidth = 60								 -- Width of the Frame
-local frameHeight = ((#jdgT-1)*spacing)	- 8			 -- Height of the Frame
-local judgeFontSize = 0.40							 -- Font sizes for different text elements 
-local countFontSize = 0.35
-local gradeFontSize = 0.45
+local frameY = (SCREEN_HEIGHT*0.62)-60 				 -- Y Position of the frame
+local spacing = 18									 -- Spacing between the judgetypes
+local frameWidth = 84								 -- Width of the Frame
+local frameHeight = ((#jdgT-1)*spacing)	+ 10		 -- Height of the Frame
+local judgeFontSize = 0.28							 -- Font sizes for different text elements 
+local countFontSize = 0.2
+local gradeFontSize = 0.3
 --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--
 
 local jdgCounts = {}								 -- Child references for the judge counter
@@ -831,8 +831,8 @@ local j = Def.ActorFrame{
 }																					
 
  local function makeJudgeText(judge,index)		-- Makes text
- 	return LoadFont("Common normal")..{
- 		InitCommand=cmd(xy,frameX+5,frameY+7+(index*spacing);zoom,judgeFontSize;halign,0),
+ 	return LoadFont("_wendy small")..{
+ 		InitCommand=cmd(xy,frameX+16,frameY-60+(index*spacing);zoom,judgeFontSize;maxwidth,frameWidth/.3;halign,0),
  		OnCommand=function(self)
  			settext(self,getShortJudgeStrings(judge))
  			diffuse(self,jcT[judge])
@@ -841,14 +841,14 @@ local j = Def.ActorFrame{
  end
  
  local function makeJudgeCount(judge,index)		-- Makes county things for taps....
- 	return LoadFont("Common normal")..{
+ 	return LoadFont("_wendy small")..{
  		Name = judge,
-		InitCommand=cmd(xy,frameWidth+frameX-5,frameY+7+(index*spacing);zoom,countFontSize;horizalign,right;settext,0) 	}
+		InitCommand=cmd(xy,frameWidth+frameX-10,frameY-60+(index*spacing);zoom,countFontSize;horizalign,right;settext,0) 	}
  end
 
 
 -- Background
-j[#j+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY+13;zoomto,frameWidth,frameHeight+18;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)}
+j[#j+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY-60;zoomto,frameWidth+10,frameHeight+26;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)}
 
 -- Build judgeboard
 for i=1,#jdgT do
