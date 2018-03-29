@@ -39,14 +39,14 @@ local defaultConfig = {
 		JudgeCounterX = -40,
 		JudgeCounterY = -40,
 		DisplayPercentX = -50,
-		DisplayPercentY = -70,
+		DisplayPercentY = -40,
 		NPSDisplayX = 10,
 		NPSDisplayY = SCREEN_BOTTOM - 170,
 		NPSGraphX = 0,
 		NPSGraphY = SCREEN_BOTTOM - 160,
 		NotefieldX = 0,
 		NotefieldY = 15,
-		---displaybpm? --agoramachina
+		---bpmdisplay pos? --agoramachina
 
 	},
 	GameplaySizes = {
