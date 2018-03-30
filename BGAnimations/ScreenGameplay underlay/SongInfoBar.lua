@@ -12,7 +12,7 @@ return Def.ActorFrame{
 			}
 		},
 
-		Border( _screen.w/2-10, 22, 2, color('White')),
+		Border( _screen.w/2-10, 22, 2),
 	},
 
 	-- Song Title

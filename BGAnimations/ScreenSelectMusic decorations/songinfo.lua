@@ -15,11 +15,13 @@ local t = Def.ActorFrame{
 	end,
 	TabChangedMessageCommand=cmd(queuecommand,"Set"),
 	PlayerJoinedMessageCommand=cmd(queuecommand,"Set")
+
 }
 
 
 t[#t+1] = Def.Banner{
-	InitCommand=cmd(x,8;y,58;halign,0;valign,0;scaletoclipped,capWideScale(get43size(384),384),capWideScale(get43size(120),120)),
+	InitCommand=cmd(x,8;y,58;halign,0;valign,0;scaletoclipped,capWideScale(get43size(380),380),capWideScale(get43size(116),116)),
+
 	SetMessageCommand=function(self)
 		if update then
 			local top = SCREENMAN:GetTopScreen()
@@ -39,6 +41,24 @@ t[#t+1] = Def.Banner{
 }
 
 
+--[[
+function Border(width, height, bw)
+	return Def.ActorFrame {
+		Def.Quad {
+			InitCommand=cmd(zoomto, width-2*bw, height-2*bw;  MaskSource,true)
+		},
+		Def.Quad {
+			InitCommand=cmd(zoomto,width,height; MaskDest)
+		},
+		Def.Quad {
+			InitCommand=cmd(diffusealpha,0; clearzbuffer,true)
+		},
+	}
+end;
+--]]
+
+
+--[[
 --- hacky fix to take care of banner border issues on screenselectmusic
 --top
 t[#t+1] = Def.Quad{
@@ -48,6 +68,7 @@ t[#t+1] = Def.Quad{
 t[#t+1] = Def.Quad{
 	InitCommand=cmd(xy,8,118;zoomto,1,120;halign,0;diffuse,color("0,0,0,1"))
 }
+--]]
 
 
 return t

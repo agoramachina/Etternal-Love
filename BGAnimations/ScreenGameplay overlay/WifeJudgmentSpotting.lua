@@ -24,7 +24,7 @@ local dvCur
 local jdgCur																-- Note: only for judgments with OFFSETS, might reorganize a bit later
 local positive = getMainColor("positive")
 local highlight = getMainColor("highlight")
-local negative = getMainColor('negative')
+local negative = getMainColor("negative")
 
 -- We can also pull in some localized aliases for workhorse functions for a modest speed increase
 local Round = notShit.round
@@ -773,9 +773,11 @@ local cp = Def.ActorFrame{
 		dp = self
 		self:zoom(displayPercentZoom):addx(displayPercentX):addy(displayPercentY)
 	end,
----	Def.Quad{
----		InitCommand=cmd(xy,70 + mpOffset,(SCREEN_HEIGHT*0.62)-90;;zoomto, 60, 13;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
----	},
+
+-- percent background border  --agoramachina
+--	Def.Quad{
+--		InitCommand=cmd(xy,70 + mpOffset,(SCREEN_HEIGHT*0.62)-90;;zoomto, 60, 13;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
+--	},
 	-- Displays your current percentage score
 	LoadFont("_wendy small")..{											
 		Name = "DisplayPercent",

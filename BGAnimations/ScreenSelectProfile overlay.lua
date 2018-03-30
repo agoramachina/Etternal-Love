@@ -47,7 +47,7 @@ function LoadCard(cColor)
 		};
 		Def.Quad {
 			InitCommand=cmd(zoomto,200,230);
-			OnCommand=cmd(diffuse,getMainColor('frames');diffusealpha,0.9);
+			OnCommand=cmd(diffuse,getMainColor('frames');diffusealpha,0.95);
 		};
 	};
 	return t
