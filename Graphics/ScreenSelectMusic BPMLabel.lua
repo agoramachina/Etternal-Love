@@ -1,5 +1,5 @@
 return Def.ActorFrame {
-	LoadFont("_wendy small") .. {
+	LoadFont("Common Normal") .. {
 		Text="BPM";
 		InitCommand=cmd(horizalign,right;zoom,0.50;);
 	};
