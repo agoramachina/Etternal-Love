@@ -1,5 +1,5 @@
 local defaultConfig = {
-	ScreenFilter = 1,
+	ScreenFilter = 0,
 	JudgeType = 1,
 	AvgScoreType = 0,
 	GhostScoreType = 1,
@@ -33,7 +33,7 @@ local defaultConfig = {
 		TargetTrackerX = SCREEN_CENTER_X+155,
 		TargetTrackerY = 115,
 		MiniProgressBarX = SCREEN_CENTER_X - 6,
-		MiniProgressBarY = SCREEN_BOTTOM - 60,
+		MiniProgressBarY = SCREEN_BOTTOM - 54,
 		FullProgressBarX = SCREEN_CENTER_X,
 		FullProgressBarY = 20,
 		JudgeCounterX = -40,
