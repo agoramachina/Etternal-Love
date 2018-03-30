@@ -41,6 +41,7 @@ t[#t+1] = Def.Banner{
 }
 
 
+--remove this --agoramachina
 --[[
 function Border(width, height, bw)
 	return Def.ActorFrame {
@@ -59,7 +60,7 @@ end;
 
 
 --[[
---- hacky fix to take care of banner border issues on screenselectmusic
+--- hacky fix to take care of banner border issues on screenselectmusic remove this --agoramachina  
 --top
 t[#t+1] = Def.Quad{
 	InitCommand=cmd(xy,8,58;zoomto,capWideScale(get43size(384),384),1;halign,0;diffuse,color("0,0,0,.9");diffusetopedge,color("0,0,0,.8"))
