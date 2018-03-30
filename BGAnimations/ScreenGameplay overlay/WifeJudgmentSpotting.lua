@@ -1355,7 +1355,7 @@ t[#t+1] = Def.ActorFrame{
 		Name= "comboPosText", Font= "Common normal", 
 		InitCommand= function(self)
 			self:horizalign(left):vertalign(top)
-				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
+				:shadowlength(2):xy(10, 20):zoom(.35):visible(false)
 		end,
 		UpdateCommand=function(self)
 			local x = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboX
