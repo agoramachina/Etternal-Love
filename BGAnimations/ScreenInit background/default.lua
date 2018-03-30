@@ -100,7 +100,7 @@ t[#t+1] = Def.ActorFrame {
 	},
 	Def.ActorFrame {
 	  OnCommand=cmd(playcommandonchildren,"ChildrenOn"),
-	  ChildrenOnCommand=cmd(diffusealpha,0;sleep,0.5;linear,0.1;diffusealpha,1),
+	  ChildrenOnCommand=cmd(diffusealpha,0;sleep,0.25;linear,0.1;diffusealpha,1),
 		LoadFont("_wendy small") .. {
 			Text=getThemeName(),
 			InitCommand=cmd(y,-24),
@@ -108,7 +108,7 @@ t[#t+1] = Def.ActorFrame {
 		},
 		LoadFont("_wendy small") .. {
 			Text="Created by " .. minanyms[math.random(#minanyms)],
-			InitCommand=cmd(y,16;zoom,0.5;maxwidth,SCREEN_WIDTH),
+			InitCommand=cmd(y,16;zoom,0.25;maxwidth,SCREEN_WIDTH),
 			OnCommand=cmd(sleep,.1;linear,3;diffuse,getDifficultyColor("Difficulty_Couple");diffusealpha,0)
 		},
 	}
