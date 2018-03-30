@@ -44,17 +44,10 @@ t[#t+1] = Def.Banner{
 t[#t+1] = Def.Quad{
 	InitCommand=cmd(xy,8,58;zoomto,capWideScale(get43size(384),384),1;halign,0;diffuse,color("0,0,0,.9");diffusetopedge,color("0,0,0,.8"))
 }
---bottom
-t[#t+1] = Def.Quad{
-	InitCommand=cmd(xy,8,58+capWideScale(get43size(120),120);zoomto,capWideScale(get43size(384),384),1;halign,0;diffuse,color("0,0,0,.4"))
-}
 --left
 t[#t+1] = Def.Quad{
 	InitCommand=cmd(xy,8,118;zoomto,1,120;halign,0;diffuse,color("0,0,0,1"))
 }
---right
-t[#t+1] = Def.Quad{
-	InitCommand=cmd(xy,8+capWideScale(get43size(384),384),118;zoomto,1,120;halign,0;diffuse,color("0,0,0,.9");diffuseleftedge,color("0,0,0,.1"))
-}
+
 
 return t
