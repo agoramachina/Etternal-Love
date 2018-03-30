@@ -1,5 +1,5 @@
 local defaultConfig = {
-	ScreenFilter = 0,
+	ScreenFilter = 1,
 	JudgeType = 1,
 	AvgScoreType = 0,
 	GhostScoreType = 1,
@@ -50,7 +50,7 @@ local defaultConfig = {
 
 	},
 	GameplaySizes = {
-		JudgeZoom = 0.9,
+		JudgeZoom = 0.80,
 		ComboZoom = 0.6,
 		ErrorBarWidth = 125,
 		ErrorBarHeight = 25,

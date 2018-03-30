@@ -3,7 +3,7 @@ local maxDistX = SCREEN_WIDTH*magnitude
 local maxDistY = SCREEN_HEIGHT*magnitude
 
 local enabled = themeConfig:get_data().global.SongBGEnabled
-local brightness = 0.5
+local brightness = 0.3
 
 local t = Def.ActorFrame{}
 
