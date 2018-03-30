@@ -1,8 +1,0 @@
-
-vi regex
-:%s@=\(\f\+\)@\='='.(submatch(1)*.5)@g
-:%s@=\(\d\+\)@\= '=' . (submatch(1) + 50)@g
-:%s@<obj param="\(\d\+\)@\='<obj param="' . (submatch(1) + 50)@g
-
-sed
-find ./ -type f -readable -writable -exec sed -i "s/Common Large/_wendy small/g" {} \;
