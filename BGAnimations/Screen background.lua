@@ -1,3 +1,5 @@
+
+-- change this to allow for player visual theme options --agoramachina
 local file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")  --fix this: player color option selection  --agoramachina
 
 -- time in seconds for the first NewColor (which is triggered from AF's InitCommand)
@@ -50,5 +52,8 @@ for i=1,10 do
 end
 
 af[#af+1] = t
+
+
+
 
 return af

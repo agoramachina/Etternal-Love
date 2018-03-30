@@ -18,13 +18,6 @@ t[#t+1] = LoadFont("_wendy small") .. {
 	end,
 }
 
-t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,200,frameY;zoom,0.65;valign,1;halign,0;diffuse,getDifficultyColor("Difficulty_Couple")),
-	OnCommand=function(self)
-		self:settext(getThemeName())
-	end,
-}
-
 t[#t+1] = LoadActor(THEME:GetPathG("","_ring")) .. {
 	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH-10),SCREEN_WIDTH-256),frameY-180;diffuse,getDifficultyColor("Difficulty_Couple")diffusealpha,1;baserotationx,420)
 }

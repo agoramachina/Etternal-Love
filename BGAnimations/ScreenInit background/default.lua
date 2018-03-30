@@ -96,7 +96,7 @@ math.random()
 t[#t+1] = Def.ActorFrame {
   InitCommand=cmd(Center),
 	LoadActor("woop") .. {
-		OnCommand=cmd(zoomto,SCREEN_WIDTH,150;diffusealpha,0;linear,1;diffusealpha,1;sleep,.1;linear,2;diffusealpha,0)
+		OnCommand=cmd(zoomto,SCREEN_WIDTH,150;diffusealpha,0;linear,1;diffusealpha,1;sleep,.05;linear,2;diffusealpha,0)
 	},
 	Def.ActorFrame {
 	  OnCommand=cmd(playcommandonchildren,"ChildrenOn"),
