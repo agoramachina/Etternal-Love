@@ -81,7 +81,7 @@ local t = Def.ActorFrame {
 	},
 	LoadFont("_wendy small") .. {
 		Name="Label",
-		InitCommand=cmd(xy,x,y;zoom,zoom;diffusebottomedge,color("0.75,0.75,0.75,1");halign,0;valign,1;visible,false),
+		InitCommand=cmd(xy,x,y-6;zoom,.35;diffusebottomedge,color("0.75,0.75,0.75,1");halign,0;valign,1;visible,false),
 	},
 	InitCommand = function(self)
 		c = self:GetChildren()
