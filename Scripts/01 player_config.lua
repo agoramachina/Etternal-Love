@@ -30,7 +30,7 @@ local defaultConfig = {
 		ComboY = 0,
 		ErrorBarX = SCREEN_CENTER_X,
 		ErrorBarY = SCREEN_CENTER_Y -202,
-		TargetTrackerX = SCREEN_CENTER_X + 26,
+		TargetTrackerX = 75,
 		TargetTrackerY = SCREEN_CENTER_Y + 30,
 		MiniProgressBarX = SCREEN_CENTER_X + 44,
 		MiniProgressBarY = SCREEN_CENTER_Y + 34,
@@ -46,7 +46,7 @@ local defaultConfig = {
 		NPSGraphY = SCREEN_BOTTOM - 160,
 		NotefieldX = 0,
 		NotefieldY = 15,
-		---bpmdisplay/songinfo/rate pos? --agoramachina
+		---bpmdisplay/songinfo/rate pos is in WifeJudgmentSpotting.lua; also, change these to relative coordinates --agoramachina
 
 	},
 	GameplaySizes = {
