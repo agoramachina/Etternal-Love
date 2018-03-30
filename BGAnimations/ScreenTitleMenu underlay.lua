@@ -23,6 +23,10 @@ t[#t+1] = LoadActor(THEME:GetPathG("","_ring")) .. {
 }
 
 t[#t+1] = LoadActor(THEME:GetPathG("","dance")) .. {
-	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH/2),SCREEN_WIDTH/2),frameY+30;diffusealpha,.3;zoom,.5)
+
+	--- large center --agoramachina
+	--InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH/2),SCREEN_WIDTH/2),frameY-50;diffusealpha,.10;zoom,1.25)
+	--- bottom stretchx
+	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH/2),SCREEN_WIDTH/2),frameY+120;diffusealpha,.10;zoomy,0.50;zoomx,.60)
 }
 return t

@@ -37,6 +37,7 @@ g[#g+1] = Def.Banner{
 				self:LoadFromSongGroup(group)
 			end
 		end
+		--CHANGE THIS NEXT
 		self:scaletoclipped(capWideScale(get43size(384),384),capWideScale(get43size(120),120))
 	end;
 	CurrentSongChangedMessageCommand=cmd(queuecommand,"Set"),
