@@ -1,4 +1,4 @@
-## Etternal Love: an Etterna theme inspired by SM5's "Simply Love" and based on Mina's 'Til Death Theme
+## Etternal Love: an Etterna theme inspired by SM5's "Simply Love" and based on 'Til Death 
 
 ### Transferring Player Preferences
 
@@ -8,7 +8,7 @@ In Linux for example, these settings can be found in  `../Etterna/Save/Til Death
 
 Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_settings/` (playerConfig.lua) can be copied to `../Etterna/Save/LocalProfiles/00000001/Etternal-Love_settings/`. 
 
-### Screenshots 
+### Screenshots (may be outdated)
 ![](Graphics/assets/screenshots/screen0.png)
 ![](Graphics/assets/screenshots/screen1.png)
 ![](Graphics/assets/screenshots/screen2.png)
@@ -22,6 +22,6 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 * network compatibility
 * ~~FIX BPM DISPLAY on Select Music Screen~~
 * fix banner border on Select Music Screen
-* GET RID OF WEIRD WHITE QUAD in upper left corner of Screens (underlay?)
+* ~~GET RID OF WEIRD WHITE QUAD in upper left corner of Screens (underlay?)~~
 * more testing on non-widescreens
-* revamp Gameplay Screen
+* change gameplayscreen % location
