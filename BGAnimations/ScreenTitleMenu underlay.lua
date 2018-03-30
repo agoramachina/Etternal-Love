@@ -21,4 +21,8 @@ t[#t+1] = LoadFont("_wendy small") .. {
 t[#t+1] = LoadActor(THEME:GetPathG("","_ring")) .. {
 	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH-10),SCREEN_WIDTH-256),frameY-180;diffuse,getDifficultyColor("Difficulty_Couple")diffusealpha,1;baserotationx,420)
 }
+
+t[#t+1] = LoadActor(THEME:GetPathG("","dance")) .. {
+	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH/2),SCREEN_WIDTH/2),frameY+30;diffusealpha,.3;zoom,.5)
+}
 return t
