@@ -42,12 +42,12 @@ end
 function LoadCard(cColor)
 	local t = Def.ActorFrame {
 		Def.Quad {
-			InitCommand=cmd(zoomto,200+8,230+8);
-			OnCommand=cmd(diffuse,getMainColor('highlight');diffusealpha,0.5;);
+			InitCommand=cmd(zoomto,200+4,230+4);
+			OnCommand=cmd(diffuse,getMainColor('highlight'));
 		};
 		Def.Quad {
 			InitCommand=cmd(zoomto,200,230);
-			OnCommand=cmd(diffuse,getMainColor('frames');diffusealpha,0.95);
+			OnCommand=cmd(diffusealpha,0.5;diffuse,getMainColor('frames'));
 		};
 	};
 	return t
@@ -63,7 +63,7 @@ function LoadPlayerStuff(Player)
 		LoadFont("Common Normal") .. {
 			Text="Press &START; to join.";
 			InitCommand=cmd(shadowlength,1);
-			OnCommand=cmd(diffuseshift;effectcolor1,Color('White');effectcolor2,color("#65657377"));
+			OnCommand=cmd(diffuseshift;effectcolor1,Color('White');effectcolor2,color("0.5,0.5,0.5"));
 		};
 	};
 	
