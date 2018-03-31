@@ -981,7 +981,7 @@ local p = Def.ActorFrame{
 	end,
 	
 	LoadFont("_wendy small")..{																		-- total time
-		InitCommand=cmd(x,width/2;zoom,0.3;maxwidth,width*2;halign,1),
+		InitCommand=cmd(x,width/2 - mpOffset;zoom,0.3;maxwidth,width*2;halign,1),
 		BeginCommand=function(self)
 			local ttime = GetPlayableTime()
 			settext(self,SecondsToMMSS(ttime))
