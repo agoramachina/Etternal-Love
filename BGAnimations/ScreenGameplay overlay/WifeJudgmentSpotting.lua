@@ -68,7 +68,7 @@ local WIDESCREENWHX = -5
 local errorBarX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarX 								
 local errorBarY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarY
 local errorBarWidth = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarWidth         -- felt like this is necessary in order to do stuff
-local errorBarHeight = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarHeight - 8								
+local errorBarHeight = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarHeight							
 local errorBarFrameWidth = capWideScale(get43size(errorBarWidth),errorBarWidth)
 local wscale = errorBarFrameWidth/180
 
