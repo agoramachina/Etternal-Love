@@ -109,7 +109,7 @@ t[#t+1] = Def.ActorFrame {
 		LoadFont("_wendy small") .. {
 			Text="Created by " .. minanyms[math.random(#minanyms)],
 			InitCommand=cmd(y,16;zoom,0.25;maxwidth,SCREEN_WIDTH),
-			OnCommand=cmd(sleep,.1;linear,3;diffuse,getDifficultyColor('negative');diffusealpha,0)
+			OnCommand=cmd(sleep,.1;linear,3;diffuse,getMainColor('negative');diffusealpha,0)
 		},
 	}
 }
