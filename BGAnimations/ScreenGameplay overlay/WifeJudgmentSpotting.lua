@@ -775,13 +775,13 @@ local cp = Def.ActorFrame{
 	end,
 
 -- percent background border  --agoramachina
---	Def.Quad{
---		InitCommand=cmd(xy,70 + mpOffset,(SCREEN_HEIGHT*0.62)-90;;zoomto, 60, 13;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
---	},
+	Def.Quad{
+		InitCommand=cmd(xy,20 + mpOffset,165;zoomto, 65, 30;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
+	},
 	-- Displays your current percentage score
 	LoadFont("_wendy small")..{											
 		Name = "DisplayPercent",
-		InitCommand=cmd(xy,100 + mpOffset,201;zoom,0.3;halign,1;valign,1),
+		InitCommand=cmd(xy,90 + mpOffset,190;zoom,0.3;halign,1;valign,1),
 		OnCommand=function(self)
 			self:settextf("%05.2f%%", 0)
 		end,
