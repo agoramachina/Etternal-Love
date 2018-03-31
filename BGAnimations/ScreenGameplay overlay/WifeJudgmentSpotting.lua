@@ -781,7 +781,7 @@ local cp = Def.ActorFrame{
 	-- Displays your current percentage score
 	LoadFont("_wendy small")..{											
 		Name = "DisplayPercent",
-		InitCommand=cmd(xy,55,200;zoom,0.3;halign,1;valign,1),
+		InitCommand=cmd(xy,45,200;zoom,0.3;halign,1;valign,1),
 		OnCommand=function(self)
 			self:settextf("%05.2f%%", 0)
 		end,
