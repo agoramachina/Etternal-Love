@@ -180,14 +180,14 @@ if not isCentered then
 	mpOffset = SCREEN_CENTER_X + 60
 end
 
---Graph related stuff
+--Graph related stuff  --fix p2 later --agoramachina
 local initialPeak = 10 -- Initial height of the NPS graph.
-local graphWidth = 140
-local graphHeight = 100
+local graphWidth = 160
+local graphHeight = 60
 local graphPos = {  -- Position of the NPS graph
 	PlayerNumber_P1 = {
-		X = 0 + mpOffset,
-		Y = SCREEN_BOTTOM-160
+		X = 0 + mpOffset,  
+		Y = SCREEN_BOTTOM
 	},
 	PlayerNumber_P2 = {
 		X = SCREEN_WIDTH-graphWidth,
@@ -197,7 +197,7 @@ local graphPos = {  -- Position of the NPS graph
 
 local textPos = { -- Position of the NPS text
 	PlayerNumber_P1 = {
-		X = 5 + mpOffset,
+		X = 0 + mpOffset,
 		Y = SCREEN_BOTTOM-170
 	},
 	PlayerNumber_P2 = {
@@ -394,7 +394,7 @@ local function npsDisplay(pn)
 	if enabled.NPSDisplay[pn] then
 		t[#t+1] = LoadFont("Common Normal")..{
 			Name="Text"; -- sets the name of this actor as "Text". this is a child of the actor "t".
-			InitCommand=cmd(x,SCREEN_WIDTH+npsDisplayX-138;y,npsDisplayY+10;halign,0;zoom,npsDisplayZoom;halign,0;valign,0;shadowlength,1;settext,"0.0 NPS");
+			InitCommand=cmd(x,npsDisplayX;y,npsDisplayY;halign,0;zoom,npsDisplayZoom;halign,0;valign,0;shadowlength,1;settext,"0.0 NPS");
 			BeginCommand=function(self)
 				if pn == PLAYER_2 then
 					self:x(SCREEN_WIDTH-5)
