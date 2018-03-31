@@ -12,14 +12,14 @@ t[#t+1] = Def.Quad{
 }
 
 t[#t+1] = LoadFont("_wendy small") .. {
-	InitCommand=cmd(xy,10,frameY-180;zoom,0.65;valign,1;halign,0;diffuse,getDifficultyColor("Difficulty_Couple")),
+	InitCommand=cmd(xy,10,frameY-180;zoom,0.65;valign,1;halign,0;diffuse,getMainColor('negative')),
 	OnCommand=function(self)
 		self:settext(getThemeName())
 	end,
 }
 
 t[#t+1] = LoadActor(THEME:GetPathG("","_ring")) .. {
-	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH-10),SCREEN_WIDTH-256),frameY-180;diffuse,getDifficultyColor("Difficulty_Couple")diffusealpha,1;baserotationx,420)
+	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH-10),SCREEN_WIDTH-256),frameY-180;diffuse,getMainColor('negative')diffusealpha,1;baserotationx,420)
 }
 
 --[[[t[#t+1] = LoadActor(THEME:GetPathG("","dance")) .. {
