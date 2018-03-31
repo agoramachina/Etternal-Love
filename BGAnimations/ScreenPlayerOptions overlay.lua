@@ -147,7 +147,7 @@ t[#t+1] = Def.Quad{
 
 --t[#t+1] = LoadActor("_frame");
 t[#t+1] = LoadFont("_wendy small")..{
-	InitCommand=cmd(xy,5,32;halign,0;valign,1;zoom,0.55;diffuse,getMainColor('positive');settext,"Player Options:";);
+	InitCommand=cmd(xy,5,42;halign,0;valign,1;zoom,0.55;diffuse,getMainColor('positive');settext,"Player Options:";);
 }
 
 return t
