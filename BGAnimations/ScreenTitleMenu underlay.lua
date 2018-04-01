@@ -18,11 +18,18 @@ t[#t+1] = LoadFont("_wendy small") .. {
 	end,
 }
 
+
+-- remove this --agoramachina
+--[[
 t[#t+1] = LoadActor(THEME:GetPathG("","_ring")) .. {
 	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH-10),SCREEN_WIDTH-256),frameY-180;diffuse,getMainColor('negative')diffusealpha,1;baserotationx,420)
 }
+]]
 
---[[[t[#t+1] = LoadActor(THEME:GetPathG("","dance")) .. {
+
+--arrows titlescreen
+--[[
+t[#t+1] = LoadActor(THEME:GetPathG("","dance")) .. {
 
 	--- large center --agoramachina
 	--InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH/2),SCREEN_WIDTH/2),frameY-50;diffusealpha,.10;zoom,1.25)
@@ -30,4 +37,5 @@ t[#t+1] = LoadActor(THEME:GetPathG("","_ring")) .. {
 	InitCommand=cmd(xy,capWideScale(get43size(SCREEN_WIDTH/2),SCREEN_WIDTH/2),frameY+120;diffusealpha,.10;zoomy,0.50;zoomx,.60)
 }
 ]]
+
 return t
