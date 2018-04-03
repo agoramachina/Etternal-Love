@@ -47,6 +47,7 @@ local defaultConfig = {
 		NotefieldX = 0,
 		NotefieldY = 15,
 		---bpmdisplay/songinfo/rate pos is in WifeJudgmentSpotting.lua --agoramachina
+		---StreamDisplay (lifebar) is in Graphics
 
 	},
 	GameplaySizes = {
