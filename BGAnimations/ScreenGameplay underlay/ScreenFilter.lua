@@ -88,7 +88,7 @@ if numPlayers == 1 then
 		Name="SinglePlayerFilter";
 		InitCommand=function(self)
 			self:x(pos)
-			self:CenterY()
+			self:y(SCREEN_HEIGHT/2 + 50)
 			self:zoomto(filterWidth*getNoteFieldScale(player)*noteFieldWidth,SCREEN_HEIGHT)
 			self:diffusecolor(filterColor)
 			self:diffusealpha(filterAlphas[player])
