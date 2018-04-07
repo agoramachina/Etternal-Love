@@ -10,10 +10,10 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 
 ### Screenshots (may be outdated)
 ![](Graphics/assets/screenshots/screen00.png)
-![](Graphics/assets/screenshots/screen1.png)
-![](Graphics/assets/screenshots/screen2.png)
-![](Graphics/assets/screenshots/screen3.png) 
-![](Graphics/assets/screenshots/screen4.png) 
+![](Graphics/assets/screenshots/screen10.png)
+![](Graphics/assets/screenshots/screen20.png)
+![](Graphics/assets/screenshots/screen30.png) 
+![](Graphics/assets/screenshots/screen40.png) 
 
 ### TODO:
 * ~~add background animation~~
