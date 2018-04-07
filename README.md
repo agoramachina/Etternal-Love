@@ -25,3 +25,4 @@ Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_sett
 * ~~GET RID OF WEIRD WHITE QUAD in upper left corner of Screens (underlay?)~~
 * more testing on non-widescreens
 * ~~change gameplayscreen % location~~
+* loading screen
