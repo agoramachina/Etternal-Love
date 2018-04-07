@@ -9,11 +9,11 @@ In Linux for example, these settings can be found in  `../Etterna/Save/Til Death
 Likewise, the contents of `../Etterna/Save/LocalProfiles/00000001/Til Death_settings/` (playerConfig.lua) can be copied to `../Etterna/Save/LocalProfiles/00000001/Etternal-Love_settings/`. 
 
 ### Screenshots (may be outdated)
-![](Graphics/assets/screenshots/screen00.png)
-![](Graphics/assets/screenshots/screen10.png)
-![](Graphics/assets/screenshots/screen20.png)
-![](Graphics/assets/screenshots/screen30.png) 
-![](Graphics/assets/screenshots/screen40.png) 
+![](Graphics/assets/screenshots/screen0.png)
+![](Graphics/assets/screenshots/screen1.png)
+![](Graphics/assets/screenshots/screen2.png)
+![](Graphics/assets/screenshots/screen3.png) 
+![](Graphics/assets/screenshots/screen4.png) 
 
 ### TODO:
 * ~~add background animation~~
