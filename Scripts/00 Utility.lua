@@ -9,13 +9,19 @@
 function Border(width, height, bw)
 	return Def.ActorFrame {
 		Def.Quad {
-			InitCommand=cmd(zoomto, width-2*bw, height-2*bw;  MaskSource,true)
+			InitCommand=function(self)
+				self:zoomto(width-2*bw, height-2*bw):MaskSource(true)
+			end
 		},
 		Def.Quad {
-			InitCommand=cmd(zoomto,width,height; MaskDest)
+			InitCommand=function(self)
+				self:zoomto(width,height): MaskDest()
+			end
 		},
 		Def.Quad {
-			InitCommand=cmd(diffusealpha,0; clearzbuffer,true)
+			InitCommand=function(self)
+				self:diffusealpha(0):clearzbuffer(true)
+			end
 		},
 	}
 end;

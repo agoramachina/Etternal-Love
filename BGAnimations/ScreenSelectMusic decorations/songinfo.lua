@@ -1,8 +1,14 @@
 local update = false
 local t = Def.ActorFrame{
-	BeginCommand=cmd(queuecommand,"Set"),
-	OffCommand=cmd(bouncebegin,0.2;xy,-500,0), -- visible(false) doesn't seem to work with sleep
-	OnCommand=cmd(bouncebegin,0.2;xy,0,0),
+	BeginCommand=function(self)
+		self:queuecommand("Set")
+	end,
+	OffCommand=function(self)
+		self:bouncebegin(0.2):xy(-500,0) -- visible(false) doesn't seem to work with sleep
+	end,
+	OnCommand=function(self)
+		self:bouncebegin(0.2):xy(0,0)
+	end,
 	SetCommand=function(self)
 		self:finishtweening()
 		if getTabIndex() == 0 then
@@ -13,14 +19,20 @@ local t = Def.ActorFrame{
 			update = false
 		end
 	end,
-	TabChangedMessageCommand=cmd(queuecommand,"Set"),
-	PlayerJoinedMessageCommand=cmd(queuecommand,"Set")
+	TabChangedMessageCommand=function(self)
+		self:queuecommand("Set")
+	end,
+	PlayerJoinedMessageCommand=function(self)
+		self:queuecommand("Set")
+	end
 
 }
 
 
 t[#t+1] = Def.Banner{
-	InitCommand=cmd(x,8;y,58;halign,0;valign,0;scaletoclipped,capWideScale(get43size(384),384),capWideScale(get43size(120),120)),
+	InitCommand=function(self)
+		self:x(8):y(58):halign(0):valign(0):scaletoclipped(capWideScale(get43size(384),384),capWideScale(get43size(120),120))
+	end,
 
 	SetMessageCommand=function(self)
 		if update then
@@ -37,7 +49,9 @@ t[#t+1] = Def.Banner{
 		end
 		self:scaletoclipped(capWideScale(get43size(384),384),capWideScale(get43size(120),120))
 	end,
-	CurrentSongChangedMessageCommand=cmd(queuecommand,"Set")
+	CurrentSongChangedMessageCommand=function(self)
+		self:queuecommand("Set")
+	end
 }
 
 
@@ -46,13 +60,19 @@ t[#t+1] = Def.Banner{
 function Border(width, height, bw)
 	return Def.ActorFrame {
 		Def.Quad {
-			InitCommand=cmd(zoomto, width-2*bw, height-2*bw;  MaskSource,true)
+			InitCommand=function(self)
+				self:zoomto(width-2*bw, height-2*bw):MaskSource(true)
+			end
 		},
 		Def.Quad {
-			InitCommand=cmd(zoomto,width,height; MaskDest)
+			InitCommand=function(self)
+				self:zoomto(width,height): MaskDest()
+			end
 		},
 		Def.Quad {
-			InitCommand=cmd(diffusealpha,0; clearzbuffer,true)
+			InitCommand=function(self)
+				self:diffusealpha(0):clearzbuffer(true)
+			end
 		},
 	}
 end;
@@ -63,11 +83,15 @@ end;
 --- hacky fix to take care of banner border issues on screenselectmusic remove this --agoramachina  
 --top
 t[#t+1] = Def.Quad{
-	InitCommand=cmd(xy,8,58;zoomto,capWideScale(get43size(384),384),1;halign,0;diffuse,color("0,0,0,.9");diffusetopedge,color("0,0,0,.8"))
+	InitCommand=function(self)
+		self:xy(8,58):zoomto(capWideScale(get43size(384),384),1):halign(0):diffuse(color("0,0,0,.9")):diffusetopedge(color("0,0,0,.8"))
+	end
 }
 --left
 t[#t+1] = Def.Quad{
-	InitCommand=cmd(xy,8,118;zoomto,1,120;halign,0;diffuse,color("0,0,0,1"))
+	InitCommand=function(self)
+		self:xy(8,118):zoomto(1,120):halign(0):diffuse(color("0,0,0,1"))
+	end
 }
 --]]
 
