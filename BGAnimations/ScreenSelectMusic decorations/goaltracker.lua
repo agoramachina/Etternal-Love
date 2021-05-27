@@ -56,7 +56,7 @@ if GAMESTATE:IsPlayerEnabled(PLAYER_1) then
 	profile = GetPlayerOrMachineProfile(PLAYER_1)
 end
 
-local playergoals = profile:GetAllGoals()
+local playergoals = profile:GetGoalTable()
 local displayindex = {}
 
 
@@ -127,7 +127,7 @@ end
 
 local r = Def.ActorFrame{
 	UpdateGoalsMessageCommand=function(self)
-		playergoals = profile:GetAllGoals()
+		playergoals = profile:GetGoalTable()
 		table.sort(playergoals,sgDateComparator)
 		displayindex = filterDisplay(playergoals)
 		numgoalpages = notShit.ceil(#displayindex/goalsperpage)
