@@ -7,14 +7,6 @@ If the line is a function, you'll have to use Branch.keyname() instead.
 --]]
 
 -- used for various SMOnline-enabled screens:
-function SMOnlineScreen()
-	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
-		if not IsSMOnlineLoggedIn(pn) then
-			return "ScreenSMOnlineLogin"
-		end
-	end
-	return "ScreenNetRoom"
-end
 
 function SelectMusicOrCourse()
 	if IsNetSMOnline() then
@@ -137,7 +129,6 @@ Branch = {
 		bTrue = PREFSMAN:GetPreference("ShowInstructions")
 		return (bTrue and GoToMusic() or "ScreenGameInformation")
 	end,
-	AfterSMOLogin = SMOnlineScreen(),
 	BackOutOfPlayerOptions = function()
 		return SelectMusicOrCourse()
 	end,
