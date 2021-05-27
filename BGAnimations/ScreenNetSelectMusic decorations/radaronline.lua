@@ -2,9 +2,15 @@
 
 local update = false
 local t = Def.ActorFrame{
-	BeginCommand=cmd(queuecommand,"Set";visible,false);
-	OffCommand=cmd(bouncebegin,0.2;xy,-500,0;diffusealpha,0;); -- visible(false) doesn't seem to work with sleep
-	OnCommand=cmd(bouncebegin,0.2;xy,0,0;diffusealpha,1;);
+	BeginCommand=function(self)
+		self:queuecommand("Set"):visible(false)
+	end;
+	OffCommand=function(self)
+		self:bouncebegin(0.2):xy(-500,0):diffusealpha(0) -- visible(false) doesn't seem to work with sleep
+	end;
+	OnCommand=function(self)
+		self:bouncebegin(0.2):xy(0,0):diffusealpha(1)
+	end;
 	SetCommand=function(self)
 		self:finishtweening()
 		if getTabIndex() == 0 then
@@ -16,8 +22,12 @@ local t = Def.ActorFrame{
 			update = false
 		end;
 	end;
-	TabChangedMessageCommand=cmd(queuecommand,"Set");
-	PlayerJoinedMessageCommand=cmd(queuecommand,"Set");
+	TabChangedMessageCommand=function(self)
+		self:queuecommand("Set")
+	end;
+	PlayerJoinedMessageCommand=function(self)
+		self:queuecommand("Set")
+	end;
 };
 
 local frameX = 10
@@ -327,14 +337,18 @@ end;
 
 for k,v in ipairs(radarValues) do
 	t[#t+1] = LoadFont("Common Normal")..{
-		InitCommand=cmd(xy,stuffstuffstuffX,frameY+offsetY+230+(15*(k-1));zoom,0.4;halign,0;maxwidth,(frameWidth-offsetX*2-150)/0.4);
+		InitCommand=function(self)
+			self:xy(stuffstuffstuffX,frameY+offsetY+230+(15*(k-1))):zoom(0.4):halign(0):maxwidth((frameWidth-offsetX*2-150)/0.4)
+		end;
 		OnCommand=function(self)
 			self:settext(v[2]..": ")
 		end;
 	}
 	t[#t+1] = LoadFont("Common Normal")..{
 		Name="RadarValue"..v[1];
-		InitCommand=cmd(xy,radarX,frameY+offsetY+230+(15*(k-1));zoom,0.4;halign,0;maxwidth,(frameWidth-offsetX*2-150)/0.4);
+		InitCommand=function(self)
+			self:xy(radarX,frameY+offsetY+230+(15*(k-1))):zoom(0.4):halign(0):maxwidth((frameWidth-offsetX*2-150)/0.4)
+		end;
 		SetCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong()
 			local steps = GAMESTATE:GetCurrentSteps(pn)
@@ -348,9 +362,15 @@ for k,v in ipairs(radarValues) do
 				self:diffuse(getMainColor("disabled"))
 			end
 		end;
-		CurrentSongChangedMessageCommand=cmd(queuecommand,"Set");
-		CurrentStepsP1ChangedMessageCommand=cmd(queuecommand,"Set");
-		CurrentStepsP2ChangedMessageCommand=cmd(queuecommand,"Set");
+		CurrentSongChangedMessageCommand=function(self)
+			self:queuecommand("Set")
+		end;
+		CurrentStepsP1ChangedMessageCommand=function(self)
+			self:queuecommand("Set")
+		end;
+		CurrentStepsP2ChangedMessageCommand=function(self)
+			self:queuecommand("Set")
+		end;
 	}
 end
 

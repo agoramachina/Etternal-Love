@@ -31,7 +31,9 @@ local t = Def.ActorFrame {
 	InitCommand=function(self)
 			self:diffusealpha(0)
 	end,
-	OnCommand=cmd(accelerate,0.8; diffusealpha,1),
+	OnCommand=function(self)
+		self:accelerate(0.8):diffusealpha(1)
+	end,
 	BackgroundImageChangedMessageCommand=function(self)
 			self:visible(true):linear(0.6):diffusealpha(1)
 	end,
@@ -41,9 +43,12 @@ local t = Def.ActorFrame {
 for i=1,10 do
 	t[#t+1] = Def.Sprite {
 		Texture=file,
-		InitCommand=cmd(diffuse, file_info.ColorRGB[i]  ), 
-		OnCommand=cmd(zoom,1.3; xy, file_info.xy[i], file_info.xy[i]; customtexturerect,0,0,1,1;
-			texcoordvelocity, file_info.texcoordvelocity[i][1], file_info.texcoordvelocity[i][2]; diffusealpha, file_info.diffusealpha[i] ),
+		InitCommand=function(self)
+			self:diffuse(file_info.ColorRGB[i])
+		end,
+		OnCommand = function(self)
+			self:zoom(1.3):xy(file_info.xy[i], file_info.xy[i]):customtexturerect(0,0,1,1)
+		end,
 		BackgroundImageChangedMessageCommand=function(self)
 			local new_file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")
 			self:Load(new_file)

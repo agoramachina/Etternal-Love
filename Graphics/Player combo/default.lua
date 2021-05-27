@@ -2,9 +2,9 @@ local threePressed = false
 local fourPressed = false
 local changed = false
 local c
-local x = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboX
-local y = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboY
-local zoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ComboZoom
+local x = MovableValues.ComboX
+local y = MovableValues.ComboY
+local zoom = MovableValues.ComboZoom
 local ShowComboAt = THEME:GetMetric("Combo", "ShowComboAt");
 
 local function input(event)
@@ -19,28 +19,28 @@ local function input(event)
 			y = y - 5
 			c.Label:y(y)
 			c.Number:y(y)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboY = y
+			MovableValues.ComboY = y
 			changed = true
 		end
 		if event.DeviceInput.button == "DeviceButton_down" then
 			y = y + 5
 			c.Label:y(y)
 			c.Number:y(y)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboY = y
+			MovableValues.ComboY = y
 			changed = true
 		end
 		if event.DeviceInput.button == "DeviceButton_left" then
 			x = x - 5
 			c.Label:x(x)
 			c.Number:x(x-4)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboX = x
+			MovableValues.ComboX = x
 			changed = true
 		end
 		if event.DeviceInput.button == "DeviceButton_right" then
 			x = x + 5
 			c.Label:x(x)
 			c.Number:x(x-4)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboX = x
+			MovableValues.ComboX = x
 			changed = true
 		end
 		if changed then
@@ -54,14 +54,14 @@ local function input(event)
 			zoom = zoom + 0.01
 			c.Label:zoom(zoom)
 			c.Number:zoom(zoom - 0.1)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ComboZoom = zoom
+			MovableValues.ComboZoom = zoom
 			changed = true
 		end
 		if event.DeviceInput.button == "DeviceButton_down" then
 			zoom = zoom - 0.01
 			c.Label:zoom(zoom)
 			c.Number:zoom(zoom - 0.1)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ComboZoom = zoom
+			MovableValues.ComboZoom = zoom
 			changed = true
 		end
 		if changed then
@@ -74,14 +74,20 @@ local function input(event)
 end
 
 local t = Def.ActorFrame {
-	InitCommand=cmd(vertalign,bottom),
+	InitCommand=function(self)
+		self:vertalign(bottom)
+	end,
 	LoadFont("_wendy small") .. {
 		Name="Number",
-		InitCommand=cmd(xy,x-4,y+4;zoom,zoom + 0.1;halign,1;valign,1;visible,false),
+		InitCommand=function(self)
+			self:xy(x-4,y+4):zoom(zoom + 0.1):halign(1):valign(1):visible(false)
+		end,
 	},
 	LoadFont("_wendy small") .. {
 		Name="Label",
-		InitCommand=cmd(xy,x,y-6;zoom,.35;diffusebottomedge,color("0.75,0.75,0.75,1");halign,0;valign,1;visible,false),
+		InitCommand=function(self)
+			self:xy(x,y-6):zoom(.35):diffusebottomedge(color("0.75,0.75,0.75,1")):halign(0):valign(1):visible(false)
+		end,
 	},
 	InitCommand = function(self)
 		c = self:GetChildren()

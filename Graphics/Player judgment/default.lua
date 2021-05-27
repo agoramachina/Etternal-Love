@@ -3,8 +3,8 @@ local onePressed = false
 local twoPressed = false
 local changed = false
 local c
-local x = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeX
-local y = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeY -10
+local x = MovableValues.JudgeX
+local y = MovableValues.JudgeY -10
 
 -- CUZ WIDESCREEN DEFAULTS SCREAAAAAAAAAAAAAAAAAAAAAAAAAM -mina
 if IsUsingWideScreen( ) then
@@ -12,7 +12,7 @@ if IsUsingWideScreen( ) then
 	x = x + 5
 end
 
-local zoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.JudgeZoom
+local zoom = MovableValues.JudgeZoom
 
 local JudgeCmds = {
 	TapNoteScore_W1 = THEME:GetMetric( "Judgment", "JudgmentW1Command" ),
@@ -43,25 +43,25 @@ local function input(event)
 		if event.DeviceInput.button == "DeviceButton_up" then
 			y = y - 5
 			c.Judgment:y(y)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeY = y
+			MovableValues.JudgeY = y
 			changed = true
 		end
 		if event.DeviceInput.button == "DeviceButton_down" then
 			y = y + 5
 			c.Judgment:y(y)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeY = y
+			MovableValues.JudgeY = y
 			changed = true
 		end
 		if event.DeviceInput.button == "DeviceButton_left" then
 			x = x - 5
 			c.Judgment:x(x)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeX = x
+			MovableValues.JudgeX = x
 			changed = true
 		end
 		if event.DeviceInput.button == "DeviceButton_right" then
 			x = x + 5
 			c.Judgment:x(x)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeX = x
+			MovableValues.JudgeX = x
 			changed = true
 		end
 		if changed then
@@ -74,12 +74,12 @@ local function input(event)
 		if event.DeviceInput.button == "DeviceButton_up" then
 			zoom = zoom + 0.01
 			c.Judgment:zoom(zoom)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.JudgeZoom	= zoom
+			MovableValues.JudgeZoom	= zoom
 		end
 		if event.DeviceInput.button == "DeviceButton_down" then
 			zoom = zoom - 0.01
 			c.Judgment:zoom(zoom)
-			playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.JudgeZoom	= zoom
+			MovableValues.JudgeZoom	= zoom
 		end
 		if changed then
 			playerConfig:set_dirty(pn_to_profile_slot(PLAYER_1))
@@ -93,8 +93,12 @@ end
 local t = Def.ActorFrame {
 	LoadActor(THEME:GetPathG("Judgment","Normal")) .. {
 		Name="Judgment",
-		InitCommand=cmd(pause;visible,false;xy,x,y;zoom,zoom),
-		ResetCommand=cmd(finishtweening;stopeffect;visible,false),
+		InitCommand=function(self)
+			self:pause():visible(false):xy(x,y):zoom(zoom)
+		end,
+		ResetCommand=function(self)
+			self:finishtweening():stopeffect():visible(false)
+		end,
 	},
 	
 	InitCommand = function(self)

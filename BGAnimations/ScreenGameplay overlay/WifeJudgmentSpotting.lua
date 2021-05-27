@@ -65,27 +65,27 @@ local WIDESCREENWHY = -5
 local WIDESCREENWHX = -5
 
 --error bar things
-local errorBarX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarX 								
-local errorBarY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarY
-local errorBarWidth = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarWidth         -- felt like this is necessary in order to do stuff
-local errorBarHeight = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarHeight							
+local errorBarX = MovableValues.ErrorBarX 								
+local errorBarY = MovableValues.ErrorBarY
+local errorBarWidth = MovableValues.ErrorBarWidth         -- felt like this is necessary in order to do stuff
+local errorBarHeight = MovableValues.ErrorBarHeight							
 local errorBarFrameWidth = capWideScale(get43size(errorBarWidth),errorBarWidth)
 local wscale = errorBarFrameWidth/180
 
 --percent display things
-local displayPercentX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentX
-local displayPercentY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentY
-local displayPercentZoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.DisplayPercentZoom
+local displayPercentX = MovableValues.DisplayPercentX
+local displayPercentY = MovableValues.DisplayPercentY
+local displayPercentZoom = MovableValues.DisplayPercentZoom
 
 --pa counter things
-local judgeCounterX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterX
-local judgeCounterY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterY
+local judgeCounterX = MovableValues.JudgeCounterX
+local judgeCounterY = MovableValues.JudgeCounterY
 
 --differential tracker things
 local targetTrackerMode = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).TargetTrackerMode
-local targetTrackerX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.TargetTrackerX
-local targetTrackerY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.TargetTrackerY
-local targetTrackerZoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.TargetTrackerZoom
+local targetTrackerX = MovableValues.TargetTrackerX
+local targetTrackerY = MovableValues.TargetTrackerY
+local targetTrackerZoom = MovableValues.TargetTrackerZoom
 
 if IsUsingWideScreen( ) then
 	targetTrackerY = targetTrackerY + WIDESCREENWHY
@@ -93,8 +93,8 @@ if IsUsingWideScreen( ) then
 end
 
 --mini progress bar things
-local miniProgressBarX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.MiniProgressBarX
-local miniProgressBarY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.MiniProgressBarY
+local miniProgressBarX = MovableValues.MiniProgressBarX
+local miniProgressBarY = MovableValues.MiniProgressBarY
 
 -- CUZ WIDESCREEN DEFAULTS SCREAAAAAAAAAAAAAAAAAAAAAAAAAM -mina
 -- putting the WHY in WIDESCREENWHY -agoramachina
@@ -104,18 +104,18 @@ if IsUsingWideScreen( ) then
 end
 
 --full progress bar things
-local fullProgressBarX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.FullProgressBarX
-local fullProgressBarY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.FullProgressBarY
-local fullProgressBarWidth = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.FullProgressBarWidth
-local fullProgressBarHeight = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.FullProgressBarHeight
+local fullProgressBarX = MovableValues.FullProgressBarX
+local fullProgressBarY = MovableValues.FullProgressBarY
+local fullProgressBarWidth = MovableValues.FullProgressBarWidth
+local fullProgressBarHeight = MovableValues.FullProgressBarHeight
 
 --receptor/notefield things
 local noteField
 local noteColumns
-local noteFieldX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NotefieldX
-local noteFieldY = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NotefieldY
-local noteFieldWidth = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NotefieldWidth
-local noteFieldHeight = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NotefieldHeight
+local noteFieldX = MovableValues.NotefieldX
+local noteFieldY = MovableValues.NotefieldY
+local noteFieldWidth = MovableValues.NotefieldWidth
+local noteFieldHeight = MovableValues.NotefieldHeight
 
 --guess checking if things are enabled before changing them is good for not having a log full of errors
 local enabledErrorBar = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).ErrorBar
@@ -124,13 +124,6 @@ local enabledFullBar = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).FullP
 local enabledTargetTracker = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).TargetTracker
 local enabledDisplayPercent = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).DisplayPercent
 local enabledJudgeCounter = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).JudgeCounter
-
--- restart button
-local function froot(loop)
-	if loop.DeviceInput.button == "DeviceButton_`" then
-		SCREENMAN:GetTopScreen():SetPrevScreenName("ScreenStageInformation"):begin_backing_out()
-	end
-end
 
 --[[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 												**Main listener that moves and resizes things**
@@ -207,25 +200,25 @@ local function firstHalfInput(event)
 			if event.DeviceInput.button == "DeviceButton_up" then
 				errorBarY = errorBarY - 5
 				eb.Center:y(errorBarY)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarY = errorBarY
+				MovableValues.ErrorBarY = errorBarY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				errorBarY = errorBarY + 5
 				eb.Center:y(errorBarY)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarY = errorBarY
+				MovableValues.ErrorBarY = errorBarY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				errorBarX = errorBarX - 5
 				eb.Center:x(errorBarX)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarX = errorBarX
+				MovableValues.ErrorBarX = errorBarX
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				errorBarX = errorBarX + 5
 				eb.Center:x(errorBarX)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ErrorBarX = errorBarX
+				MovableValues.ErrorBarX = errorBarX
 				changed = true
 			end
 			if changed then
@@ -239,27 +232,27 @@ local function firstHalfInput(event)
 			if event.DeviceInput.button == "DeviceButton_up" then
 				errorBarHeight = errorBarHeight + 1
 				eb.Center:zoomtoheight(errorBarHeight)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarHeight = errorBarHeight
+				MovableValues.ErrorBarHeight = errorBarHeight
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				errorBarHeight = errorBarHeight - 1
 				eb.Center:zoomtoheight(errorBarHeight)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarHeight = errorBarHeight
+				MovableValues.ErrorBarHeight = errorBarHeight
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				errorBarWidth = errorBarWidth - 10
 				errorBarFrameWidth = capWideScale(get43size(errorBarWidth),errorBarWidth)
 				wscale = errorBarFrameWidth/180
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarWidth = errorBarWidth
+				MovableValues.ErrorBarWidth = errorBarWidth
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				errorBarWidth = errorBarWidth + 10
 				errorBarFrameWidth = capWideScale(get43size(errorBarWidth),errorBarWidth)
 				wscale = errorBarFrameWidth/180
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ErrorBarWidth = errorBarWidth
+				MovableValues.ErrorBarWidth = errorBarWidth
 				changed = true
 			end
 			if changed then
@@ -277,7 +270,7 @@ local function firstHalfInput(event)
 				else
 					dt.PBDifferential:y(targetTrackerY)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.TargetTrackerY = targetTrackerY
+				MovableValues.TargetTrackerY = targetTrackerY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
@@ -287,7 +280,7 @@ local function firstHalfInput(event)
 				else
 					dt.PBDifferential:y(targetTrackerY)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.TargetTrackerY = targetTrackerY
+				MovableValues.TargetTrackerY = targetTrackerY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
@@ -297,7 +290,7 @@ local function firstHalfInput(event)
 				else
 					dt.PBDifferential:x(targetTrackerX)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.TargetTrackerX = targetTrackerX
+				MovableValues.TargetTrackerX = targetTrackerX
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
@@ -307,7 +300,7 @@ local function firstHalfInput(event)
 				else
 					dt.PBDifferential:x(targetTrackerX)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.TargetTrackerX = targetTrackerX
+				MovableValues.TargetTrackerX = targetTrackerX
 				changed = true
 			end
 			if changed then
@@ -325,7 +318,7 @@ local function firstHalfInput(event)
 				else
 					dt.PBDifferential:zoom(targetTrackerZoom)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.TargetTrackerZoom = targetTrackerZoom
+				MovableValues.TargetTrackerZoom = targetTrackerZoom
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
@@ -335,7 +328,7 @@ local function firstHalfInput(event)
 				else
 					dt.PBDifferential:zoom(targetTrackerZoom)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.TargetTrackerZoom = targetTrackerZoom
+				MovableValues.TargetTrackerZoom = targetTrackerZoom
 				changed = true
 			end
 			if changed then
@@ -349,25 +342,25 @@ local function firstHalfInput(event)
 			if event.DeviceInput.button == "DeviceButton_up" then
 				fullProgressBarY = fullProgressBarY - 3
 				fb:y(fullProgressBarY)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.FullProgressBarY = fullProgressBarY
+				MovableValues.FullProgressBarY = fullProgressBarY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				fullProgressBarY = fullProgressBarY + 3
 				fb:y(fullProgressBarY)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.FullProgressBarY = fullProgressBarY
+				MovableValues.FullProgressBarY = fullProgressBarY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				fullProgressBarX = fullProgressBarX - 5
 				fb:x(fullProgressBarX)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.FullProgressBarX = fullProgressBarX
+				MovableValues.FullProgressBarX = fullProgressBarX
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				fullProgressBarX = fullProgressBarX + 5
 				fb:x(fullProgressBarX)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.FullProgressBarX = fullProgressBarX
+				MovableValues.FullProgressBarX = fullProgressBarX
 				changed = true
 			end
 			if changed then
@@ -381,25 +374,25 @@ local function firstHalfInput(event)
 			if event.DeviceInput.button == "DeviceButton_up" then
 				fullProgressBarHeight = fullProgressBarHeight + 0.1
 				fb:zoomtoheight(fullProgressBarHeight)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.FullProgressBarHeight = fullProgressBarHeight
+				MovableValues.FullProgressBarHeight = fullProgressBarHeight
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				fullProgressBarHeight = fullProgressBarHeight - 0.1
 				fb:zoomtoheight(fullProgressBarHeight)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.FullProgressBarHeight = fullProgressBarHeight
+				MovableValues.FullProgressBarHeight = fullProgressBarHeight
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				fullProgressBarWidth = fullProgressBarWidth - 0.01
 				fb:zoomtowidth(fullProgressBarWidth)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.FullProgressBarWidth = fullProgressBarWidth
+				MovableValues.FullProgressBarWidth = fullProgressBarWidth
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				fullProgressBarWidth = fullProgressBarWidth + 0.01
 				fb:zoomtowidth(fullProgressBarWidth)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.FullProgressBarWidth = fullProgressBarWidth
+				MovableValues.FullProgressBarWidth = fullProgressBarWidth
 				changed = true
 			end
 			if changed then
@@ -460,25 +453,25 @@ local function secondHalfInput(event)
 			if event.DeviceInput.button == "DeviceButton_up" then
 				miniProgressBarY = miniProgressBarY - 5
 				mb:y(miniProgressBarY)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.MiniProgressBarY = miniProgressBarY
+				MovableValues.MiniProgressBarY = miniProgressBarY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				miniProgressBarY = miniProgressBarY + 5
 				mb:y(miniProgressBarY)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.MiniProgressBarY = miniProgressBarY
+				MovableValues.MiniProgressBarY = miniProgressBarY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				miniProgressBarX = miniProgressBarX - 5
 				mb:x(miniProgressBarX)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.MiniProgressBarX = miniProgressBarX
+				MovableValues.MiniProgressBarX = miniProgressBarX
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				miniProgressBarX = miniProgressBarX + 5
 				mb:x(miniProgressBarX)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.MiniProgressBarX = miniProgressBarX
+				MovableValues.MiniProgressBarX = miniProgressBarX
 				changed = true
 			end
 			if changed then
@@ -492,25 +485,25 @@ local function secondHalfInput(event)
 			if event.DeviceInput.button == "DeviceButton_up" then
 				displayPercentY = displayPercentY - 5
 				dp:addy(-5)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentY = displayPercentY
+				MovableValues.DisplayPercentY = displayPercentY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				displayPercentY = displayPercentY + 5
 				dp:addy(5)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentY = displayPercentY
+				MovableValues.DisplayPercentY = displayPercentY
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				displayPercentX = displayPercentX - 5
 				dp:addx(-5)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentX = displayPercentX
+				MovableValues.DisplayPercentX = displayPercentX
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				displayPercentX = displayPercentX + 5
 				dp:addx(5)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.DisplayPercentX = displayPercentX
+				MovableValues.DisplayPercentX = displayPercentX
 				changed = true
 			end
 			if changed then
@@ -524,13 +517,13 @@ local function secondHalfInput(event)
 			if event.DeviceInput.button == "DeviceButton_up" then
 				displayPercentZoom = displayPercentZoom + 0.01
 				dp:zoom(displayPercentZoom)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.DisplayPercentZoom = displayPercentZoom
+				MovableValues.DisplayPercentZoom = displayPercentZoom
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				displayPercentZoom = displayPercentZoom - 0.01
 				dp:zoom(displayPercentZoom)
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.DisplayPercentZoom = displayPercentZoom
+				MovableValues.DisplayPercentZoom = displayPercentZoom
 				changed = true
 			end
 			if changed then
@@ -543,25 +536,25 @@ local function secondHalfInput(event)
 		if rPressed and event.type ~= "InputEventType_Release" then
 			if event.DeviceInput.button == "DeviceButton_up" then
 				noteFieldY = noteFieldY - 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NotefieldY = noteFieldY
+				MovableValues.NotefieldY = noteFieldY
 				noteField:addy(-3)
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				noteFieldY = noteFieldY + 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NotefieldY = noteFieldY
+				MovableValues.NotefieldY = noteFieldY
 				noteField:addy(3)
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				noteFieldX = noteFieldX - 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NotefieldX = noteFieldX
+				MovableValues.NotefieldX = noteFieldX
 				noteField:addx(-3)
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				noteFieldX = noteFieldX + 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NotefieldX = noteFieldX
+				MovableValues.NotefieldX = noteFieldX
 				noteField:addx(3)
 				changed = true
 			end
@@ -578,7 +571,7 @@ local function secondHalfInput(event)
 				for i, actor in ipairs(noteColumns) do
 					actor:zoomtoheight(noteFieldHeight)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NotefieldHeight = noteFieldHeight
+				MovableValues.NotefieldHeight = noteFieldHeight
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
@@ -586,7 +579,7 @@ local function secondHalfInput(event)
 				for i, actor in ipairs(noteColumns) do
 					actor:zoomtoheight(noteFieldHeight)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NotefieldHeight = noteFieldHeight
+				MovableValues.NotefieldHeight = noteFieldHeight
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
@@ -594,7 +587,7 @@ local function secondHalfInput(event)
 				for i, actor in ipairs(noteColumns) do
 					actor:zoomtowidth(noteFieldWidth)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NotefieldWidth = noteFieldWidth
+				MovableValues.NotefieldWidth = noteFieldWidth
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
@@ -602,7 +595,7 @@ local function secondHalfInput(event)
 				for i, actor in ipairs(noteColumns) do
 					actor:zoomtowidth(noteFieldWidth)
 				end
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NotefieldWidth = noteFieldWidth
+				MovableValues.NotefieldWidth = noteFieldWidth
 				changed = true
 			end
 			if changed then
@@ -615,25 +608,25 @@ local function secondHalfInput(event)
 		if pPressed and enabledJudgeCounter and event.type ~= "InputEventType_Release" then
 			if event.DeviceInput.button == "DeviceButton_up" then
 				judgeCounterY = judgeCounterY - 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterY = judgeCounterY
+				MovableValues.JudgeCounterY = judgeCounterY
 				judgeCounter:addy(-3)
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_down" then
 				judgeCounterY = judgeCounterY + 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterY = judgeCounterY
+				MovableValues.JudgeCounterY = judgeCounterY
 				judgeCounter:addy(3)
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_left" then
 				judgeCounterX = judgeCounterX - 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterX = judgeCounterX
+				MovableValues.JudgeCounterX = judgeCounterX
 				judgeCounter:addx(-3)
 				changed = true
 			end
 			if event.DeviceInput.button == "DeviceButton_right" then
 				judgeCounterX = judgeCounterX + 3
-				playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeCounterX = judgeCounterX
+				MovableValues.JudgeCounterX = judgeCounterX
 				judgeCounter:addx(3)
 				changed = true
 			end
@@ -658,9 +651,6 @@ end
 local t = Def.ActorFrame{										
 	Name = "WifePerch",
 	OnCommand=function()
-		if not IsNetSMOnline() then
-			SCREENMAN:GetTopScreen():AddInputCallback(froot)
-		end
 		if(playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).CustomizeGameplay) then
 			SCREENMAN:GetTopScreen():AddInputCallback(firstHalfInput)
 			SCREENMAN:GetTopScreen():AddInputCallback(secondHalfInput)
@@ -720,7 +710,9 @@ local d = Def.ActorFrame{
 if targetTrackerMode == 0 then
 	d[#d+1] = LoadFont("_wendy small")..{
 		Name = "PercentDifferential",
-		InitCommand=cmd(xy,targetTrackerX,targetTrackerY;zoom,targetTrackerZoom;halign,0;valign,1),
+		InitCommand=function(self)
+			self:xy(targetTrackerX,targetTrackerY):zoom(targetTrackerZoom):halign(0):valign(1)
+		end,
 		JudgmentMessageCommand=function(self,msg)
 			local tDiff = msg.WifeDifferential
 			if tDiff >= 0 then 											
@@ -734,7 +726,9 @@ if targetTrackerMode == 0 then
 	else
 	d[#d+1] = LoadFont("_wendy small")..{
 		Name = "PBDifferential",
-		InitCommand=cmd(xy,targetTrackerX,targetTrackerY;zoom,targetTrackerZoom;halign,0;valign,1),
+		InitCommand=function(self)
+			self:xy(targetTrackerX,targetTrackerY):zoom(targetTrackerZoom):halign(0):valign(1)
+		end,
 		JudgmentMessageCommand=function(self,msg)
 			local tDiff = msg.WifePBDifferential
 			if tDiff then
@@ -776,12 +770,16 @@ local cp = Def.ActorFrame{
 
 -- percent background border  --agoramachina
 	Def.Quad{
-		InitCommand=cmd(xy,-14 -mpOffset,170;zoomto, 65, 30;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)
+		InitCommand=function(self)
+			self:xy(-14 -mpOffset,170):zoomto(65, 30):diffuse(color("0,0,0,0.4")):horizalign(left):vertalign(top)
+		end
 	},
 	-- Displays your current percentage score
 	LoadFont("_wendy small")..{											
 		Name = "DisplayPercent",
-		InitCommand=cmd(xy,45 - mpOffset,200;zoom,0.3;halign,1;valign,1),
+		InitCommand=function(self)
+			self:xy(45 - mpOffset,200):zoom(0.3):halign(1):valign(1)
+		end,
 		OnCommand=function(self)
 			self:settextf("%05.2f%%", 0)
 		end,
@@ -834,7 +832,9 @@ local j = Def.ActorFrame{
 
  local function makeJudgeText(judge,index)		-- Makes text
  	return LoadFont("Common normal")..{
- 		InitCommand=cmd(xy,frameX+12,frameY-104+(index*spacing);zoom,judgeFontSize;halign,0),
+ 		InitCommand=function(self)
+ 			self:xy(frameX+12,frameY-104+(index*spacing)):zoom(judgeFontSize):halign(0)
+ 		end,
  		OnCommand=function(self)
  			settext(self,getShortJudgeStrings(judge))
  			diffuse(self,jcT[judge])
@@ -845,12 +845,19 @@ local j = Def.ActorFrame{
  local function makeJudgeCount(judge,index)		-- Makes county things for taps....
  	return LoadFont("_wendy small")..{
  		Name = judge,
-		InitCommand=cmd(xy,frameWidth+frameX-6,frameY-104+(index*spacing);zoom,countFontSize;horizalign,right;settext,0) 	}
+		InitCommand=function(self)
+			self:xy(frameWidth+frameX-6,frameY-104+(index*spacing)):zoom(countFontSize):horizalign(right):settext(0)
+		end}
  end
 
 
 -- Background
-j[#j+1] = Def.Quad{InitCommand=cmd(xy,frameX,frameY-102;zoomto,frameWidth+6,frameHeight+24;diffuse,color("0,0,0,0.4");horizalign,left;vertalign,top)}
+
+j[#j+1] = Def.Quad{
+	InitCommand=function(self)
+		self:xy(frameX,frameY-102):zoomto(frameWidth+6,frameHeight+24):diffuse(color("0,0,0,0.4")):horizalign(left):vertalign(top)
+	end
+}
 
 -- Build judgeboard
 for i=1,#jdgT do
@@ -886,7 +893,9 @@ local ingots = {}										-- references to the error bars
 function smeltErrorBar(index)
 	return Def.Quad{
 		Name = index,
-		InitCommand=cmd(xy,errorBarX,errorBarY;zoomto,barWidth,errorBarHeight;diffusealpha,0),
+		InitCommand=function(self)
+			self:xy(errorBarX,errorBarY):zoomto(barWidth,errorBarHeight):diffusealpha(0)
+		end,
 		UpdateErrorBarCommand=function(self)						-- probably a more efficient way to achieve this effect, should test stuff later
 			finishtweening(self)									-- note: it really looks like shit without the fade out 
 			diffusealpha(self,1)
@@ -918,18 +927,28 @@ local e = Def.ActorFrame{
 
 	Def.Quad {
 		Name = "Center",
-		InitCommand=cmd(diffuse,getMainColor('highlight');xy,errorBarX,errorBarY;zoomto,2,errorBarHeight)
+		InitCommand=function(self)
+			self:diffuse(getMainColor('highlight')):xy(errorBarX,errorBarY):zoomto(2,errorBarHeight)
+		end
 	},
 	-- Indicates which side is which (early/late) These should be destroyed after the song starts.
 	LoadFont("_wendy small") .. {
 		Name = "DestroyMe",
-		InitCommand=cmd(xy,errorBarX+errorBarFrameWidth/4,errorBarY;zoom,0.35),
-		BeginCommand=cmd(settext,"Late";diffusealpha,0;smooth,0.5;diffusealpha,0.5;sleep,1.5;smooth,0.5;diffusealpha,0),
+		InitCommand=function(self)
+			self:xy(errorBarX+errorBarFrameWidth/4,errorBarY):zoom(0.35)
+		end,
+		BeginCommand=function(self)
+			self:settext("Late"):diffusealpha(0):smooth(0.5):diffusealpha(0.5):sleep(1.5):smooth(0.5):diffusealpha(0)
+		end,
 	},
 	LoadFont("_wendy small") .. {
 		Name = "DestroyMe2",
-		InitCommand=cmd(xy,errorBarX-errorBarFrameWidth/4,errorBarY;zoom,0.35),
-		BeginCommand=cmd(settext,"Early";diffusealpha,0;smooth,0.5;diffusealpha,0.5;sleep,1.5;smooth,0.5;diffusealpha,0;queuecommand,"Doot"),
+		InitCommand=function(self)
+			self:xy(errorBarX-errorBarFrameWidth/4,errorBarY):zoom(0.35)
+		end,
+		BeginCommand=function(self)
+			self:settext("Early"):diffusealpha(0):smooth(0.5):diffusealpha(0.5):sleep(1.5):smooth(0.5):diffusealpha(0):queuecommand("Doot")
+		end,
 		DootCommand=function(self)
 			self:GetParent():queuecommand("Doot")
 		end
@@ -981,7 +1000,9 @@ local p = Def.ActorFrame{
 	end,
 	
 	LoadFont("_wendy small")..{																		-- total time
-		InitCommand=cmd(x,width/2 - mpOffset;zoom,0.3;maxwidth,width*2;halign,1),
+		InitCommand=function(self)
+			self:x(width/2 - mpOffset):zoom(0.3):maxwidth(width*2):halign(1)
+		end,
 		BeginCommand=function(self)
 			local ttime = GetPlayableTime()
 			settext(self,SecondsToMMSS(ttime))
@@ -1018,14 +1039,29 @@ mb = Def.ActorFrame{
 		self:xy(miniProgressBarX,miniProgressBarY)
 		mb = self
 	end,
-	Def.Quad{InitCommand=cmd(zoomto,width,height;diffuse,color("#656573");diffusealpha,alpha)}, 	-- background
-	Def.Quad{InitCommand=cmd(x,1+width/2;zoomto,1,height;diffuse,color("#555555"))},				-- ending indicator
+	 -- background
+	Def.Quad{
+		InitCommand=function(self)
+			self:zoomto(width,height):diffuse(color("#656573")):diffusealpha(alpha)
+		end
+	},
+	 -- ending indicator
+	Def.Quad{
+		InitCommand=function(self)
+			self:x(1+width/2):zoomto(1,height):diffuse(color("#555555"))
+		end
+	},
 	Def.SongMeterDisplay{
 		InitCommand=function(self)
 			self:SetUpdateRate(0.5)
 		end,
 		StreamWidth=width,
-		Stream=Def.Quad{InitCommand=cmd(zoomy,height;diffuse,getMainColor("highlight"))}
+		
+		Stream=Def.Quad{
+			InitCommand=function(self)
+				self:zoomy(height):diffuse(getMainColor("highlight"))
+			end
+		}
 	}
 }
 
@@ -1039,8 +1075,12 @@ end
 ]]
 
 t[#t+1] = LoadFont("_wendy small")..{
-	InitCommand=cmd(xy,SCREEN_CENTER_X,SCREEN_BOTTOM-10;zoom,0.35;settext,getCurRateDisplayString()),
-	DoneLoadingNextSongMessageCommand=cmd(settext,getCurRateDisplayString())
+	InitCommand=function(self)
+		self:xy(SCREEN_CENTER_X,SCREEN_BOTTOM-10):zoom(0.35):settext(getCurRateDisplayString())
+	end,
+	DoneLoadingNextSongMessageCommand=function(self)
+		self:settext(getCurRateDisplayString())
+	end
 }
 
 --[[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1072,9 +1112,13 @@ t[#t+1] = Def.ActorFrame{
 	end,
 	LoadFont("_wendy small")..{
 		Name="BPM",
-		InitCommand=cmd(x,SCREEN_WIDTH/2;y,SCREEN_BOTTOM-36;halign,0.5;zoom,0.60)
+		InitCommand=function(self)
+			self:x(SCREEN_WIDTH/2):y(SCREEN_BOTTOM-36):halign(0.5):zoom(0.60)
+		end
 	},
-	DoneLoadingNextSongMessageCommand=cmd(queuecommand,"Init")
+	DoneLoadingNextSongMessageCommand=function(self)
+		self:queuecommand("Init")
+	end
 }
 
 
@@ -1326,8 +1370,8 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.3):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local x = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeX
-			local y = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.JudgeY
+			local x = MovableValues.JudgeX
+			local y = MovableValues.JudgeY
 			local text= {
 				"Judgment Label Position:",
 				"X: " .. x,
@@ -1343,7 +1387,7 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local zoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.JudgeZoom
+			local zoom = MovableValues.JudgeZoom
 			local text= {
 				"Judgment Label Size:",
 				"Zoom: " .. zoom,
@@ -1358,8 +1402,8 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.35):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local x = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboX
-			local y = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.ComboY
+			local x = MovableValues.ComboX
+			local y = MovableValues.ComboY
 
 			local text= {
 				"Combo Position:",
@@ -1376,7 +1420,7 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local zoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.ComboZoom
+			local zoom = MovableValues.ComboZoom
 			local text= {
 				"Combo Size:",
 				"Zoom: " .. zoom,
@@ -1391,8 +1435,8 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local x = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NPSDisplayX
-			local y = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NPSDisplayY
+			local x = MovableValues.NPSDisplayX
+			local y = MovableValues.NPSDisplayY
 			local text= {
 				"NPS Display Position:",
 				"X: " .. x,
@@ -1408,7 +1452,7 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local zoom = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NPSDisplayZoom
+			local zoom = MovableValues.NPSDisplayZoom
 			local text= {
 				"NPS Display Size:",
 				"Zoom: " .. zoom,
@@ -1423,8 +1467,8 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local x = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NPSGraphX
-			local y = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NPSGraphY
+			local x = MovableValues.NPSGraphX
+			local y = MovableValues.NPSGraphY
 			local text= {
 				"NPS Graph Position:",
 				"X: " .. x,
@@ -1440,8 +1484,8 @@ t[#t+1] = Def.ActorFrame{
 				:shadowlength(2):xy(10, 20):zoom(.5):visible(false)
 		end,
 		UpdateCommand=function(self)
-			local width = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NPSGraphWidth
-			local height = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NPSGraphHeight
+			local width = MovableValues.NPSGraphWidth
+			local height = MovableValues.NPSGraphHeight
 			local text= {
 				"NPS Display Size:",
 				"Width: " .. width,

@@ -1,25 +1,3 @@
-function gradestring(tier) --to be moved
-	if tier == "Grade_Tier01" then
-		return 'AAAA'
-	elseif tier == "Grade_Tier02" then
-		return 'AAA'
-	elseif tier == "Grade_Tier03" then
-		return 'AA'
-	elseif tier == "Grade_Tier04" then
-		return 'A'
-	elseif tier == "Grade_Tier05" then
-		return 'B'
-	elseif tier == "Grade_Tier06" then
-		return 'C'
-	elseif tier == "Grade_Tier07" then
-		return 'D'
-	elseif tier == 'Grade_Failed' then
-		return 'F'
-	else
-		return tier
-	end
-end
-
 local lines = 5 -- number of scores to display
 local framex = SCREEN_WIDTH-capWideScale(get43size(230),230)
 local framey = 60
@@ -89,7 +67,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 
 		--The main quad
 		Def.Quad{
-			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,frameWidth,30;halign,0;valign,0;diffuse,color("#1E282F");diffusealpha,1;diffuserightedge,color("#1E282F33")),
+			InitCommand=function(self)
+				self:xy(framex,framey+(drawindex*spacing)-4):zoomto(frameWidth,30):halign(0):valign(0):diffuse(color("#1E282F")):diffusealpha(1):diffuserightedge(color("#1E282F33"))
+			end,
 			BeginCommand=function(self)
 				self:visible(GAMESTATE:IsHumanPlayer(pn))
 			end
@@ -97,7 +77,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 
 		--Highlight quad for the current score
 		Def.Quad{
-			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,frameWidth,30;halign,0;valign,0;diffuse,color("#ffffff");diffusealpha,0.3;diffuserightedge,color("#1E282F00")),
+			InitCommand=function(self)
+				self:xy(framex,framey+(drawindex*spacing)-4):zoomto(frameWidth,30):halign(0):valign(0):diffuse(color("#ffffff")):diffusealpha(0.3):diffuserightedge(color("#1E282F00"))
+			end,
 			BeginCommand=function(self)
 				self:visible(GAMESTATE:IsHumanPlayer(pn) and equals)
 			end
@@ -106,7 +88,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		--Quad that will act as the bounding box for mouse rollover/click stuff.
 		Def.Quad{
 			Name="mouseOver";
-			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,frameWidth,30;halign,0;valign,0;diffuse,getMainColor('highlight');diffusealpha,0.05),
+			InitCommand=function(self)
+				self:xy(framex,framey+(drawindex*spacing)-4):zoomto(frameWidth,30):halign(0):valign(0):diffuse(getMainColor('highlight')):diffusealpha(0.05)
+			end,
 			BeginCommand=function(self)
 				self:visible(false)
 			end
@@ -114,7 +98,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 
 		--ClearType lamps
 		Def.Quad{
-			InitCommand=cmd(xy,framex,framey+(drawindex*spacing)-4;zoomto,8,30;halign,0;valign,0;diffuse,getClearTypeFromScore(pn,hsTable[index],2)),
+			InitCommand=function(self)
+				self:xy(framex,framey+(drawindex*spacing)-4):zoomto(8,30):halign(0):valign(0):diffuse(getClearTypeFromScore(pn,hsTable[index],2))
+			end,
 			BeginCommand=function(self)
 				self:visible(GAMESTATE:IsHumanPlayer(pn))
 			end
@@ -122,7 +108,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 
 		--rank
 		LoadFont("_wendy small")..{
-			InitCommand=cmd(xy,framex-10,framey+12+(drawindex*spacing);zoom,0.35),
+			InitCommand=function(self)
+				self:xy(framex-10,framey+12+(drawindex*spacing)):zoom(0.35)
+			end,
 			BeginCommand=function(self)
 				if #hsTable >= 1 then
 					self:settext(index)
@@ -138,7 +126,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		-- Wife grade and %score
 		LoadFont("Common normal")..{
 			Name="grade",
-			InitCommand=cmd(xy,framex+14,framey+11+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.3),
+			InitCommand=function(self)
+				self:xy(framex+14,framey+11+(drawindex*spacing)):zoom(0.35):halign(0):maxwidth((frameWidth-15)/0.3)
+			end,
 			BeginCommand=function(self)
 				if hsTable[index]:GetWifeScore() == 0 then 
 					self:settextf("NA (%s)", "Wife")
@@ -151,7 +141,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		--mods
 		LoadFont("Common normal")..{
 			Name="option",
-			InitCommand=cmd(xy,framex+14,framey+14+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=function(self)
+				self:xy(framex+14,framey+14+(drawindex*spacing)):zoom(0.35):halign(0):maxwidth((frameWidth-15)/0.35)
+			end,
 			BeginCommand=function(self)
 				self:settext(hsTable[index]:GetModifiers())
 				self:visible(false)
@@ -160,10 +152,12 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 	
 		--grade text
 		LoadFont("Common normal")..{
-			InitCommand=cmd(xy,framex+130+capWideScale(get43size(0),50),framey+2+(drawindex*spacing);zoom,0.35;halign,0.5;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=function(self)
+				self:xy(framex+130+capWideScale(get43size(0),50),framey+2+(drawindex*spacing)):zoom(0.35):halign(0.5):maxwidth((frameWidth-15)/0.35)
+			end,
 			BeginCommand=function(self)
 				if #hsTable >= 1 and index>= 1 then
-					self:settext(gradestring(hsTable[index]:GetGrade()))
+					self:settext(getGradeStrings(hsTable[index]:GetGrade()))
 					self:diffuse(getGradeColor(hsTable[index]:GetGrade()))
 				end
 			end
@@ -171,7 +165,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		
 		--cleartype text
 		LoadFont("Common normal")..{
-			InitCommand=cmd(xy,framex+130+capWideScale(get43size(0),50),framey+12+(drawindex*spacing);zoom,0.35;halign,0.5;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=function(self)
+				self:xy(framex+130+capWideScale(get43size(0),50),framey+12+(drawindex*spacing)):zoom(0.35):halign(0.5):maxwidth((frameWidth-15)/0.35)
+			end,
 			BeginCommand=function(self)
 				if #hsTable >= 1 and index>= 1 then
 					self:settext(getClearTypeFromScore(pn,hsTable[index],0))
@@ -182,7 +178,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		
 		--max combo
 		LoadFont("Common normal")..{
-			InitCommand=cmd(xy,framex+130+capWideScale(get43size(0),50),framey+22+(drawindex*spacing);zoom,0.35;halign,0.5;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=function(self)
+				self:xy(framex+130+capWideScale(get43size(0),50),framey+22+(drawindex*spacing)):zoom(0.35):halign(0.5):maxwidth((frameWidth-15)/0.35)
+			end,
 			BeginCommand=function(self)
 				if #hsTable >= 1 and index>= 1 then
 					self:settextf("%sx",hsTable[index]:GetMaxCombo())
@@ -193,7 +191,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		--judgment
 		LoadFont("Common normal")..{
 			Name="judge";
-			InitCommand=cmd(xy,framex+14,framey+20+(drawindex*spacing);zoom,0.35;halign,0;maxwidth,(frameWidth-15)/0.35),
+			InitCommand=function(self)
+				self:xy(framex+14,framey+20+(drawindex*spacing)):zoom(0.35):halign(0):maxwidth((frameWidth-15)/0.35)
+			end,
 			BeginCommand=function(self)
 				if #hsTable >= 1 and index>= 1 then
 					self:settextf("%d / %d / %d / %d / %d / %d",
@@ -210,7 +210,9 @@ local function scoreitem(pn,index,scoreIndex,drawindex)
 		--date
 		LoadFont("Common normal")..{
 			Name="date";
-			InitCommand=cmd(xy,framex+16,framey+20+(drawindex*spacing);zoom,0.35;halign,0),
+			InitCommand=function(self)
+				self:xy(framex+16,framey+20+(drawindex*spacing)):zoom(0.35):halign(0)
+			end,
 			BeginCommand=function(self)
 				if #hsTable >= 1 and index>= 1 then
 					self:settext(hsTable[index]:GetDate())
@@ -253,7 +255,9 @@ end
 
 --Update function for showing mouse rollovers
 local function Update(self)
-	t.InitCommand=cmd(SetUpdateFunction,Update);
+	t.InitCommand=function(self)
+		self:SetUpdateFunction(Update)
+	end;
 	for i=0,drawindex-1 do
 		if isOver(self:GetChild("scoreItem"..tostring(i)):GetChild("mouseOver")) then
 			self:GetChild("scoreItem"..tostring(i)):GetChild("mouseOver"):visible(true)
@@ -266,6 +270,8 @@ local function Update(self)
 		end
 	end
 end
-t.InitCommand=cmd(SetUpdateFunction,Update)
+t.InitCommand=function(self)
+	self:SetUpdateFunction(Update)
+end
 
 return t

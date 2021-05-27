@@ -1,3 +1,5 @@
 return LoadFont("_wendy small") .. {
-	InitCommand=cmd(zoom,0.3;diffuse,color("#FFFFFF"););
+	InitCommand=function(self)
+		self:zoom(0.3):diffuse(color("#FFFFFF"))
+	end;
 };

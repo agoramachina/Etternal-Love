@@ -7,21 +7,19 @@ If the line is a function, you'll have to use Branch.keyname() instead.
 --]]
 
 -- used for various SMOnline-enabled screens:
-function SMOnlineScreen()
-	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
-		if not IsSMOnlineLoggedIn(pn) then
-			return "ScreenSMOnlineLogin"
-		end
-	end
-	return "ScreenNetRoom"
-end
 
 function SelectMusicOrCourse()
+	-- NO THANKS NOT GONNA TRY TO SUPPORT THIS RIGHT NOW
+	-- -poco
+	return "ScreenSelectMusic"
+
+		--[[
 	if IsNetSMOnline() then
 		return "ScreenNetSelectMusic"
 	else
 		return "ScreenSelectMusic"
 	end
+	]]
 end
 
 function GameOverOrContinue()
@@ -61,11 +59,7 @@ Branch = {
 		end
 	end,
 	AfterTitleMenu = function()
-		if PREFSMAN:GetPreference("ShowCaution") then
-			return "ScreenCaution"
-		else
-			return Branch.StartGame()
-		end
+		return Branch.StartGame()
 	end,
 	StartGame = function()
 		-- Check to see if there are 0 songs installed. Also make sure to check
@@ -97,6 +91,8 @@ Branch = {
 		return "ScreenOptionsEdit"
 	end,
 	AfterSelectStyle = function()
+		-- no -poco
+		--[[
 		if IsNetConnected() then
 			ReportStyle()
 			GAMESTATE:ApplyGameCommand("playmode,regular")
@@ -107,18 +103,13 @@ Branch = {
 		if IsNetConnected() then
 			return "ScreenNetRoom"
 		end
+		]]
 		return "ScreenProfileLoad"
 
 		--return CHARMAN:GetAllCharacters() ~= nil and "ScreenSelectCharacter" or "ScreenGameInformation"
 	end,
 	AfterSelectProfile = function()
-		if ( THEME:GetMetric("Common","AutoSetStyle") == true ) then
-			-- use SelectStyle in online... 
-			-- OR DONT LOL!!! - mina
-			return IsNetConnected() and "ScreenSMOnlineLogin" or "ScreenSelectMusic"--"ScreenSelectPlayMode"
-		else
-			return "ScreenSelectMusic"--"ScreenSelectStyle"
-		end
+		return "ScreenSelectMusic"
 	end,
 	AfterProfileLoad = function()
 		return "ScreenSelectMusic"--"ScreenSelectPlayMode"
@@ -137,7 +128,6 @@ Branch = {
 		bTrue = PREFSMAN:GetPreference("ShowInstructions")
 		return (bTrue and GoToMusic() or "ScreenGameInformation")
 	end,
-	AfterSMOLogin = SMOnlineScreen(),
 	BackOutOfPlayerOptions = function()
 		return SelectMusicOrCourse()
 	end,
@@ -152,16 +142,7 @@ Branch = {
 		end
 	end,
 	PlayerOptions = function()
-		local pm = GAMESTATE:GetPlayMode()
-		local restricted = { "PlayMode_Oni", "PlayMode_Rave",
-			--"PlayMode_Battle" -- ??
-		}
 		local optionsScreen = "ScreenPlayerOptions"
-		for i=1,#restricted do
-			if restricted[i] == pm then
-				optionsScreen = "ScreenPlayerOptionsRestricted"
-			end
-		end
 		if SCREENMAN:GetTopScreen():GetGoToOptions() then
 			return optionsScreen
 		else
@@ -179,30 +160,20 @@ Branch = {
 		return IsRoutine() and "ScreenGameplayShared" or "ScreenGameplay"
 	end,
 	EvaluationScreen= function()
+		-- no. -poco
+		--[[
 		if IsNetSMOnline() then
 			return "ScreenNetEvaluation"
 		else
 			-- todo: account for courses etc?
 			return "ScreenEvaluationNormal"
 		end
+		]]
+		return "ScreenEvaluationNormal"
 	end,
 	AfterGameplay = function()
 		-- pick an evaluation screen based on settings.
-		if THEME:GetMetric("ScreenHeartEntry", "HeartEntryEnabled") then
-			local go_to_heart= false
-			for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
-				local profile= PROFILEMAN:GetProfile(pn)
-				if profile and profile:GetIgnoreStepCountCalories() then
-					go_to_heart= true
-				end
-			end
-			if go_to_heart then
-				return "ScreenHeartEntry"
-			end
-			return Branch.EvaluationScreen()
-		else
-			return Branch.EvaluationScreen()
-		end
+		return Branch.EvaluationScreen()
 	end,
 	AfterHeartEntry= function()
 		return Branch.EvaluationScreen()
