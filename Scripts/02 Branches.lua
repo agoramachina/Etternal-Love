@@ -91,6 +91,8 @@ Branch = {
 		return "ScreenOptionsEdit"
 	end,
 	AfterSelectStyle = function()
+		-- no -poco
+		--[[
 		if IsNetConnected() then
 			ReportStyle()
 			GAMESTATE:ApplyGameCommand("playmode,regular")
@@ -101,6 +103,7 @@ Branch = {
 		if IsNetConnected() then
 			return "ScreenNetRoom"
 		end
+		]]
 		return "ScreenProfileLoad"
 
 		--return CHARMAN:GetAllCharacters() ~= nil and "ScreenSelectCharacter" or "ScreenGameInformation"
@@ -157,12 +160,16 @@ Branch = {
 		return IsRoutine() and "ScreenGameplayShared" or "ScreenGameplay"
 	end,
 	EvaluationScreen= function()
+		-- no. -poco
+		--[[
 		if IsNetSMOnline() then
 			return "ScreenNetEvaluation"
 		else
 			-- todo: account for courses etc?
 			return "ScreenEvaluationNormal"
 		end
+		]]
+		return "ScreenEvaluationNormal"
 	end,
 	AfterGameplay = function()
 		-- pick an evaluation screen based on settings.
