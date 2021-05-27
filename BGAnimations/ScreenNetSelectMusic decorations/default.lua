@@ -24,7 +24,7 @@ local g = Def.ActorFrame{
 	end,
 }
 
-g[#g+1] = Def.Banner{
+g[#g+1] = Def.Sprite {
 	InitCommand=function(self)
 		self:x(10):y(60):halign(0):valign(0)
 	end;
@@ -34,9 +34,17 @@ g[#g+1] = Def.Banner{
 			local song = GAMESTATE:GetCurrentSong()
 			local group = top:GetMusicWheel():GetSelectedSection()
 			if song then
-				self:LoadFromSong(song)
-			elseif group then
-				self:LoadFromSongGroup(group)
+				local bnpath = GAMESTATE:GetCurrentSong():GetBannerPath()
+				if not bnpath then
+					bnpath = THEME:GetPathG("Common", "fallback banner")
+				end
+				self:LoadBackground(bnpath)
+			else
+				local bnpath = SONGMAN:GetSongGroupBannerPath(SCREENMAN:GetTopScreen():GetMusicWheel():GetSelectedSection())
+				if not bnpath or bnpath == "" then
+					bnpath = THEME:GetPathG("Common", "fallback banner")
+				end
+				self:LoadBackground(bnpath)
 			end
 		end
 		self:scaletoclipped(capWideScale(get43size(384),384),capWideScale(get43size(120),120))
