@@ -24,6 +24,19 @@ songY1P = SCREEN_CENTER_Y-110
 dummyX = SCREEN_CENTER_X
 end;
 
+local getRescoreElements = function(pss, score)
+	local o = {}
+	local dvt = pss:GetOffsetVector()
+	local totalTaps = pss:GetTotalTaps()
+	o["dvt"] = dvt
+	o["totalHolds"] = pss:GetRadarPossible():GetValue("RadarCategory_Holds") + pss:GetRadarPossible():GetValue("RadarCategory_Rolls")
+	o["holdsHit"] = score:GetRadarValues():GetValue("RadarCategory_Holds") + score:GetRadarValues():GetValue("RadarCategory_Rolls")
+	o["holdsMissed"] = o["totalHolds"] - o["holdsHit"]
+	o["minesHit"] = pss:GetRadarPossible():GetValue("RadarCategory_Mines") - score:GetRadarValues():GetValue("RadarCategory_Mines")
+	o["totalTaps"] = totalTaps
+	return o
+end
+
 --Hacky way of fixing these ratios outside of 16:9 and 4:3. -Misterkister
 --Redundant, but w/e. -Misterkister
 
@@ -439,43 +452,20 @@ end
 		CodeMessageCommand=function(self,params)
 			if params.Name == "PrevJudge" and judge > 1 then
 				judge = judge - 1
-				self:settextf("%05.2f%% (%s)", notShit.floor(score:RescoreToWifeJudge(judge)*10000)/100, "Wife J"..judge)
+				local rst = getRescoreElements(pss, score)
+				local js = ms.JudgeScalers[judge]
+				self:settextf("%05.2f%% (%s)", notShit.floor(getRescoredWife3Judge(3, judge, rst), 2), "Wife J"..judge)
 			elseif params.Name == "NextJudge" and judge < 9 then
 				judge = judge + 1
+				local rst = getRescoreElements(pss, score)
 				if judge == 9 then
-					self:settextf("%05.2f%% (%s)", notShit.floor(score:RescoreToWifeJudge(judge)*10000)/100, "Wife Justice")
+					self:settextf("%05.2f%% (%s)", notShit.floor(getRescoredWife3Judge(3, judge, rst), 2), "Wife Justice")
 				else
-					self:settextf("%05.2f%% (%s)", notShit.floor(score:RescoreToWifeJudge(judge)*10000)/100, "Wife J"..judge)	
+					self:settextf("%05.2f%% (%s)", notShit.floor(getRescoredWife3Judge(3, judge, rst), 2), "Wife J"..judge)	
 				end
-				
 			end
 		end,
 	};
-	
-	-- DP percent
-	t[#t+1] = LoadFont("_wendy small")..{
-		InitCommand=function(self)
-			self:xy(frameX+5,frameY+34):zoom(0.45):halign(0):valign(0):maxwidth(capWideScale(280,320))
-		end,
-		BeginCommand=function(self)
-			self:queuecommand("Set")
-		end,
-		SetCommand=function(self) 
-			self:diffuse(getGradeColor(pss:GetGrade()))
-			self:settextf("%05.2f%% (%s)",GetPercentDP(score), "DP")
-		end,
-		CodeMessageCommand=function(self,params)
-			if params.Name == "PrevJudge" or params.Name == "NextJudge" then
-				if judge == 9 then
-					self:settextf("%05.2f%% (%s)", notShit.floor(score:RescoreToDPJudge(judge)*10000)/100, "DP Justice")
-				else
-					self:settextf("%05.2f%% (%s)", notShit.floor(score:RescoreToDPJudge(judge)*10000)/100, "DP J"..judge)	
-				end
-				
-			end
-		end,
-
-	}
 	
 	t[#t+1] = LoadFont("Common Normal")..{
 		InitCommand=function(self)

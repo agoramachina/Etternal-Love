@@ -177,41 +177,6 @@ t[#t+1] = LoadFont("_wendy small")..{
 	end
 }
 
--- Rescoring stuff
--- t[#t+1] = LoadFont("Common Normal")..{
-	-- Name="Score",
-	-- InitCommand=cmd(xy,frameX+offsetX+155,frameY+offsetY+14;zoom,0.5;halign,0),
-	-- SetCommand=function(self)
-		-- if score and update then
-			-- if score:GetWifeScore() == 0 then 
-				-- self:settextf("NA (%s)", "Wife")
-			-- else
-				-- self:settextf("%05.2f%% (%s)", notShit.floor(score:RescoreToWifeJudge(4)*10000)/100, "Wife J4")
-			-- end
-		-- else
-			-- self:settextf("00.00%% (%s)", "Wife")
-		-- end
-	-- end,
-	-- ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
--- }
-
--- t[#t+1] = LoadFont("Common Normal")..{
-	-- Name="Score",
-	-- InitCommand=cmd(xy,frameX+offsetX+155,frameY+offsetY+58;zoom,0.5;halign,0),
-	-- SetCommand=function(self)
-		-- if score and update then
-			-- if score:GetWifeScore() == 0 then 
-				-- self:settext("")
-			-- else
-				-- self:settextf("%5.2f", score:GetSkillsetSSR(5))
-			-- end
-		-- else
-			-- self:settext("")
-		-- end
-	-- end,
-	-- ScoreUpdateMessageCommand=cmd(queuecommand,"Set")
--- }
-
 t[#t+1] = LoadFont("_wendy small")..{
 	Name="ClearType",
 	InitCommand=function(self)
