@@ -166,21 +166,7 @@ Branch = {
 	end,
 	AfterGameplay = function()
 		-- pick an evaluation screen based on settings.
-		if THEME:GetMetric("ScreenHeartEntry", "HeartEntryEnabled") then
-			local go_to_heart= false
-			for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
-				local profile= PROFILEMAN:GetProfile(pn)
-				if profile and profile:GetIgnoreStepCountCalories() then
-					go_to_heart= true
-				end
-			end
-			if go_to_heart then
-				return "ScreenHeartEntry"
-			end
-			return Branch.EvaluationScreen()
-		else
-			return Branch.EvaluationScreen()
-		end
+		return Branch.EvaluationScreen()
 	end,
 	AfterHeartEntry= function()
 		return Branch.EvaluationScreen()
