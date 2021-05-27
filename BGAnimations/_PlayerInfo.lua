@@ -89,10 +89,11 @@ t[#t+1] = Def.ActorFrame{
 				while tiers[index] == nil do
 				index = index - 1
 				end
-			if IsNetSMOnline() then
-			self:settextf("%s: %5.2f (Tier %s)",profileName,playerRating,tiers[index])
+				-- no online
+			if false and IsNetSMOnline() then
+				self:settextf("%s: %5.2f (Tier %s)",profileName,playerRating,tiers[index])
 			else
-			self:settextf("%s: %5.2f",profileName,playerRating)
+				self:settextf("%s: %5.2f",profileName,playerRating)
 			end
 		end,
 		PlayerJoinedMessageCommand=function(self)
@@ -184,7 +185,8 @@ t[#t+1] = Def.ActorFrame{
 			if profileXP > 0 then
 				level = math.floor(math.log(profileXP) / math.log(2))
 			end
-			if(IsNetSMOnline()) then
+			-- no online
+			if false and IsNetSMOnline() then
 				self:settext("Overall Level: " .. level .. "\nEXP Earned: " .. profileXP .. "/" .. 2^(level+1))
 			else
 				self:settext("")
