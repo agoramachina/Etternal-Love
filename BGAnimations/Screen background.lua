@@ -46,7 +46,9 @@ for i=1,10 do
 		InitCommand=function(self)
 			self:diffuse(file_info.ColorRGB[i])
 		end,
-			texcoordvelocity, file_info.texcoordvelocity[i][1], file_info.texcoordvelocity[i][2]; diffusealpha, file_info.diffusealpha[i] ),
+		OnCommand = function(self)
+			self:zoom(1.3):xy(file_info.xy[i], file_info.xy[i]):customtexturerect(0,0,1,1)
+		end,
 		BackgroundImageChangedMessageCommand=function(self)
 			local new_file = THEME:GetPathB("", "_shared background normal/" .. "Arrows" .. ".png")
 			self:Load(new_file)
