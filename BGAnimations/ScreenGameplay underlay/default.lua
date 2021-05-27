@@ -22,7 +22,12 @@ elseif bgtype == 3 then
 end
 
 
-local t = Def.ActorFrame{}
+local t = Def.ActorFrame {
+	OffCommand = function(self)
+		unsetMovableKeymode()
+	end
+}
+setMovableKeymode(getCurrentKeyMode())
 -- semi-transparent quad at the top of ScreenGameplay
 t[#t+1] = LoadActor("Header.lua")
 
