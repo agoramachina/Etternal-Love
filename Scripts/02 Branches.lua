@@ -9,11 +9,17 @@ If the line is a function, you'll have to use Branch.keyname() instead.
 -- used for various SMOnline-enabled screens:
 
 function SelectMusicOrCourse()
+	-- NO THANKS NOT GONNA TRY TO SUPPORT THIS RIGHT NOW
+	-- -poco
+	return "ScreenSelectMusic"
+
+		--[[
 	if IsNetSMOnline() then
 		return "ScreenNetSelectMusic"
 	else
 		return "ScreenSelectMusic"
 	end
+	]]
 end
 
 function GameOverOrContinue()
