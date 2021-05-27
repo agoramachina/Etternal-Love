@@ -14,8 +14,8 @@ local filterAlphas = {
 --moving notefield shenanigans
 local rPressed = false
 local tPressed = false
-local noteFieldWidth = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplaySizes.NotefieldWidth
-local notefieldX = playerConfig:get_data(pn_to_profile_slot(PLAYER_1)).GameplayXYCoordinates.NotefieldX
+local noteFieldWidth = MovableValues.NotefieldWidth
+local notefieldX = MovableValues.NotefieldX
 local filter
 
 local function input(event)
